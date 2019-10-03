@@ -6,6 +6,26 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/Cliente.cpp
+Cliente.h
+C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/Cliente.h
+
+C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/Cliente.h
+string
+-
+ContaCorrente.h
+C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/ContaCorrente.h
+
+C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/ContaCorrente.cpp
+ContaCorrente.h
+C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/ContaCorrente.h
+
+C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/ContaCorrente.h
+ctime
+-
+string
+-
+
 C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/main.cpp
 iostream
 -
@@ -13,4 +33,8 @@ ctime
 -
 list
 -
+ContaCorrente.h
+C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/ContaCorrente.h
+Cliente.h
+C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/Cliente.h
 

@@ -3,4 +3,4 @@ project(T1_POO)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(T1_POO main.cpp)
+add_executable(T1_POO main.cpp ContaCorrente.h ContaCorrente.cpp Cliente.h Cliente.cpp)

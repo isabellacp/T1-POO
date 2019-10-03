@@ -80,6 +80,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/Cliente.cpp">
+			<Option target="T1_POO"/>
+		</Unit>
+		<Unit filename="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/Cliente.h">
+			<Option target="T1_POO"/>
+		</Unit>
+		<Unit filename="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/ContaCorrente.cpp">
+			<Option target="T1_POO"/>
+		</Unit>
+		<Unit filename="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/ContaCorrente.h">
+			<Option target="T1_POO"/>
+		</Unit>
 		<Unit filename="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/main.cpp">
 			<Option target="T1_POO"/>
 		</Unit>

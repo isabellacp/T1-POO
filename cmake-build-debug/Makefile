@@ -122,6 +122,60 @@ T1_POO/fast:
 	$(MAKE) -f CMakeFiles\T1_POO.dir\build.make CMakeFiles/T1_POO.dir/build
 .PHONY : T1_POO/fast
 
+Cliente.obj: Cliente.cpp.obj
+
+.PHONY : Cliente.obj
+
+# target to build an object file
+Cliente.cpp.obj:
+	$(MAKE) -f CMakeFiles\T1_POO.dir\build.make CMakeFiles/T1_POO.dir/Cliente.cpp.obj
+.PHONY : Cliente.cpp.obj
+
+Cliente.i: Cliente.cpp.i
+
+.PHONY : Cliente.i
+
+# target to preprocess a source file
+Cliente.cpp.i:
+	$(MAKE) -f CMakeFiles\T1_POO.dir\build.make CMakeFiles/T1_POO.dir/Cliente.cpp.i
+.PHONY : Cliente.cpp.i
+
+Cliente.s: Cliente.cpp.s
+
+.PHONY : Cliente.s
+
+# target to generate assembly for a file
+Cliente.cpp.s:
+	$(MAKE) -f CMakeFiles\T1_POO.dir\build.make CMakeFiles/T1_POO.dir/Cliente.cpp.s
+.PHONY : Cliente.cpp.s
+
+ContaCorrente.obj: ContaCorrente.cpp.obj
+
+.PHONY : ContaCorrente.obj
+
+# target to build an object file
+ContaCorrente.cpp.obj:
+	$(MAKE) -f CMakeFiles\T1_POO.dir\build.make CMakeFiles/T1_POO.dir/ContaCorrente.cpp.obj
+.PHONY : ContaCorrente.cpp.obj
+
+ContaCorrente.i: ContaCorrente.cpp.i
+
+.PHONY : ContaCorrente.i
+
+# target to preprocess a source file
+ContaCorrente.cpp.i:
+	$(MAKE) -f CMakeFiles\T1_POO.dir\build.make CMakeFiles/T1_POO.dir/ContaCorrente.cpp.i
+.PHONY : ContaCorrente.cpp.i
+
+ContaCorrente.s: ContaCorrente.cpp.s
+
+.PHONY : ContaCorrente.s
+
+# target to generate assembly for a file
+ContaCorrente.cpp.s:
+	$(MAKE) -f CMakeFiles\T1_POO.dir\build.make CMakeFiles/T1_POO.dir/ContaCorrente.cpp.s
+.PHONY : ContaCorrente.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -158,6 +212,12 @@ help:
 	@echo ... T1_POO
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... Cliente.obj
+	@echo ... Cliente.i
+	@echo ... Cliente.s
+	@echo ... ContaCorrente.obj
+	@echo ... ContaCorrente.i
+	@echo ... ContaCorrente.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
