@@ -39,15 +39,17 @@ private:
 };
 
 // Classe Cliente
-class Cliente {
+class Cliente{
 public:
+    //Construtor
     Cliente(string nome, string cpf, string endereco, string telefone, string email) {
         Nome = nome;
         CPF = cpf;
         Endereco = endereco;
         Telefone = telefone;
         Email = email;
-    };   //Construtor
+        Conta= nullptr;
+    };
     void CriaConta();
     void AlterarConta();
 
@@ -58,7 +60,7 @@ private:
     string Endereco;
     string Telefone;
     string Email;
-    ContaCorrente Conta;
+    ContaCorrente *Conta;
 };
 
 int main() {
