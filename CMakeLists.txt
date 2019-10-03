@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.14)
+project(T1_POO)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(T1_POO main.cpp)

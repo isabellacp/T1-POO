@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/main.cpp
+iostream
+-
+ctime
+-
+list
+-
+

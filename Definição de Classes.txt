@@ -1,0 +1,38 @@
+﻿CLASSE: ContaCorrente
+	ATRIBUTOS:
+* Número::int
+* CPFCliente::string
+* DataAbertura::date
+* SaldoAtual::float
+* ListaLançamentos::array
+	MÉTODOS:
+* ImprimirExtrato
+* FazerLancamentos
+
+
+	
+
+ CLASSE: Lançamento
+	ATRIBUTOS: 
+* Data::date
+* NumeroConta::int
+* Tipo::string
+* Valor::float
+	MÉTODOS:
+* 	
+
+
+
+CLASSE: Cliente
+	ATRIBUTOS:
+* Nome::string
+* CPFCliente::string
+* EnderecoCliente::string
+* TelefoneCliente::string
+* EmailCliente::string
+* Conta::ContaCorrente
+	MÉTODOS:
+* CriarConta
+* FecharConta
+* AlterarConta
+* IncluirConta
