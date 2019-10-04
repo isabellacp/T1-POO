@@ -12,28 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="123a010d-7a4f-4cea-8108-4e9e5af79587" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Cliente.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cliente.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ContaCorrente.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ContaCorrente.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/isabe.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/objects1.rsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/T1_POO.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/T1_POO.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/T1_POO.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/T1_POO.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ContaCorrente.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ContaCorrente.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ContaCorrente.h" beforeDir="false" afterPath="$PROJECT_DIR$/ContaCorrente.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,8 +34,8 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/IntelliJ.Portuguese.Brazil.Dictionary-master/IntelliJ.Portuguese.Brazil.Dictionary-master/portuguese-brazil_technical-terms.dic" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -74,6 +56,7 @@
       </method>
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="2" Folder0="C:\Users\isabe\Desktop\IntelliJ.Portuguese.Brazil.Dictionary-master\IntelliJ.Portuguese.Brazil.Dictionary-master" Folder1="C:\Users\isabe\Desktop\IntelliJ.Portuguese.Brazil.Dictionary-master\IntelliJ.Portuguese.Brazil.Dictionary-master" CustomDictionaries="2" CustomDictionary0="C:\Users\isabe\Desktop\IntelliJ.Portuguese.Brazil.Dictionary-master\IntelliJ.Portuguese.Brazil.Dictionary-master\portuguese-brazil.dic" CustomDictionary1="C:\Users\isabe\Desktop\IntelliJ.Portuguese.Brazil.Dictionary-master\IntelliJ.Portuguese.Brazil.Dictionary-master\portuguese-brazil_technical-terms.dic" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -85,7 +68,9 @@
       <option name="presentableId" value="Default" />
       <updated>1570050587725</updated>
       <workItem from="1570050588957" duration="7071000" />
-      <workItem from="1570125021928" duration="4626000" />
+      <workItem from="1570125021928" duration="4872000" />
+      <workItem from="1570129999396" duration="617000" />
+      <workItem from="1570208922615" duration="7715000" />
     </task>
     <task id="LOCAL-00001" summary="mudar o campo Conta no construtor da classe cliente para permitir conta nula">
       <created>1570125323542</created>
@@ -94,7 +79,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570125323542</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="-mover classes para headers&#10;-criar setters e getters para as classes Cliente e ContaCorrente&#10;-definir métodos CriarConta e  ExcluirConta">
+      <created>1570129902658</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1570129902658</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,7 +97,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -113,6 +107,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="mudar o campo Conta no construtor da classe cliente para permitir conta nula" />
-    <option name="LAST_COMMIT_MESSAGE" value="mudar o campo Conta no construtor da classe cliente para permitir conta nula" />
+    <MESSAGE value="-mover classes para headers&#10;-criar setters e getters para as classes Cliente e ContaCorrente&#10;-definir métodos CriarConta e  ExcluirConta" />
+    <option name="LAST_COMMIT_MESSAGE" value="-mover classes para headers&#10;-criar setters e getters para as classes Cliente e ContaCorrente&#10;-definir métodos CriarConta e  ExcluirConta" />
   </component>
 </project>
