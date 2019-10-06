@@ -13,12 +13,13 @@ using namespace std;
 // Classe Cliente
 class Cliente{
 public:
-    //Construtor
-    Cliente(string nome, string cpf, string endereco, string telefone, string email);
-    ~Cliente();
+    Cliente(string nome, string cpf, string endereco, string telefone, string email); //Construtor
+    ~Cliente(); //Destrutor
+    //métodos
     void CriaConta();
     void ExlcuirConta();
-//getter e setters
+
+    //getter e setters
     const string &getNome() const;
     void setNome(const string &nome);
 
@@ -32,14 +33,13 @@ public:
     void setTelefone(const string &telefone);
 
     const string &getEmail() const;
-
     void setEmail(const string &email);
 
     ContaCorrente *getConta() const;
-
     void setConta(ContaCorrente *conta);
 
 private:
+    //atributos
     string Nome;
     string CPF;
     string Endereco;

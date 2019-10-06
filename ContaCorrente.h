@@ -7,35 +7,32 @@
 
 #include <ctime>
 #include <string>
-
+#include  <list>
 using  namespace std;
 
-struct List{
+struct Lancamento{
     string type;
-    int valor = 0;
+    float valor = 0;
     time_t DataLancamento = time (0);
-    int size=0; ///tamanho do array
-    string array[sizeof(size)];
+
 };
+
 
 class ContaCorrente {
 public:
     //construtor
     ContaCorrente(string cpf_cliente);
 
-    struct List  ext;
-
-    //getter - retorna uma representação em string da data de abertura da conta
-    char *GetDataAbertura();
+    list <struct Lancamento>  extrato; //struct que armazena dados sobre as operações feitas nas contas
+    char *GetDataAbertura();    //getter - retorna uma representação em string da data de abertura da conta
     int GetNumero();
     void FazerLancamento(int, float);
-    void ImprimirExtrato();
-    void AlterarDados(string cpf_cliente);
-    void debitoConta (float);
+    list <struct Lancamento> getExtrato(); //getter - retorna o extrato
+    bool debitoConta (float);
     void creditoConta (float);
-    string toString();
     static int getQuantidadeContas();
     static int getMontanteTotal();
+    string toString();
 
     //getter e setter para o CPF do cliente
     const string &getCpFcliente() const;

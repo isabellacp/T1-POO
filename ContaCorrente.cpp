@@ -6,6 +6,7 @@
 #include "ContaCorrente.h"
 
 int ContaCorrente::NumeroGlobal = 0;
+float ContaCorrente::MontanteTotal = 0;
 
 ContaCorrente::ContaCorrente(string cpf_cliente) {
     Numero = ++NumeroGlobal; // contador de conta corrente: cada vez que instanciar a classe, gera um novo numero de conta (evita contas com numeração repetida)
@@ -14,11 +15,35 @@ ContaCorrente::ContaCorrente(string cpf_cliente) {
     DataAbertura = time(0); //retorna a data atual
 }
 
-
-char *ContaCorrente::GetDataAbertura() {
-    return (char *) ctime(&DataAbertura);
+//debita o valor da conta
+bool ContaCorrente::debitoConta(float valor) {
+    if (SaldoAtual < valor){
+        return false;
+    }
+    struct Lancamento lanc;
+    //inserção da operação no extrato
+    lanc.type = "debito";
+    lanc.valor = valor;
+    extrato.push_front(lanc);
+    //realização do debito em conta
+    setSaldoAtual(SaldoAtual - valor);
+    //atualização do montante total do banco
+    MontanteTotal -= valor;
+    return true;
 }
 
+//credita um valor na conta
+void ContaCorrente::creditoConta(float valor) {
+    struct Lancamento lanc;
+    //inserção da operação no extrato
+    lanc.type = "credito";
+    lanc.valor = valor;
+    extrato.push_front(lanc);
+    //realização do credito em conta
+    setSaldoAtual(SaldoAtual + valor);
+    //atualização do montante total do banco
+    MontanteTotal += valor;
+}
 
 void ContaCorrente::FazerLancamento(int tipo, float valor) {
     switch (tipo) {
@@ -33,7 +58,10 @@ void ContaCorrente::FazerLancamento(int tipo, float valor) {
     }
 }
 
-void ContaCorrente::ImprimirExtrato() {}
+//retorna o extrato
+list <struct Lancamento> ContaCorrente::getExtrato() {
+    return extrato;
+}
 
 int ContaCorrente::GetNumero() {
     return Numero;
@@ -65,20 +93,8 @@ void ContaCorrente::setSaldoAtual(float saldoAtual) {
     SaldoAtual = saldoAtual;
 
 }
-
-//debita o valor da conta
-void ContaCorrente::debitoConta(float valor) {
-    setSaldoAtual(SaldoAtual - valor);
-
-}
-
-//credita um valor na conta
-void ContaCorrente::creditoConta(float valor) {
-    setSaldoAtual(SaldoAtual + valor);
-}
-
-void ContaCorrente::AlterarDados(string cpf_cliente) {
-
+char *ContaCorrente::GetDataAbertura() {
+    return (char *) ctime(&DataAbertura);
 }
 
 string ContaCorrente::toString() {
@@ -90,6 +106,5 @@ string ContaCorrente::toString() {
 }
 
 int ContaCorrente::getMontanteTotal() {
-
-    return 0;
+    return MontanteTotal;
 }
