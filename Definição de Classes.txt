@@ -19,7 +19,6 @@
 * Tipo::string
 * Valor::float
 	MÉTODOS:
-* 	
 
 
 

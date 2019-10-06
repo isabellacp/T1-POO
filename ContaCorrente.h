@@ -31,9 +31,11 @@ public:
     void FazerLancamento(int, float);
     void ImprimirExtrato();
     void AlterarDados(string cpf_cliente);
-    float debitoConta (float);
-    float creditoConta (float);
+    void debitoConta (float);
+    void creditoConta (float);
     string toString();
+    static int getQuantidadeContas();
+    static int getMontanteTotal();
 
     //getter e setter para o CPF do cliente
     const string &getCpFcliente() const;
@@ -51,10 +53,12 @@ public:
 
 private:
     static int NumeroGlobal;
+    static float MontanteTotal;
     int Numero;
     string CPFcliente;
     time_t DataAbertura;
     float SaldoAtual;
+
 
 };
 
