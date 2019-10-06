@@ -13,10 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="123a010d-7a4f-4cea-8108-4e9e5af79587" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente.h" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ContaCorrente.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ContaCorrente.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ContaCorrente.h" beforeDir="false" afterPath="$PROJECT_DIR$/ContaCorrente.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/T1_POO.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/T1_POO.exe" afterDir="false" />
@@ -37,9 +33,11 @@
   </component>
   <component name="ProjectId" id="1RfG9pS6gPIV4NXlFNV19jjgY43" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/IntelliJ.Portuguese.Brazil.Dictionary-master/IntelliJ.Portuguese.Brazil.Dictionary-master/portuguese-brazil_technical-terms.dic" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
   </component>
   <component name="RunDashboard">
@@ -77,7 +75,7 @@
       <workItem from="1570129999396" duration="617000" />
       <workItem from="1570208922615" duration="7883000" />
       <workItem from="1570318344649" duration="7032000" />
-      <workItem from="1570377617860" duration="3284000" />
+      <workItem from="1570377617860" duration="7776000" />
     </task>
     <task id="LOCAL-00001" summary="mudar o campo Conta no construtor da classe cliente para permitir conta nula">
       <created>1570125323542</created>
@@ -107,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570326212354</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="checar o saldo atual antes da realização da operação de débito em conta, criar estrutura para o extrato, criar  metodo getextrato e formatatar a exibição da data da operação no extrato">
+      <created>1570384921418</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1570384921418</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +136,7 @@
     <MESSAGE value="-mover classes para headers&#10;-criar setters e getters para as classes Cliente e ContaCorrente&#10;-definir métodos CriarConta e  ExcluirConta" />
     <MESSAGE value="&#10;criar funções debitoConta e creditoConta, criar struct para o extrato" />
     <MESSAGE value="&#10;definir funções debitoConta e creditoConta, definir função FazerLancamento, criar método getQuantidadeDeContas e getMontanteTotal" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;definir funções debitoConta e creditoConta, definir função FazerLancamento, criar método getQuantidadeDeContas e getMontanteTotal" />
+    <MESSAGE value="checar o saldo atual antes da realização da operação de débito em conta, criar estrutura para o extrato, criar  metodo getextrato e formatatar a exibição da data da operação no extrato" />
+    <option name="LAST_COMMIT_MESSAGE" value="checar o saldo atual antes da realização da operação de débito em conta, criar estrutura para o extrato, criar  metodo getextrato e formatatar a exibição da data da operação no extrato" />
   </component>
 </project>
