@@ -87,28 +87,41 @@ int main() {
             for (auto &Cliente : ListaDeClientes) {
                 if (cpf == Cliente.getCpf()) {
                     cout << "Insira seu nome:" << endl;
-                    cin >> nome;
+                    getline(cin, nome);
                     cout << "Insira seu CPF:" << endl;
-                    cin >> cpf;
+                    getline(cin, cpf);
                     cout << "Insira seu endereço:" << endl;
-                    cin >> endereco;
+                    getline(cin, endereco);
                     cout << "Insira seu telefone:" << endl;
-                    cin >> telefone;
+                    getline(cin, telefone);
                     cout << "Insira seu e-mail:" << endl;
-                    cin >> email;
+                    getline(cin, email);
 
                     Cliente.setNome(nome);
                     Cliente.setCpf(cpf);
                     Cliente.setEndereco(endereco);
                     Cliente.setTelefone(telefone);
                     Cliente.setEmail(email);
+                    break;
                 }
+
             }
 
 
             break;
         }
         case 3: {
+            string cpf;
+            cout << "Insira o CPF do cliente que deseja deletar:" << endl;
+            getline(cin, cpf);
+
+
+            for (auto &Cliente : ListaDeClientes) {
+                if (cpf == Cliente.getCpf()) {
+                    ListaDeClientes.remove(Cliente);
+                    break;
+                }
+            }
             break;
         }
     }
@@ -117,7 +130,7 @@ int main() {
         case 1: {
             string cpf;
             cout << "Insira o cpf do cliente para criação da conta:" << endl;
-            cin >> cpf;
+            getline(cin, cpf);
             ContaCorrente nova_conta = ContaCorrente(cpf);
             ListaDeContas.push_front(nova_conta);
             break;
@@ -130,8 +143,9 @@ int main() {
                 if (numeroDaConta == ContaCorrente.GetNumero()) {
                     string cpf;
                     cout << "Insira o novo cpf para a conta:" << endl;
-                    cin >> cpf;
+                    getline(cin, cpf);
                     ContaCorrente.setCpFcliente(cpf);
+                    break;
                 }
             }
             break;
@@ -142,7 +156,8 @@ int main() {
             cin >> numeroDaConta;
             for (auto &ContaCorrente : ListaDeContas) {
                 if (numeroDaConta == ContaCorrente.GetNumero()) {
-                   // delete(ContaCorrente);
+                   ListaDeContas.remove(ContaCorrente);
+                   break;
                 }
             }
             break;
@@ -164,6 +179,7 @@ int main() {
             for (auto &ContaCorrente : ListaDeContas) {
                 if (numeroDaConta == ContaCorrente.GetNumero()) {
                     ContaCorrente.FazerLancamento(tipo_lancamento, valor);
+                    break;
                 }
             }
             break;
@@ -174,7 +190,17 @@ int main() {
 
             cout << "Insira o número da conta que deseja ver o extrato" << endl;
             cin >> numeroDaConta;
-
+            //loop na lista de contas
+            for (auto &ContaCorrente : ListaDeContas) {
+                //encontra a conta desejada
+                if (numeroDaConta == ContaCorrente.GetNumero()) {
+                    //loop na lista de lancamento da conta desejada
+                    for (auto const& lancamento : ContaCorrente.getExtrato()) {
+                        std::cout << lancamento.valor << "-" << lancamento.type << "-" << ctime(&lancamento.DataLancamento);
+                    }
+                    break;
+                }
+            }
 
             break;
         }

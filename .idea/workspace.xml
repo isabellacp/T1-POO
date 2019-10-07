@@ -11,7 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="123a010d-7a4f-4cea-8108-4e9e5af79587" name="Default Changelist" comment="atualizando  menu de gerenciamento de clientes">
+    <list default="true" id="123a010d-7a4f-4cea-8108-4e9e5af79587" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
@@ -73,7 +73,8 @@
       <workItem from="1570208922615" duration="7883000" />
       <workItem from="1570318344649" duration="7032000" />
       <workItem from="1570377617860" duration="9329000" />
-      <workItem from="1570454294735" duration="4532000" />
+      <workItem from="1570454294735" duration="4668000" />
+      <workItem from="1570484453918" duration="988000" />
     </task>
     <task id="LOCAL-00001" summary="mudar o campo Conta no construtor da classe cliente para permitir conta nula">
       <created>1570125323542</created>
@@ -117,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570389491338</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Adicionar lançamento e extrato de conta">
+      <created>1570462012263</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1570462012263</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +152,7 @@
     <MESSAGE value="checar o saldo atual antes da realização da operação de débito em conta, criar estrutura para o extrato, criar  metodo getextrato e formatatar a exibição da data da operação no extrato" />
     <MESSAGE value="criar menu principal, menu de gerenciamento de clientes e menu de gerenciamento de contas" />
     <MESSAGE value="atualizando  menu de gerenciamento de clientes" />
-    <option name="LAST_COMMIT_MESSAGE" value="atualizando  menu de gerenciamento de clientes" />
+    <MESSAGE value="Adicionar lançamento e extrato de conta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adicionar lançamento e extrato de conta" />
   </component>
 </project>
