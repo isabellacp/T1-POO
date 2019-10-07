@@ -57,7 +57,9 @@ int main() {
 
     //ignora /n que pode ainda estar no cin depois de ler o numero acima
     if (cin.peek() == '\n')
+    {
         cin.ignore();
+    }
 
     switch (menu_clientes) {
         case 1: {
@@ -139,25 +141,46 @@ int main() {
             cout << "Insira o número da conta que deseja deletar" << endl;
             cin >> numeroDaConta;
             for (auto &ContaCorrente : ListaDeContas) {
-                if (numeroDaConta == ContaCorrente.GetNumero) {
+                if (numeroDaConta == ContaCorrente.GetNumero()) {
                    // delete(ContaCorrente);
                 }
             }
             break;
         }
         case 4: {
+            int numeroDaConta;
+            int tipo_lancamento;
+            float valor;
+            cout << "Insira o número da conta que deseja fazer o lançamento:" << endl;
+            cin >> numeroDaConta;
+
+            cout << "Escolha o tipo de lançamento:" << endl;
+            cout << "1- Débito em Conta" << endl;
+            cout << "2- Crédito em Conta" << endl;
+            cin >> tipo_lancamento;
+            cout << "Digite o valor a ser lançado:" << endl;
+            cin >> valor;
+
+            for (auto &ContaCorrente : ListaDeContas) {
+                if (numeroDaConta == ContaCorrente.GetNumero()) {
+                    ContaCorrente.FazerLancamento(tipo_lancamento, valor);
+                }
+            }
             break;
         }
+
         case 5: {
+            int numeroDaConta;
+
+            cout << "Insira o número da conta que deseja ver o extrato" << endl;
+            cin >> numeroDaConta;
+
+
             break;
         }
-        
-
-            
-
 
         }
-    }
+
 
 
     /* ContaCorrente a = ContaCorrente("asdasdad");
