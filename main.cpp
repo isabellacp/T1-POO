@@ -10,6 +10,7 @@ using namespace std;
 
 int main() {
     list < Cliente > ListaDeClientes;
+    list < ContaCorrente > ListaDeContas;
     int menu_geral, menu_clientes, menu_contas;
 
     cout << "Escolha a Funcionalidade desejada" << endl;
@@ -107,6 +108,54 @@ int main() {
         }
         case 3: {
             break;
+        }
+    }
+
+    switch (menu_contas) {
+        case 1: {
+            string cpf;
+            cout << "Insira o cpf do cliente para criação da conta:" << endl;
+            cin >> cpf;
+            ContaCorrente nova_conta = ContaCorrente(cpf);
+            ListaDeContas.push_front(nova_conta);
+            break;
+        }
+        case 2: {
+            int numeroDaConta;
+            cout << "Insira o número da conta que deseja alterar" << endl;
+            cin >> numeroDaConta;
+            for (auto &ContaCorrente : ListaDeContas) {
+                if (numeroDaConta == ContaCorrente.GetNumero()) {
+                    string cpf;
+                    cout << "Insira o novo cpf para a conta:" << endl;
+                    cin >> cpf;
+                    ContaCorrente.setCpFcliente(cpf);
+                }
+            }
+            break;
+        }
+        case 3: {
+            int numeroDaConta;
+            cout << "Insira o número da conta que deseja deletar" << endl;
+            cin >> numeroDaConta;
+            for (auto &ContaCorrente : ListaDeContas) {
+                if (numeroDaConta == ContaCorrente.GetNumero) {
+                   // delete(ContaCorrente);
+                }
+            }
+            break;
+        }
+        case 4: {
+            break;
+        }
+        case 5: {
+            break;
+        }
+        
+
+            
+
+
         }
     }
 
