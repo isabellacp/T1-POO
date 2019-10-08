@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <list>
+
 #include "ContaCorrente.h"
 #include "Cliente.h"
 
@@ -9,10 +10,23 @@ using namespace std;
 
 
 int main() {
-    list < Cliente > ListaDeClientes;
-    list < ContaCorrente > ListaDeContas;
+    list<Cliente> ListaDeClientes;
+    list<ContaCorrente> ListaDeContas;
     int menu_geral, menu_clientes, menu_contas;
 
+    //casos de teste
+    string nome = "fulano de tal", cpf = "17436740822", endereco = "bacurau, 220", telefone = "123456789", email = "fulano@detal.com";
+    Cliente cliente_A = Cliente(nome, cpf, endereco, telefone, email);
+    ListaDeClientes.push_front(cliente_A);
+
+
+    ContaCorrente conta_A = ContaCorrente("17436740822");
+    conta_A.FazerLancamento(2, 100.80);  //creditando 100 reais na conta
+    conta_A.FazerLancamento(1, 25.80);
+
+
+
+    //Menu Geral
     cout << "Escolha a Funcionalidade desejada" << endl;
     cout << "1- Gerenciamento de Clientes" << endl;
     cout << "2- Gerenciamento de Contas" << endl;
@@ -37,7 +51,7 @@ int main() {
             cout << "2- Alterar Dados de Conta" << endl;
             cout << "3- Excluir Conta" << endl;
             cout << "4- Lançamento em Conta" << endl;
-            cout << "4- Extrato de Conta" << endl;
+            cout << "5- Extrato de Conta" << endl;
             cin >> menu_contas;
             break;
         }
@@ -53,14 +67,14 @@ int main() {
         }
     }
 
-    //gerenciamento de clientes
+
 
     //ignora /n que pode ainda estar no cin depois de ler o numero acima
-    if (cin.peek() == '\n')
-    {
+    if (cin.peek() == '\n') {
         cin.ignore();
     }
 
+//gerenciamento de clientes
     switch (menu_clientes) {
         case 1: {
             string nome, cpf, endereco, email, telefone;
@@ -115,12 +129,14 @@ int main() {
             cout << "Insira o CPF do cliente que deseja deletar:" << endl;
             getline(cin, cpf);
 
+            auto ptrCliente = ListaDeClientes.begin(); // inicia no primeiro cliente
 
-            for (auto &Cliente : ListaDeClientes) {
-                if (cpf == Cliente.getCpf()) {
-                    ListaDeClientes.remove(Cliente);
+            while (ptrCliente != ListaDeClientes.end()) { // enquanto nao acabar os clientes
+                if (cpf == (*ptrCliente).getCpf()) {
+                    ListaDeClientes.erase(ptrCliente); //remove cliente da lista
                     break;
                 }
+                ptrCliente++; // avança para o primeiro cliente
             }
             break;
         }
@@ -129,10 +145,12 @@ int main() {
     switch (menu_contas) {
         case 1: {
             string cpf;
+            int numero;
             cout << "Insira o cpf do cliente para criação da conta:" << endl;
             getline(cin, cpf);
             ContaCorrente nova_conta = ContaCorrente(cpf);
             ListaDeContas.push_front(nova_conta);
+            cout << "Conta Aberta com Sucesso! O numero da sua conta é:" << nova_conta.GetNumero();
             break;
         }
         case 2: {
@@ -154,11 +172,14 @@ int main() {
             int numeroDaConta;
             cout << "Insira o número da conta que deseja deletar" << endl;
             cin >> numeroDaConta;
-            for (auto &ContaCorrente : ListaDeContas) {
-                if (numeroDaConta == ContaCorrente.GetNumero()) {
-                   ListaDeContas.remove(ContaCorrente);
-                   break;
+            auto ptrConta = ListaDeContas.begin(); // ponteiro para primeira conta da lista
+
+            while (ptrConta != ListaDeContas.end()) { // enquanto nao acabarem as contas
+                if (numeroDaConta == (*ptrConta).GetNumero()) {
+                    ListaDeContas.erase(ptrConta); // remove conta da lista
+                    break;
                 }
+                ptrConta++; // avanca para a proxima conta
             }
             break;
         }
@@ -190,13 +211,15 @@ int main() {
 
             cout << "Insira o número da conta que deseja ver o extrato" << endl;
             cin >> numeroDaConta;
+
             //loop na lista de contas
             for (auto &ContaCorrente : ListaDeContas) {
                 //encontra a conta desejada
                 if (numeroDaConta == ContaCorrente.GetNumero()) {
                     //loop na lista de lancamento da conta desejada
-                    for (auto const& lancamento : ContaCorrente.getExtrato()) {
-                        std::cout << lancamento.valor << "-" << lancamento.type << "-" << ctime(&lancamento.DataLancamento);
+                    for (auto const &lancamento : ContaCorrente.getExtrato()) {
+                        std::cout << lancamento.valor << "-" << lancamento.type << "-"
+                                  << ctime(&lancamento.DataLancamento) <<endl;
                     }
                     break;
                 }
@@ -205,7 +228,7 @@ int main() {
             break;
         }
 
-        }
+    }
 
 
 

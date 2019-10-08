@@ -13,6 +13,11 @@
   <component name="ChangeListManager">
     <list default="true" id="123a010d-7a4f-4cea-8108-4e9e5af79587" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente.h" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/T1_POO.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/T1_POO.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/T1_POO.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,6 +39,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/IntelliJ.Portuguese.Brazil.Dictionary-master/IntelliJ.Portuguese.Brazil.Dictionary-master/portuguese-brazil_technical-terms.dic" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
   </component>
@@ -74,7 +80,8 @@
       <workItem from="1570318344649" duration="7032000" />
       <workItem from="1570377617860" duration="9329000" />
       <workItem from="1570454294735" duration="4668000" />
-      <workItem from="1570484453918" duration="988000" />
+      <workItem from="1570484453918" duration="1860000" />
+      <workItem from="1570529411675" duration="8721000" />
     </task>
     <task id="LOCAL-00001" summary="mudar o campo Conta no construtor da classe cliente para permitir conta nula">
       <created>1570125323542</created>
@@ -125,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570462012263</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="finalizar todos os menus">
+      <created>1570485690281</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1570485690281</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +167,7 @@
     <MESSAGE value="criar menu principal, menu de gerenciamento de clientes e menu de gerenciamento de contas" />
     <MESSAGE value="atualizando  menu de gerenciamento de clientes" />
     <MESSAGE value="Adicionar lançamento e extrato de conta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adicionar lançamento e extrato de conta" />
+    <MESSAGE value="finalizar todos os menus" />
+    <option name="LAST_COMMIT_MESSAGE" value="finalizar todos os menus" />
   </component>
 </project>

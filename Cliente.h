@@ -14,10 +14,8 @@ using namespace std;
 class Cliente{
 public:
     Cliente(string nome, string cpf, string endereco, string telefone, string email); //Construtor
-    ~Cliente(); //Destrutor
+
     //métodos
-    void CriaConta();
-    void ExlcuirConta();
 
     //getter e setters
     const string &getNome() const;
@@ -35,8 +33,6 @@ public:
     const string &getEmail() const;
     void setEmail(const string &email);
 
-    ContaCorrente *getConta() const;
-    void setConta(ContaCorrente *conta);
 
 private:
     //atributos
@@ -45,7 +41,6 @@ private:
     string Endereco;
     string Telefone;
     string Email;
-    ContaCorrente *Conta;
 
 };
 

@@ -10,23 +10,8 @@ Cliente::Cliente(string nome, string cpf, string endereco, string telefone, stri
     Endereco = endereco;
     Telefone = telefone;
     Email = email;
-    Conta= nullptr;
-}
-//destrutor
-Cliente::~Cliente() {
-    delete(Conta);
 }
 
-void Cliente::CriaConta() {
-    Conta = new ContaCorrente(CPF);
-}
-
-
-//exlcui conta
-void Cliente::ExlcuirConta() {
-    delete (Conta);
-    Conta = nullptr;
-}
 
 
 //getters e setters
@@ -44,9 +29,7 @@ const string &Cliente::getCpf() const {
 
 void Cliente::setCpf(const string &cpf) {
     CPF = cpf;
-    if (Conta != nullptr){  //checa se existe uma conta nesse cpf
-        Conta->setCpFcliente(cpf);
-    }
+
 }
 
 const string &Cliente::getEndereco() const {
@@ -73,10 +56,4 @@ void Cliente::setEmail(const string &email) {
     Email = email;
 }
 
-ContaCorrente *Cliente::getConta() const {
-    return Conta;
-}
 
-void Cliente::setConta(ContaCorrente *conta) {
-    Conta = conta;
-}
