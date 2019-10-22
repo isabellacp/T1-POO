@@ -55,5 +55,9 @@ const string &Cliente::getEmail() const {
 void Cliente::setEmail(const string &email) {
     Email = email;
 }
+string Cliente::toString() {
+        return  "CPF: " +  CPF + " Nome: " + Nome ;
+
+}
 
 

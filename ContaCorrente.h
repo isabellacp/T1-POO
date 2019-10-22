@@ -23,15 +23,16 @@ public:
     //construtor
     ContaCorrente(string cpf_cliente);
 
+    ~ContaCorrente();
     list <struct Lancamento>  extrato; //struct que armazena dados sobre as operações feitas nas contas
     char *GetDataAbertura();    //getter - retorna uma representação em string da data de abertura da conta
     int GetNumero();
-    void FazerLancamento(int, float);
+    bool FazerLancamento(int, float);
     list <struct Lancamento> getExtrato(); //getter - retorna o extrato
     bool debitoConta (float);
     void creditoConta (float);
     static int getQuantidadeContas();
-    static int getMontanteTotal();
+    static float getMontanteTotal();
     string toString();
 
     //getter e setter para o CPF do cliente

@@ -33,6 +33,7 @@ public:
     const string &getEmail() const;
     void setEmail(const string &email);
 
+    string toString();
 
 private:
     //atributos

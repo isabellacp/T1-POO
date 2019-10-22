@@ -15,9 +15,15 @@ ContaCorrente::ContaCorrente(string cpf_cliente) {
     DataAbertura = time(0); //retorna a data atual
 }
 
+ContaCorrente::~ContaCorrente() {
+    NumeroGlobal--;
+    MontanteTotal -= getSaldoAtual();
+}
+
+
 //debita o valor da conta
 bool ContaCorrente::debitoConta(float valor) {
-    if (SaldoAtual < valor){
+    if (SaldoAtual < valor) {
         return false;
     }
     struct Lancamento lanc;
@@ -45,21 +51,24 @@ void ContaCorrente::creditoConta(float valor) {
     MontanteTotal += valor;
 }
 
-void ContaCorrente::FazerLancamento(int tipo, float valor) {
+bool ContaCorrente::FazerLancamento(int tipo, float valor) {
     switch (tipo) {
         case 1: {
-            debitoConta(valor);
+            return debitoConta(valor);
             break;
         }
         case 2: {
             creditoConta(valor);
+            return true;
             break;
         }
     }
+    return true;
+
 }
 
 //retorna o extrato
-list <struct Lancamento> ContaCorrente::getExtrato() {
+list<struct Lancamento> ContaCorrente::getExtrato() {
     return extrato;
 }
 
@@ -93,18 +102,19 @@ void ContaCorrente::setSaldoAtual(float saldoAtual) {
     SaldoAtual = saldoAtual;
 
 }
+
 char *ContaCorrente::GetDataAbertura() {
     return (char *) ctime(&DataAbertura);
 }
 
 string ContaCorrente::toString() {
-    return string();
+    return "Conta: " + to_string(Numero) + " CPF: " + CPFcliente + " Saldo: " + to_string(SaldoAtual);
 }
 
- int ContaCorrente::getQuantidadeContas (){
+int ContaCorrente::getQuantidadeContas() {
     return NumeroGlobal;
 }
 
-int ContaCorrente::getMontanteTotal() {
+float ContaCorrente::getMontanteTotal() {
     return MontanteTotal;
 }

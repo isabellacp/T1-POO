@@ -4,98 +4,100 @@
 	<Project>
 		<Option title="T1_POO"/>
 		<Option makefile_is_custom="1"/>
-		<Option compiler="gcc"/>
+		<Option compiler="msvc8"/>
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug"/>
+				<Option working_dir="C:/Users/jsang/T1-POO/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="T1_POO">
-				<Option output="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/T1_POO.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug"/>
+				<Option output="C:/Users/jsang/T1-POO/cmake-build-debug/T1_POO.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/jsang/T1-POO/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="gcc"/>
+				<Option compiler="msvc8"/>
 				<Compiler>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 T1_POO"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 T1_POO"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="T1_POO/fast">
-				<Option output="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/T1_POO.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug"/>
+				<Option output="C:/Users/jsang/T1-POO/cmake-build-debug/T1_POO.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/jsang/T1-POO/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="gcc"/>
+				<Option compiler="msvc8"/>
 				<Compiler>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 T1_POO/fast"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 T1_POO/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug"/>
+				<Option working_dir="C:/Users/jsang/T1-POO/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug"/>
+				<Option working_dir="C:/Users/jsang/T1-POO/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\jsang\T1-POO\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/Cliente.cpp">
+		<Unit filename="C:/Users/jsang/T1-POO/Cliente.cpp">
 			<Option target="T1_POO"/>
 		</Unit>
-		<Unit filename="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/Cliente.h">
+		<Unit filename="C:/Users/jsang/T1-POO/Cliente.h">
 			<Option target="T1_POO"/>
 		</Unit>
-		<Unit filename="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/ContaCorrente.cpp">
+		<Unit filename="C:/Users/jsang/T1-POO/ContaCorrente.cpp">
 			<Option target="T1_POO"/>
 		</Unit>
-		<Unit filename="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/ContaCorrente.h">
+		<Unit filename="C:/Users/jsang/T1-POO/ContaCorrente.h">
 			<Option target="T1_POO"/>
 		</Unit>
-		<Unit filename="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/main.cpp">
+		<Unit filename="C:/Users/jsang/T1-POO/main.cpp">
 			<Option target="T1_POO"/>
 		</Unit>
-		<Unit filename="C:/Users/isabe/Documents/2019-2/POO/T1-POO-master/T1-POO/CMakeLists.txt">
+		<Unit filename="C:/Users/jsang/T1-POO/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

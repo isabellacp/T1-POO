@@ -12,13 +12,13 @@
 
 	
 
- CLASSE: Lançamento
+ struct: Lançamento
 	ATRIBUTOS: 
 * Data::date
 * NumeroConta::int
 * Tipo::string
 * Valor::float
-	MÉTODOS:
+
 
 
 
@@ -29,9 +29,4 @@ CLASSE: Cliente
 * EnderecoCliente::string
 * TelefoneCliente::string
 * EmailCliente::string
-* Conta::ContaCorrente
-	MÉTODOS:
-* CriarConta
-* FecharConta
-* AlterarConta
-* IncluirConta
+
