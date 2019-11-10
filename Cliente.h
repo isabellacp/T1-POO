@@ -33,10 +33,14 @@ public:
     const string &getEmail() const;
     void setEmail(const string &email);
 
+	static int Cliente::getTotalClientesFisico();
+
     string toString();
 
 private:
     //atributos
+	static int TotalClientesFisico; 
+	int NumeroClienteFisico;
     string Nome;
     string CPF;
     string Endereco;

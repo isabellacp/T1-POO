@@ -27,7 +27,7 @@ int main() {
 
     ContaCorrente* conta_A = new ContaCorrente("17436740822");
     conta_A->FazerLancamento(2, 100.80f);  //creditando 100 reais na conta
-    conta_A->FazerLancamento(1, 25.80f);
+	conta_A->FazerLancamento(1, 25.80f); 
     ListaDeContas.push_front(conta_A);
     cout << "Conta criada: " << conta_A->toString() << endl;
 
@@ -37,8 +37,9 @@ int main() {
     cout << "Escolha a Funcionalidade desejada" << endl;
     cout << "1- Gerenciamento de Clientes" << endl;
     cout << "2- Gerenciamento de Contas" << endl;
-    cout << "3- Consulta de Total de Contas" << endl;
+    cout << "3- Consulta de Total de Contas Correntes" << endl;
     cout << "4- Consulta de Montante Total" << endl;
+	cout << "5- Consulta de Total de Clientes Físicos" << endl;
         cin >> menu_geral;
 
         //escolha de funcionalidade
@@ -74,8 +75,14 @@ int main() {
                 cout << ContaCorrente::getMontanteTotal() << endl;
                 break;
             }
+			case 5:{
+				cout << "Total de Clientes Físicos Cadastrados:" << endl;
+				cout << Cliente::getTotalClientesFisico() << endl;
+				break;
+			}
 
         }
+
         menu_geral = 0;
 
 

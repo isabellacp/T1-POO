@@ -14,6 +14,7 @@ struct Lancamento{
     string type;
     float valor = 0;
     time_t DataLancamento = time (0);
+	float SaldoAnterior; 
 
 };
 

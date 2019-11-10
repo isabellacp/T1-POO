@@ -3,9 +3,14 @@
 //
 
 #include "Cliente.h"
+
+int Cliente::TotalClientesFisico = 0;
+
 //construtor
 Cliente::Cliente(string nome, string cpf, string endereco, string telefone, string email) {
-    Nome = nome;
+	TotalClientesFisico++;
+	NumeroClienteFisico = TotalClientesFisico;
+	Nome = nome;
     CPF = cpf;
     Endereco = endereco;
     Telefone = telefone;
@@ -59,5 +64,10 @@ string Cliente::toString() {
         return  "CPF: " +  CPF + " Nome: " + Nome ;
 
 }
+int Cliente::getTotalClientesFisico() {
+	return TotalClientesFisico;
+}
+
+
 
 

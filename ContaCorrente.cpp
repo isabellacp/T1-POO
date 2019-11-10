@@ -32,6 +32,7 @@ bool ContaCorrente::debitoConta(float valor) {
     //inserção da operação no extrato
     lanc.type = "debito";
     lanc.valor = valor;
+	lanc.SaldoAnterior = SaldoAtual; 
     extrato.push_front(lanc);
     //realização do debito em conta
     setSaldoAtual(SaldoAtual - valor);
@@ -46,6 +47,7 @@ void ContaCorrente::creditoConta(float valor) {
     //inserção da operação no extrato
     lanc.type = "credito";
     lanc.valor = valor;
+	lanc.SaldoAnterior = SaldoAtual;
     extrato.push_front(lanc);
     //realização do credito em conta
     setSaldoAtual(SaldoAtual + valor);
