@@ -13,16 +13,16 @@ using namespace std;
 int main() {
     std::locale::global(std::locale("en_US.utf8")); // acentos
 
-    list<Cliente> ListaDeClientes;
+    list<Cliente*> ListaDeClientes;
     list<ContaCorrente*> ListaDeContas;
     int menu_geral=0, menu_clientes=0, menu_contas=0;
     bool sair = false;
 
     //casos de teste
     string nome = "fulano de tal", cpf = "17436740822", endereco = "bacurau, 220", telefone = "123456789", email = "fulano@detal.com";
-    Cliente cliente_A = Cliente(nome, cpf, endereco, telefone, email);
+    Cliente* cliente_A = new Cliente(nome, cpf, endereco, telefone, email);
     ListaDeClientes.push_front(cliente_A);
-    cout << "Cliente criado: " << cliente_A.toString() << endl;
+    cout << "Cliente criado: " << cliente_A->toString() << endl;
 
 
     ContaCorrente* conta_A = new ContaCorrente("17436740822");
@@ -98,7 +98,7 @@ int main() {
                 getline(cin, telefone);
                 cout << "Insira seu e-mail:" << endl;
                 getline(cin, email);
-                Cliente novoCliente = Cliente(nome, cpf, endereco, telefone, email);
+                Cliente* novoCliente = new Cliente(nome, cpf, endereco, telefone, email);
                 ListaDeClientes.push_front(novoCliente);
                 break;
             }
@@ -109,7 +109,7 @@ int main() {
 				getline(cin, cpf);
                 //busca cpf do cliente na lista de clientes
                 for (auto &Cliente : ListaDeClientes) {
-                    if (cpf == Cliente.getCpf()) {
+                    if (cpf == Cliente->getCpf()) {
                         achou = true;
                         cout << "Insira seu nome:" << endl;
                         getline(cin, nome);
@@ -122,11 +122,11 @@ int main() {
                         cout << "Insira seu e-mail:" << endl;
                         getline(cin, email);
 
-                        Cliente.setNome(nome);
-                        Cliente.setCpf(cpf);
-                        Cliente.setEndereco(endereco);
-                        Cliente.setTelefone(telefone);
-                        Cliente.setEmail(email);
+                        Cliente->setNome(nome);
+                        Cliente->setCpf(cpf);
+                        Cliente->setEndereco(endereco);
+                        Cliente->setTelefone(telefone);
+                        Cliente->setEmail(email);
                         break;
                     }
 
@@ -147,7 +147,7 @@ int main() {
                 auto ptrCliente = ListaDeClientes.begin(); // inicia no primeiro cliente
 
                 while (ptrCliente != ListaDeClientes.end()) { // enquanto nao acabar os clientes
-                    if (cpf == (*ptrCliente).getCpf()) {
+                    if (cpf == (*ptrCliente)->getCpf()) {
                         achou=true;
                         ListaDeClientes.erase(ptrCliente); //remove cliente da lista
                         break;
