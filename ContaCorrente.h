@@ -49,7 +49,7 @@ public:
 
 	//getter e setter para o LimiteChequeEspecial
 	float getLimiteChequeEspecial() const;
-	void setLimiteChequeEspecial(float saldoAtual);
+	void setLimiteChequeEspecial(float limiteChequeEspecial);
 
 
 

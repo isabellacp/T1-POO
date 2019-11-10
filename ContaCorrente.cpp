@@ -14,6 +14,7 @@ ContaCorrente::ContaCorrente(string cpf_cliente) {
     CPFcliente = cpf_cliente;
     SaldoAtual = 0;
     DataAbertura = time(0); //retorna a data atual
+	LimiteChequeEspecial = 100.00; //limite inicial 
 }
 
 ContaCorrente::~ContaCorrente() {
@@ -24,7 +25,7 @@ ContaCorrente::~ContaCorrente() {
 
 //debita o valor da conta
 bool ContaCorrente::debitoConta(float valor) {
-    if (SaldoAtual < valor) {
+    if (SaldoAtual+LimiteChequeEspecial < valor) {
         return false;
     }
     struct Lancamento lanc;
@@ -105,12 +106,13 @@ void ContaCorrente::setSaldoAtual(float saldoAtual) {
 }
 
 float ContaCorrente::getLimiteChequeEspecial() const
-{
-	return 0.0f;
+{   
+	return LimiteChequeEspecial;
 }
 
-void ContaCorrente::setLimiteChequeEspecial(float saldoAtual)
+void ContaCorrente::setLimiteChequeEspecial(float limiteChequeEspecial)
 {
+	LimiteChequeEspecial = limiteChequeEspecial;
 }
 
 char *ContaCorrente::GetDataAbertura() {
@@ -118,7 +120,7 @@ char *ContaCorrente::GetDataAbertura() {
 }
 
 string ContaCorrente::toString() {
-    return "Conta: " + to_string(Numero) + " CPF: " + CPFcliente + " Saldo: " + to_string(SaldoAtual);
+    return "Conta: " + to_string(Numero) + " CPF: " + CPFcliente + " Saldo: " + to_string(SaldoAtual) + " Limite de Cheque Especial:" + to_string (LimiteChequeEspecial);
 }
 
 int ContaCorrente::getQuantidadeContas() {

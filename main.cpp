@@ -32,13 +32,13 @@ int main() {
     cout << "Conta criada: " << conta_A->toString() << endl;
 
     while(!sair) {
+		cin.clear();
     //Menu Geral
     cout << "Escolha a Funcionalidade desejada" << endl;
     cout << "1- Gerenciamento de Clientes" << endl;
     cout << "2- Gerenciamento de Contas" << endl;
     cout << "3- Consulta de Total de Contas" << endl;
     cout << "4- Consulta de Montante Total" << endl;
-
         cin >> menu_geral;
 
         //escolha de funcionalidade
@@ -59,6 +59,8 @@ int main() {
                 cout << "3- Excluir Conta" << endl;
                 cout << "4- Lançamento em Conta" << endl;
                 cout << "5- Extrato de Conta" << endl;
+				cout << "6- Exibir dados de Conta" << endl;
+
                 cin >> menu_contas;
                 break;
             }
@@ -150,6 +152,7 @@ int main() {
                     if (cpf == (*ptrCliente)->getCpf()) {
                         achou=true;
                         ListaDeClientes.erase(ptrCliente); //remove cliente da lista
+						delete(*ptrCliente);
                         break;
                     }
                     ptrCliente++; // avança para o primeiro cliente
@@ -173,8 +176,13 @@ int main() {
             case 2: {
                 bool achou = false;
                 int numeroDaConta;
+				 
                 cout << "Insira o número da conta que deseja alterar" << endl;
                 cin >> numeroDaConta;
+				if (cin.peek() == '\n') {
+					cin.ignore();
+				}
+
                 for (auto &ContaCorrente : ListaDeContas) {
                     if (numeroDaConta == ContaCorrente->GetNumero()) {
                         achou = true;
@@ -182,12 +190,21 @@ int main() {
                         cout << "Insira o novo cpf para a conta:" << endl;
                         getline(cin, cpf);
                         ContaCorrente->setCpFcliente(cpf);
+						float novoLimite;
+						cout << "Insira o novo limite de Cheque Especial para a conta:" << endl;
+						cin >> novoLimite;
+						ContaCorrente->setLimiteChequeEspecial(novoLimite); 
+						
+			
+				
                         break;
                     }
                 }
                 if(!achou)
                     cout << "Conta nao encontrada"<<endl;
                break;
+
+
             }
             case 3: {
                 bool achou = false;
@@ -198,8 +215,15 @@ int main() {
 
                 while (ptrConta != ListaDeContas.end()) { // enquanto nao acabarem as contas
                     if (numeroDaConta == (*ptrConta)->GetNumero()) {
-                        achou = true;
+						achou = true;
+						if((*ptrConta)->getExtrato().size != 0){
+							cout << "Essa conta não pode ser deletada pois há lançamentos vinculados a ela" << endl;
+							break; 
+						}
+
+
                         ListaDeContas.erase(ptrConta); // remove conta da lista
+						delete(*ptrConta); 
                         break;
                     } 
                     ptrConta++; // avanca para a proxima conta
@@ -264,6 +288,28 @@ int main() {
 
                 break;
             }
+			case 6: {
+				int numeroDaConta;
+				bool achou = false;
+				cout << "Insira o número da conta que deseja ver" << endl;
+				cin >> numeroDaConta;
+
+				//loop na lista de contas
+				for (auto& ContaCorrente : ListaDeContas) {
+					//encontra a conta desejada
+					if (numeroDaConta == ContaCorrente->GetNumero()) {
+						achou = true;
+						cout << ContaCorrente->toString() << endl;
+						
+						break;
+					}
+				}
+				if (!achou)
+					cout << "Conta nao encontrada" << endl;
+
+				break;
+			}
+
 
 
         }
