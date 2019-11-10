@@ -47,6 +47,10 @@ public:
     float getSaldoAtual() const;
     void setSaldoAtual(float saldoAtual);
 
+	//getter e setter para o LimiteChequeEspecial
+	float getLimiteChequeEspecial() const;
+	void setLimiteChequeEspecial(float saldoAtual);
+
 
 
 private:
@@ -56,7 +60,7 @@ private:
     string CPFcliente;
     time_t DataAbertura;
     float SaldoAtual;
-
+	float LimiteChequeEspecial;
 
 };
 

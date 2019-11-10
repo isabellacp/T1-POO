@@ -1,4 +1,4 @@
-//
+ //
 // Created by isabe on 03/10/2019.
 //
 
@@ -9,7 +9,8 @@ int ContaCorrente::NumeroGlobal = 0;
 float ContaCorrente::MontanteTotal = 0;
 
 ContaCorrente::ContaCorrente(string cpf_cliente) {
-    Numero = ++NumeroGlobal; // contador de conta corrente: cada vez que instanciar a classe, gera um novo numero de conta (evita contas com numeração repetida)
+	NumeroGlobal++;
+	Numero = NumeroGlobal; // contador de conta corrente: cada vez que instanciar a classe, gera um novo numero de conta (evita contas com numeração repetida)
     CPFcliente = cpf_cliente;
     SaldoAtual = 0;
     DataAbertura = time(0); //retorna a data atual
@@ -101,6 +102,15 @@ float ContaCorrente::getSaldoAtual() const {
 void ContaCorrente::setSaldoAtual(float saldoAtual) {
     SaldoAtual = saldoAtual;
 
+}
+
+float ContaCorrente::getLimiteChequeEspecial() const
+{
+	return 0.0f;
+}
+
+void ContaCorrente::setLimiteChequeEspecial(float saldoAtual)
+{
 }
 
 char *ContaCorrente::GetDataAbertura() {

@@ -14,7 +14,7 @@ int main() {
     std::locale::global(std::locale("en_US.utf8")); // acentos
 
     list<Cliente> ListaDeClientes;
-    list<ContaCorrente> ListaDeContas;
+    list<ContaCorrente*> ListaDeContas;
     int menu_geral=0, menu_clientes=0, menu_contas=0;
     bool sair = false;
 
@@ -25,11 +25,11 @@ int main() {
     cout << "Cliente criado: " << cliente_A.toString() << endl;
 
 
-    ContaCorrente conta_A = ContaCorrente("17436740822");
-    conta_A.FazerLancamento(2, 100.80f);  //creditando 100 reais na conta
-    conta_A.FazerLancamento(1, 25.80f);
+    ContaCorrente* conta_A = new ContaCorrente("17436740822");
+    conta_A->FazerLancamento(2, 100.80f);  //creditando 100 reais na conta
+    conta_A->FazerLancamento(1, 25.80f);
     ListaDeContas.push_front(conta_A);
-    cout << "Conta criada: " << conta_A.toString() << endl;
+    cout << "Conta criada: " << conta_A->toString() << endl;
 
     while(!sair) {
     //Menu Geral
@@ -106,7 +106,7 @@ int main() {
                 bool achou = false;
                 string cpf, nome, email, endereco, telefone;
                 cout << "Insira seu CPF:" << endl;
-                cin >> cpf;
+				getline(cin, cpf);
                 //busca cpf do cliente na lista de clientes
                 for (auto &Cliente : ListaDeClientes) {
                     if (cpf == Cliente.getCpf()) {
@@ -165,9 +165,9 @@ int main() {
                 string cpf;
                 cout << "Insira o cpf do cliente para criação da conta:" << endl;
                 getline(cin, cpf);
-                ContaCorrente nova_conta = ContaCorrente(cpf);
+                ContaCorrente* nova_conta = new ContaCorrente(cpf);
                 ListaDeContas.push_front(nova_conta);
-                cout << "Conta Aberta com Sucesso! O numero da sua conta é:" << nova_conta.GetNumero() << endl;
+                cout << "Conta Aberta com Sucesso! O numero da sua conta é:" << nova_conta->GetNumero() << endl;
                 break;
             }
             case 2: {
@@ -176,12 +176,12 @@ int main() {
                 cout << "Insira o número da conta que deseja alterar" << endl;
                 cin >> numeroDaConta;
                 for (auto &ContaCorrente : ListaDeContas) {
-                    if (numeroDaConta == ContaCorrente.GetNumero()) {
+                    if (numeroDaConta == ContaCorrente->GetNumero()) {
                         achou = true;
                         string cpf;
                         cout << "Insira o novo cpf para a conta:" << endl;
                         getline(cin, cpf);
-                        ContaCorrente.setCpFcliente(cpf);
+                        ContaCorrente->setCpFcliente(cpf);
                         break;
                     }
                 }
@@ -197,11 +197,11 @@ int main() {
                 auto ptrConta = ListaDeContas.begin(); // ponteiro para primeira conta da lista
 
                 while (ptrConta != ListaDeContas.end()) { // enquanto nao acabarem as contas
-                    if (numeroDaConta == (*ptrConta).GetNumero()) {
+                    if (numeroDaConta == (*ptrConta)->GetNumero()) {
                         achou = true;
                         ListaDeContas.erase(ptrConta); // remove conta da lista
                         break;
-                    }
+                    } 
                     ptrConta++; // avanca para a proxima conta
                 }
                 if(!achou)
@@ -226,9 +226,9 @@ int main() {
 
                 for (auto &ContaCorrente : ListaDeContas) {
 
-                    if (numeroDaConta == ContaCorrente.GetNumero()) {
+                    if (numeroDaConta == ContaCorrente->GetNumero()) {
                         achou = true;
-                        if(!ContaCorrente.FazerLancamento(tipo_lancamento, valor)) {
+                        if(!ContaCorrente->FazerLancamento(tipo_lancamento, valor)) {
                                 cout <<  "Sem saldo suficiente!" << endl;
                         }
                         break;
@@ -249,10 +249,10 @@ int main() {
                 //loop na lista de contas
                 for (auto &ContaCorrente : ListaDeContas) {
                     //encontra a conta desejada
-                    if (numeroDaConta == ContaCorrente.GetNumero()) {
+                    if (numeroDaConta == ContaCorrente->GetNumero()) {
                         achou = true;
                         //loop na lista de lancamento da conta desejada
-                        for (auto const &lancamento : ContaCorrente.getExtrato()) {
+                        for (auto const &lancamento : ContaCorrente->getExtrato()) {
                             std::cout << lancamento.valor << "-" << lancamento.type << "-"
                                       << ctime(&lancamento.DataLancamento) << endl;
                         }
