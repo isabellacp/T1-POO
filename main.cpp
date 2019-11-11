@@ -13,23 +13,85 @@ using namespace std;
 int main() {
     std::locale::global(std::locale("en_US.utf8")); // acentos
 
-    list<Cliente*> ListaDeClientes;
-    list<ContaCorrente*> ListaDeContas;
+    list<Cliente*> ListaDeClientes;			//lista de clientes físicos
+    list<ContaCorrente*> ListaDeContas; //lista de contas correntes
     int menu_geral=0, menu_clientes=0, menu_contas=0;
     bool sair = false;
 
     //casos de teste
-    string nome = "fulano de tal", cpf = "17436740822", endereco = "bacurau, 220", telefone = "123456789", email = "fulano@detal.com";
+    /* string nome = "fulano de tal", cpf = "17436740822", endereco = "bacurau, 220", telefone = "123456789", email = "fulano@detal.com";
     Cliente* cliente_A = new Cliente(nome, cpf, endereco, telefone, email);
     ListaDeClientes.push_front(cliente_A);
     cout << "Cliente criado: " << cliente_A->toString() << endl;
-
-
     ContaCorrente* conta_A = new ContaCorrente("17436740822");
     conta_A->FazerLancamento(2, 100.80f);  //creditando 100 reais na conta
 	conta_A->FazerLancamento(1, 25.80f); 
     ListaDeContas.push_front(conta_A);
-    cout << "Conta criada: " << conta_A->toString() << endl;
+    cout << "Conta criada: " << conta_A->toString() << endl; */
+
+	string nomePF1 = "pessoa fisica 1", cpfPF1 = "12345", enderecoPF1 = "pf street, 100 ", telefonePF1 = "123456789", emailPF1 = "fulano@detal.com";
+	//Cenario de Teste C1
+	//Pessoa Física 01
+	Cliente* pf1 = new Cliente(nomePF1, cpfPF1, enderecoPF1, telefonePF1, emailPF1); 
+	ListaDeClientes.push_front(pf1); //adicionando o novo cliente na lista de clientes
+	cout << "Cliente Criado: Pessoa Física 01" << pf1->toString() << endl; 
+	ContaCorrente* ccPessoaF1 = new ContaCorrente(cpfPF1); //criando Conta Corrente para a Pessoa Física 01
+	ListaDeContas.push_front(ccPessoaF1); //adicionando a nova conta na lista de contas correntes
+	
+	ccPessoaF1->FazerLancamento(2, 100.00); //creditando 100 reais na conta
+	cout << "Conta Corrente criada para Pessoa Física 01:" << ccPessoaF1->toString() << endl;
+	//criar poupança para PF1
+											// CREDITAR 200 REAIS NA CONTA POUPANÇA
+	
+
+	//Pessoa Física 02
+	string nomePF2 = "pessoa fisica 2", cpfPF2 = "54321", enderecoPF2 = "pf street, 200 ", telefonePF2 = "7891011", emailPF2 = "fulano2@detal.com";
+	Cliente* pf2 = new Cliente(nomePF2, cpfPF2, enderecoPF2, telefonePF2, emailPF2); 
+	ListaDeClientes.push_front(pf2); 
+	cout << "Cliente Criado: Pessoa Física 02" << pf2->toString() << endl;
+	ContaCorrente* ccPessoaF2 = new ContaCorrente(cpfPF2); 
+	ListaDeContas.push_front(ccPessoaF2); 
+	cout << "Conta Corrente criada para Pessoa Física 02:" << ccPessoaF2->toString() << endl;
+
+	//criar poupança para PF02
+
+	//listar clientes fisicos
+	cout << "Total de Clientes Físicos Cadastrados:" << endl;
+	cout << Cliente::getTotalClientesFisico() << endl;
+	//listar clientes juridicos
+	//listar contas correntes
+	cout << "Total de Contas Correntes:" << endl;
+	cout << ContaCorrente::getQuantidadeContas() << endl;
+	//listar contas poupança
+
+
+	//Pessoa Juridica 01
+	//Pessoa Juridica 02
+
+	//listar clientes fisicos
+	cout << "Total de Clientes Físicos Cadastrados:" << endl;
+	cout << Cliente::getTotalClientesFisico() << endl;
+	//listar clientes juridicos
+	//listar contas correntes
+	cout << "Total de Contas Correntes:" << endl;
+	cout << ContaCorrente::getQuantidadeContas() << endl;
+	//listar contas poupança
+
+	//exibir montante total do banco
+	cout << "Montante Total do Banco:" << endl;
+	cout << ContaCorrente::getMontanteTotal() << endl;
+	
+	//Cenario de Teste C2
+
+
+	//Cenario de Teste C3
+	//Cenario de Teste C4
+
+
+
+
+
+
 
     while(!sair) {
 		cin.clear();
