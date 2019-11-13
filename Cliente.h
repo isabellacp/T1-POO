@@ -37,7 +37,7 @@ public:
 
     string toString();
 
-private:
+protected:
     //atributos
 	static int TotalClientesFisico; 
 	int NumeroClienteFisico;
