@@ -50,7 +50,7 @@ public:
 	void setSaldoAtual(float saldoAtual);
 private:
 	static int NumeroGlobalP; //controla o numero da conta
-	static float MontanteTotalP;
+	static double MontanteTotalP;
 	int NumeroP;  //numero da conta
 	string CPFcliente;
 	time_t DataAbertura;
