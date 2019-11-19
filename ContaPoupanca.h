@@ -1,7 +1,7 @@
 #ifndef CONTAPOUPANCA_H
 #define CONTAPOUPANCA_H
 
-#include <string>
+
 #include <list>
 #include <ctime>
 

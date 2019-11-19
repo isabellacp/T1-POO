@@ -3,6 +3,9 @@
 #define JURIDICO_H
 #include <string>
 #include "Cliente.h"
+#include <iostream>
+#include<sstream>
+
 
 using namespace std;
 
@@ -21,7 +24,7 @@ public:
     const string &getAtualizacao() const;
     void setAtualizacao (string);
     static int getTotalClientesJuridico();
-
+	string toString() const;
 private: 
     static int TotalClientesJuridico; 
     int NumeroClienteJuridico; 

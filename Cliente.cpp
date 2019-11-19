@@ -3,7 +3,7 @@
 //
 
 #include "Cliente.h"
-
+#include<sstream>
 int Cliente::TotalClientesFisico = 0;
 
 //construtor
@@ -61,7 +61,7 @@ void Cliente::setEmail(const string &email) {
     Email = email;
 }
 string Cliente::toString() {
-        return  "CPF: " +  CPF + " Nome: " + Nome ;
+        return  "CPF: "  +  CPF + "/n"  + " Nome: " + Nome + "/n";
 
 }
 int Cliente::getTotalClientesFisico() {

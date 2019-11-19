@@ -157,7 +157,7 @@ char *ContaCorrente::GetDataAbertura() {
 }
 
 string ContaCorrente::toString() {
-    return "Conta: " + to_string(Numero) + " CPF: " + CPFcliente + " Saldo: " + to_string(SaldoAtual) + " Limite de Cheque Especial:" + to_string (LimiteChequeEspecial);
+    return "Conta: " + to_string(Numero) + "/n"+ " CPF: " + CPFcliente + "/n" + " Saldo: " + to_string(SaldoAtual) + "/n" + " Limite de Cheque Especial:" + to_string (LimiteChequeEspecial) + "/n";
 }
 
 int ContaCorrente::getQuantidadeContas() {
