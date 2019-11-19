@@ -33,7 +33,7 @@ public:
     const string &getEmail() const;
     void setEmail(const string &email);
 
-	static int Cliente::getTotalClientesFisico();
+	static int getTotalClientesFisico();
 
     string toString();
 

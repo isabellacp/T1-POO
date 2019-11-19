@@ -7,7 +7,8 @@
 
 #include <ctime>
 #include <string>
-#include  <list>
+#include <list>
+#include <iostream>
 using  namespace std;
 
 struct Lancamento{
@@ -25,15 +26,16 @@ public:
     ContaCorrente(string cpf_cliente);
 
     ~ContaCorrente();
-    list <struct Lancamento>  extrato; //struct que armazena dados sobre as operações feitas nas contas
+    list <struct Lancamento>  lista_lancamentos; //struct que armazena dados sobre as operações feitas nas contas
     char *GetDataAbertura();    //getter - retorna uma representação em string da data de abertura da conta
     int GetNumero();
     bool FazerLancamento(int, float);
-    list <struct Lancamento> getExtrato(); //getter - retorna o extrato
+    list <struct Lancamento> getLista_lancamentos(); //getter - retorna o extrato
     bool debitoConta (float);
     void creditoConta (float);
     static int getQuantidadeContas();
     static float getMontanteTotal();
+    void imprimeExtrato(time_t, time_t);
     string toString();
 
     //getter e setter para o CPF do cliente

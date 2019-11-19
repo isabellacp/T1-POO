@@ -5,6 +5,8 @@
 #include <string>
 #include "ContaCorrente.h"
 
+using namespace std;
+
 int ContaCorrente::NumeroGlobal = 0;
 float ContaCorrente::MontanteTotal = 0;
 
@@ -33,7 +35,7 @@ bool ContaCorrente::debitoConta(float valor) {
     lanc.type = "debito";
     lanc.valor = valor;
 	lanc.SaldoAnterior = SaldoAtual; 
-    extrato.push_front(lanc);
+    lista_lancamentos.push_front(lanc);
     //realização do debito em conta
     setSaldoAtual(SaldoAtual - valor);
     //atualização do montante total do banco
@@ -48,7 +50,7 @@ void ContaCorrente::creditoConta(float valor) {
     lanc.type = "credito";
     lanc.valor = valor;
 	lanc.SaldoAnterior = SaldoAtual;
-    extrato.push_front(lanc);
+    lista_lancamentos.push_front(lanc);
     //realização do credito em conta
     setSaldoAtual(SaldoAtual + valor);
     //atualização do montante total do banco
@@ -71,9 +73,39 @@ bool ContaCorrente::FazerLancamento(int tipo, float valor) {
 
 }
 
+void ContaCorrente::imprimeExtrato(time_t inicial, time_t final){
+    if(final < inicial){
+        return;
+    }
+    float SaldoInicial, SaldoFinal;
+    bool primeiro = false;
+    for (auto &Lancamento : this->getLista_lancamentos()) {
+        if(Lancamento.DataLancamento >= inicial && Lancamento.DataLancamento <= final){
+            if (primeiro == false){
+                primeiro = true;
+                SaldoInicial = Lancamento.SaldoAnterior;
+            }
+            if (Lancamento.type == "debito"){
+                cout << Lancamento.DataLancamento << ":" << Lancamento.valor << endl;
+                SaldoFinal = Lancamento.SaldoAnterior - Lancamento.valor;
+            }
+            else if (Lancamento.type == "credito"){
+                cout << Lancamento.DataLancamento << ":" << Lancamento.valor << endl;
+                SaldoFinal = Lancamento.SaldoAnterior + Lancamento.valor;
+            } 
+        }
+    }
+    if (primeiro == false){
+        cout << "Não há lançamentos neste intervalo";
+    }
+    else{
+        cout << "Saldo Final: " << SaldoFinal;
+    }
+}
+
 //retorna o extrato
-list<struct Lancamento> ContaCorrente::getExtrato() {
-    return extrato;
+list<struct Lancamento> ContaCorrente::getLista_lancamentos() {
+    return lista_lancamentos;
 }
 
 int ContaCorrente::GetNumero() {

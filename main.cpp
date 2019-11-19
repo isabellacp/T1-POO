@@ -285,7 +285,7 @@ int main() {
                 while (ptrConta != ListaDeContas.end()) { // enquanto nao acabarem as contas
                     if (numeroDaConta == (*ptrConta)->GetNumero()) {
 						achou = true;
-						if((*ptrConta)->getExtrato().size != 0){
+						if((*ptrConta)->getLista_lancamentos().size() != 0){
 							cout << "Essa conta não pode ser deletada pois há lançamentos vinculados a ela" << endl;
 							break; 
 						}
@@ -345,7 +345,7 @@ int main() {
                     if (numeroDaConta == ContaCorrente->GetNumero()) {
                         achou = true;
                         //loop na lista de lancamento da conta desejada
-                        for (auto const &lancamento : ContaCorrente->getExtrato()) {
+                        for (auto const &lancamento : ContaCorrente->getLista_lancamentos()) {
                             std::cout << lancamento.valor << "-" << lancamento.type << "-"
                                       << ctime(&lancamento.DataLancamento) << endl;
                         }

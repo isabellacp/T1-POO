@@ -1,0 +1,3 @@
+/home/marcelo/Documentos/T1-POO/CMakeFiles/rebuild_cache.dir
+/home/marcelo/Documentos/T1-POO/CMakeFiles/T1_POO.dir
+/home/marcelo/Documentos/T1-POO/CMakeFiles/edit_cache.dir

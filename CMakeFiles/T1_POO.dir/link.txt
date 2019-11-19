@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/T1_POO.dir/main.cpp.o CMakeFiles/T1_POO.dir/ContaCorrente.cpp.o CMakeFiles/T1_POO.dir/Cliente.cpp.o  -o T1_POO 
