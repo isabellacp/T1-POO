@@ -12,11 +12,11 @@ struct LancamentoP{
     string typeP;
     float valorP = 0;
     time_t DataLancamentoP = time (0);
-	float SaldoAnteriorP; 
+	float SaldoAnteriorP= 0; 
 
 };
 
-class ContaPoupanca {
+class ContaPoupanca{
 public:
 	//construtor
 	ContaPoupanca(string cpf_cliente);
