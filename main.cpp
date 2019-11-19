@@ -393,11 +393,28 @@ int main() {
                     //encontra a conta desejada
                     if (numeroDaConta == ContaCorrente->GetNumero()) {
                         achou = true;
-                        //loop na lista de lancamento da conta desejada
+                        /* //loop na lista de lancamento da conta desejada
                         for (auto const &lancamento : ContaCorrente->getLista_lancamentos()) {
                             std::cout << lancamento.valor << "-" << lancamento.type << "-"
                                       << ctime(&lancamento.DataLancamento) << endl;
-                        }
+                        } */
+                        time_t inicio, fim;
+                        struct tm temp_tm = { 0 };
+                        cout << "Insira o intervalo de duração do extrato:" << endl;
+                        cout << "Inicio (Formato dd/mm/aaaa): ";
+                        scanf("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
+                        temp_tm.tm_year -= 1900;
+                        temp_tm.tm_mon -= 1;
+                        inicio = mktime(&temp_tm);
+
+                        cout << "Final (Formato dd/mm/aaaa): ";
+                        scanf("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
+                        temp_tm.tm_year -= 1900;
+                        temp_tm.tm_mon -= 1;
+                        fim = mktime(&temp_tm);
+
+
+                        ContaCorrente->imprimeExtrato(inicio, fim);
                         break;
                     }
                 }
