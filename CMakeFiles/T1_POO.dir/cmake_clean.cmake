@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/T1_POO.dir/Cliente.cpp.o"
   "CMakeFiles/T1_POO.dir/ContaCorrente.cpp.o"
+  "CMakeFiles/T1_POO.dir/ContaPoupanca.cpp.o"
+  "CMakeFiles/T1_POO.dir/Juridico.cpp.o"
   "CMakeFiles/T1_POO.dir/main.cpp.o"
   "T1_POO"
   "T1_POO.pdb"

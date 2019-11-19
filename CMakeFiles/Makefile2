@@ -6,6 +6,16 @@ default_target: all
 
 .PHONY : default_target
 
+# The main recursive all target
+all:
+
+.PHONY : all
+
+# The main recursive preinstall target
+preinstall:
+
+.PHONY : preinstall
+
 #=============================================================================
 # Special targets provided by cmake.
 
@@ -52,20 +62,10 @@ CMAKE_BINARY_DIR = /home/marcelo/Documentos/T1-POO
 #=============================================================================
 # Directory level rules for the build root directory
 
-# The main recursive "all" target.
-all: CMakeFiles/T1_POO.dir/all
-
-.PHONY : all
-
 # The main recursive "clean" target.
 clean: CMakeFiles/T1_POO.dir/clean
 
 .PHONY : clean
-
-# The main recursive "preinstall" target.
-preinstall:
-
-.PHONY : preinstall
 
 #=============================================================================
 # Target rules for target CMakeFiles/T1_POO.dir
@@ -74,12 +74,17 @@ preinstall:
 CMakeFiles/T1_POO.dir/all:
 	$(MAKE) -f CMakeFiles/T1_POO.dir/build.make CMakeFiles/T1_POO.dir/depend
 	$(MAKE) -f CMakeFiles/T1_POO.dir/build.make CMakeFiles/T1_POO.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/marcelo/Documentos/T1-POO/CMakeFiles --progress-num=1,2,3,4 "Built target T1_POO"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/marcelo/Documentos/T1-POO/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target T1_POO"
 .PHONY : CMakeFiles/T1_POO.dir/all
+
+# Include target in all.
+all: CMakeFiles/T1_POO.dir/all
+
+.PHONY : all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/T1_POO.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/Documentos/T1-POO/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/Documentos/T1-POO/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/T1_POO.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcelo/Documentos/T1-POO/CMakeFiles 0
 .PHONY : CMakeFiles/T1_POO.dir/rule

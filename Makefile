@@ -177,6 +177,60 @@ ContaCorrente.cpp.s:
 	$(MAKE) -f CMakeFiles/T1_POO.dir/build.make CMakeFiles/T1_POO.dir/ContaCorrente.cpp.s
 .PHONY : ContaCorrente.cpp.s
 
+ContaPoupanca.o: ContaPoupanca.cpp.o
+
+.PHONY : ContaPoupanca.o
+
+# target to build an object file
+ContaPoupanca.cpp.o:
+	$(MAKE) -f CMakeFiles/T1_POO.dir/build.make CMakeFiles/T1_POO.dir/ContaPoupanca.cpp.o
+.PHONY : ContaPoupanca.cpp.o
+
+ContaPoupanca.i: ContaPoupanca.cpp.i
+
+.PHONY : ContaPoupanca.i
+
+# target to preprocess a source file
+ContaPoupanca.cpp.i:
+	$(MAKE) -f CMakeFiles/T1_POO.dir/build.make CMakeFiles/T1_POO.dir/ContaPoupanca.cpp.i
+.PHONY : ContaPoupanca.cpp.i
+
+ContaPoupanca.s: ContaPoupanca.cpp.s
+
+.PHONY : ContaPoupanca.s
+
+# target to generate assembly for a file
+ContaPoupanca.cpp.s:
+	$(MAKE) -f CMakeFiles/T1_POO.dir/build.make CMakeFiles/T1_POO.dir/ContaPoupanca.cpp.s
+.PHONY : ContaPoupanca.cpp.s
+
+Juridico.o: Juridico.cpp.o
+
+.PHONY : Juridico.o
+
+# target to build an object file
+Juridico.cpp.o:
+	$(MAKE) -f CMakeFiles/T1_POO.dir/build.make CMakeFiles/T1_POO.dir/Juridico.cpp.o
+.PHONY : Juridico.cpp.o
+
+Juridico.i: Juridico.cpp.i
+
+.PHONY : Juridico.i
+
+# target to preprocess a source file
+Juridico.cpp.i:
+	$(MAKE) -f CMakeFiles/T1_POO.dir/build.make CMakeFiles/T1_POO.dir/Juridico.cpp.i
+.PHONY : Juridico.cpp.i
+
+Juridico.s: Juridico.cpp.s
+
+.PHONY : Juridico.s
+
+# target to generate assembly for a file
+Juridico.cpp.s:
+	$(MAKE) -f CMakeFiles/T1_POO.dir/build.make CMakeFiles/T1_POO.dir/Juridico.cpp.s
+.PHONY : Juridico.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -219,6 +273,12 @@ help:
 	@echo "... ContaCorrente.o"
 	@echo "... ContaCorrente.i"
 	@echo "... ContaCorrente.s"
+	@echo "... ContaPoupanca.o"
+	@echo "... ContaPoupanca.i"
+	@echo "... ContaPoupanca.s"
+	@echo "... Juridico.o"
+	@echo "... Juridico.i"
+	@echo "... Juridico.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

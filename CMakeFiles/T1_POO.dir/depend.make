@@ -8,7 +8,19 @@ CMakeFiles/T1_POO.dir/Cliente.cpp.o: ContaCorrente.h
 CMakeFiles/T1_POO.dir/ContaCorrente.cpp.o: ContaCorrente.cpp
 CMakeFiles/T1_POO.dir/ContaCorrente.cpp.o: ContaCorrente.h
 
+CMakeFiles/T1_POO.dir/ContaPoupanca.cpp.o: Cliente.h
+CMakeFiles/T1_POO.dir/ContaPoupanca.cpp.o: ContaCorrente.h
+CMakeFiles/T1_POO.dir/ContaPoupanca.cpp.o: ContaPoupanca.cpp
+CMakeFiles/T1_POO.dir/ContaPoupanca.cpp.o: ContaPoupanca.h
+
+CMakeFiles/T1_POO.dir/Juridico.cpp.o: Cliente.h
+CMakeFiles/T1_POO.dir/Juridico.cpp.o: ContaCorrente.h
+CMakeFiles/T1_POO.dir/Juridico.cpp.o: Juridico.cpp
+CMakeFiles/T1_POO.dir/Juridico.cpp.o: Juridico.h
+
 CMakeFiles/T1_POO.dir/main.cpp.o: Cliente.h
 CMakeFiles/T1_POO.dir/main.cpp.o: ContaCorrente.h
+CMakeFiles/T1_POO.dir/main.cpp.o: ContaPoupanca.h
+CMakeFiles/T1_POO.dir/main.cpp.o: Juridico.h
 CMakeFiles/T1_POO.dir/main.cpp.o: main.cpp
 

@@ -117,6 +117,16 @@ int main() {
 
 	//Cenario de Teste C2
 	//Cenario de Teste C3
+
+	//Pessoa Jurídica 01
+	Juridico* pj1 = new Juridico(nomePF2, cpfPF1, enderecoPF1, telefonePJ1, emailPJ1, cnpjPJ1, atuacaoPJ1, funcaoPJ1, atualizacaoPJ1);
+	ListaClientesJur.push_front(pj1);
+	cout << "Cliente Criado: Pessoa JurÍdica 01" << pj1->toString() << endl;
+	ContaCorrente* ccPessoaJ1 = new ContaCorrente(cnpjPJ1); //criando Conta Corrente para a Pessoa Jurídica 01
+	ListaDeContas.push_front(ccPessoaJ1); //adicionando a nova conta na lista de contas correntes
+	ccPessoaJ1->FazerLancamento(2, 1000000); //creditando 1,000,000.00 reais na conta
+	cout << "Conta Corrente criada para Pessoa Jurídica 01:" << ccPessoaJ1->toString() << endl;
+	
 	//Cenario de Teste C4
 
 
