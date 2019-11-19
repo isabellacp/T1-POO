@@ -11,13 +11,13 @@ double ContaPoupanca::MontanteTotalP = 0;
 
 //construtor
 ContaPoupanca::ContaPoupanca(string cpf_cliente){
-        if(cpf_cliente == CPF ){
+        
             NumeroGlobalP++;
             NumeroP = NumeroGlobalP;
             CPFcliente = cpf_cliente;
             SaldoAtualP = 0;
             DataAbertura = time(0);
-        }
+        
 } 
 
 //destrutor
@@ -27,10 +27,6 @@ ContaPoupanca::~ContaPoupanca(){
 }
     
 
-//retorna data de abertura da conta
-time_t ContaPoupanca::getDataAbertura() const{
-    return this->DataAbertura;
-}
 
 //retorna numero da conta
 int ContaPoupanca::GetNumero() {
@@ -41,7 +37,7 @@ int ContaPoupanca::GetNumero() {
 bool ContaPoupanca::debitoConta(float valorP) {
     struct LancamentoP lancP;
     //inserção da operação no extrato
-    lancP.type = "debito";
+    lancP.typeP = "debito";
     lancP.valorP = valorP;
 	lancP.SaldoAnteriorP = SaldoAtualP; 
     extratoP.push_front(lancP);
@@ -56,7 +52,7 @@ bool ContaPoupanca::debitoConta(float valorP) {
 void ContaPoupanca::creditoConta(float valorP) {
     struct LancamentoP lancP;
     //inserção da operação no extrato
-    lancP.type = "credito";
+    lancP.typeP = "credito";
     lancP.valorP = valorP;
 	lancP.SaldoAnteriorP = SaldoAtualP;
     extratoP.push_front(lancP);
@@ -68,18 +64,18 @@ void ContaPoupanca::creditoConta(float valorP) {
 
 //retorna se o lancamento eh feito
 bool ContaPoupanca::FazerLancamento(int tipo, float valorP){
-    switch (tipo) {
-        case 1: {
-            return debitoConta(valorP);
-            break;
-        }
-        case 2: {
-            creditoConta(valorP);
-            return true;
-            break;
-        }
-    }
-    return true;
+	switch (tipo) {
+	case 1: {
+		return debitoConta(valorP);
+		break;
+	}
+	case 2: {
+		creditoConta(valorP);
+		return true;
+		break;
+	}
+	}
+	return true;
 }
 
 
@@ -101,13 +97,13 @@ double ContaPoupanca::getMontanteTotal() {
 string ContaPoupanca::toString() const{
     string result;
     ostringstream sContaPoupanca;  
-    sContaPoupanca  << "Número da conta: " <<
+    sContaPoupanca  << "Número da conta: "
                     << this->NumeroP << endl
-                    << "Data de abertura: " <<
+                    << "Data de abertura: "
                     << this->DataAbertura << endl
-                    << "CPF: " <<
+                    << "CPF: "
                     << this->CPFcliente << endl
-                    << "Saldo atual: " <<
+                    << "Saldo atual: "
                     << this->SaldoAtualP;
 	result = sContaPoupanca.str();
 	return result;

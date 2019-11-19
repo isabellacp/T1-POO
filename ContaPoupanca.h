@@ -16,7 +16,7 @@ struct LancamentoP{
 
 };
 
-class ContaPoupanca : public Cliente {
+class ContaPoupanca {
 public:
 	//construtor
 	ContaPoupanca(string cpf_cliente);
@@ -27,7 +27,7 @@ public:
 
 	//retorna o numero da conta
 	int GetNumero();
-	void debitoConta(float);
+	bool debitoConta(float);
 	void creditoConta(float);
 	bool FazerLancamento(int, float);
 	//retorna o extrato
