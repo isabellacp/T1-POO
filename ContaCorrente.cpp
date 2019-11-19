@@ -4,9 +4,10 @@
 
 #include <string>
 #include "ContaCorrente.h"
+#include <iostream>
 
 int ContaCorrente::NumeroGlobal = 0;
-float ContaCorrente::MontanteTotal = 0;
+double ContaCorrente::MontanteTotal = 0;
 
 ContaCorrente::ContaCorrente(string cpf_cliente) {
 	NumeroGlobal++;
@@ -52,6 +53,8 @@ void ContaCorrente::creditoConta(float valor) {
     //realização do credito em conta
     setSaldoAtual(SaldoAtual + valor);
     //atualização do montante total do banco
+	
+
     MontanteTotal += valor;
 }
 
@@ -72,8 +75,8 @@ bool ContaCorrente::FazerLancamento(int tipo, float valor) {
 }
 
 //retorna o extrato
-list<struct Lancamento> ContaCorrente::getExtrato() {
-    return extrato;
+list<struct Lancamento>* ContaCorrente::getExtrato() {
+    return &extrato;
 }
 
 int ContaCorrente::GetNumero() {
@@ -129,6 +132,6 @@ int ContaCorrente::getQuantidadeContas() {
     return NumeroGlobal;
 }
 
-float ContaCorrente::getMontanteTotal() {
+double ContaCorrente::getMontanteTotal() {
     return MontanteTotal;
 }

@@ -5,9 +5,9 @@
 using namespace std;
 
 //controla o numero da conta poupanca
-int ContaPoupanca::NumeroGlobalP = 5000000;
+int ContaPoupanca::NumeroGlobalP = 0;
 //guarda o montante total das contas poupanca
-float ContaPoupanca::MontanteTotalP = 0;
+double ContaPoupanca::MontanteTotalP = 0;
 
 //construtor
 ContaPoupanca::ContaPoupanca(string cpf_cliente){
@@ -89,12 +89,12 @@ list<struct LancamentoP> ContaPoupanca::getExtrato() {
 }
 
 //retorna a quantidade de contas poupanca
-int ContaPoupanca::getQuantidadeContas() {
+int ContaPoupanca::getQuantidadeContasP() {
     return NumeroGlobalP;
 }
 
 //retorna o montante total das contas poupanca
-float ContaPoupanca::getMontanteTotal() {
+double ContaPoupanca::getMontanteTotal() {
     return MontanteTotalP;
 }
 

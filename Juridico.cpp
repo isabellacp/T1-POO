@@ -4,33 +4,28 @@ int Juridico::TotalClientesJuridico = 0;
 
 //construtor
 Juridico :: Juridico (string nome, string cpf, string endereco, string telefone, string 
-    email, string cnpj, string atuacao, string funcao, string atualizacao) {
+    email, string cnpj, string atuacao, string funcao, string atualizacao):Cliente(nome, cpf, endereco, telefone, email) {
 	TotalClientesJuridico++;
 	NumeroClienteJuridico = TotalClientesJuridico;
-	Nome = nome;
-        CPF = cpf;
-       Endereco = endereco;
-       Telefone = telefone;
-       Email = email;
-       cnpj = cnpj;
-       atuacao = atuacao;
-       funcao = funcao;
-       atualizacao = atualizacao;         
+       Cnpj = cnpj;
+       Atuacao = atuacao;
+       Funcao = funcao;
+       Atualizacao = atualizacao;         
 }
 
 
 
 //getters e setters
 const string &Juridico::getCnpj() const {
-    return cnpj;
+    return Cnpj;
 }
 
-void Juridico::setCnpj(const string cpnj) {
-    cnpj = cnpj;
+void Juridico::setCnpj(const string cnpj) {
+    Cnpj = cnpj;
 }
 
 const string &Juridico::getAtuacao() const {
-    return atuacao;
+    return Atuacao;
 }
 
 void    Juridico ::setAtuacao(string atuacao) {
@@ -39,7 +34,7 @@ void    Juridico ::setAtuacao(string atuacao) {
 }
 
 const string &Juridico::getFuncao() const {
-    return funcao;
+    return Funcao;
 }
 
 void Juridico::setFuncao(string funcao) {
@@ -47,7 +42,7 @@ void Juridico::setFuncao(string funcao) {
 }
 
 const string &Juridico::getAtualizacao() const {
-    return atualizacao;
+    return Atualizacao;
 }
 
 void Juridico::setAtualizacao(string atualizacao) {

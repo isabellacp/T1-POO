@@ -29,11 +29,11 @@ public:
     char *GetDataAbertura();    //getter - retorna uma representação em string da data de abertura da conta
     int GetNumero();
     bool FazerLancamento(int, float);
-    list <struct Lancamento> getExtrato(); //getter - retorna o extrato
+    list <struct Lancamento>* getExtrato(); //getter - retorna o extrato
     bool debitoConta (float);
     void creditoConta (float);
     static int getQuantidadeContas();
-    static float getMontanteTotal();
+    static double getMontanteTotal();
     string toString();
 
     //getter e setter para o CPF do cliente
@@ -56,7 +56,7 @@ public:
 
 private:
     static int NumeroGlobal;
-    static float MontanteTotal;
+    static double MontanteTotal;
     int Numero;
     string CPFcliente;
     time_t DataAbertura;
