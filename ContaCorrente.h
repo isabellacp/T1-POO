@@ -36,7 +36,7 @@ public:
     static int getQuantidadeContas();
     static float getMontanteTotal();
     void imprimeExtrato(time_t, time_t);
-    string toString();
+    string toString() const;
 
     //getter e setter para o CPF do cliente
     const string &getCpFcliente() const;
