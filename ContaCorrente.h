@@ -27,7 +27,6 @@ public:
 
     ~ContaCorrente();
     list <struct Lancamento>  lista_lancamentos; //struct que armazena dados sobre as operações feitas nas contas
-    char *GetDataAbertura();    //getter - retorna uma representação em string da data de abertura da conta
     int GetNumero();
     bool FazerLancamento(int, float, time_t data = 0);
     list <struct Lancamento> getLista_lancamentos(); //getter - retorna o extrato
@@ -43,7 +42,7 @@ public:
     void setCpFcliente(const string &cpFcliente);
 
     //getter e setter para a Data de Abertura da conta
-    time_t getDataAbertura() const;
+    char* getDataAbertura() const;
     void setDataAbertura(time_t dataAbertura);
 
     //getter e setter para o SaldoAtual

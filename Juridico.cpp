@@ -8,7 +8,12 @@ int Juridico::TotalClientesJuridico = 0;
 
 //construtor
 Juridico :: Juridico (string nome, string cpf, string endereco, string telefone, string 
-    email, string cnpj, string atuacao, string funcao, string atualizacao):Cliente(nome, cpf, endereco, telefone, email) {
+    email, string cnpj, string atuacao, string funcao, string atualizacao){
+	setNome(nome);
+		setCpf(cpf);
+	setEndereco(endereco);
+		setTelefone(telefone);
+	setEmail(email);
 	TotalClientesJuridico++;
 	NumeroClienteJuridico = TotalClientesJuridico;
        Cnpj = cnpj;
@@ -59,10 +64,10 @@ int Juridico::getTotalClientesJuridico() {
 string Juridico::toString() const{
 	string result;
 	ostringstream sJuridico;
-	sJuridico << "CNPJ: " << this->Cnpj << endl
-	     << "Atuação: " << this->Atuacao << endl
+	sJuridico << endl<< "CNPJ: " << this->Cnpj << endl
+	     << "Atuacao: " << this->Atuacao << endl
 		<< "Funcao: " << this->Funcao << endl
-		<< "Ultima data de atualização do Contrato " << this->Atualizacao <<endl;
+		<< "Ultima data de atualizacao do Contrato " << this->Atualizacao <<endl;
 	result = sJuridico.str();
 	
 	return result;

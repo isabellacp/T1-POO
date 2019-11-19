@@ -16,6 +16,7 @@ Cliente::Cliente(string nome, string cpf, string endereco, string telefone, stri
     Telefone = telefone;
     Email = email;
 }
+Cliente::Cliente() {}
 
 
 
@@ -61,7 +62,7 @@ void Cliente::setEmail(const string &email) {
     Email = email;
 }
 string Cliente::toString() {
-        return  "CPF: "  +  CPF + "/n"  + " Nome: " + Nome + "/n";
+        return  " CPF: "  +  CPF +   + "  Nome: " + Nome ;
 
 }
 int Cliente::getTotalClientesFisico() {

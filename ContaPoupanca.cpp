@@ -97,13 +97,13 @@ double ContaPoupanca::getMontanteTotal() {
 string ContaPoupanca::toString() const{
     string result;
     ostringstream sContaPoupanca;  
-    sContaPoupanca  << "Número da conta: "
+    sContaPoupanca  << endl<<"Número da conta: "
                     << this->NumeroP << endl
                     << "Data de abertura: "
-                    << this->DataAbertura << endl
+                    << this->getDataAbertura() 
                     << "CPF: "
                     << this->CPFcliente << endl
-                    << "Saldo atual: "
+					<< fixed << "Saldo atual: "
                     << this->SaldoAtualP;
 	result = sContaPoupanca.str();
 	return result;
@@ -120,8 +120,8 @@ void ContaPoupanca::setCpfCliente(const string &cpFcliente) {
 }
 
 //retorna a data de abertura da conta
-time_t ContaPoupanca::getDataAbertura() const {
-    return this->DataAbertura;
+char* ContaPoupanca::getDataAbertura() const {
+	return (char*)ctime(&DataAbertura);
 }
 
 //define a data

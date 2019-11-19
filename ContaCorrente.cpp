@@ -132,8 +132,8 @@ void ContaCorrente::setCpFcliente(const string &cpFcliente) {
     CPFcliente = cpFcliente;
 }
 
-time_t ContaCorrente::getDataAbertura() const {
-    return DataAbertura;
+char* ContaCorrente::getDataAbertura() const {
+	return (char*)ctime(&DataAbertura);
 }
 
 void ContaCorrente::setDataAbertura(time_t dataAbertura) {
@@ -159,18 +159,16 @@ void ContaCorrente::setLimiteChequeEspecial(float limiteChequeEspecial)
 	LimiteChequeEspecial = limiteChequeEspecial;
 }
 
-char *ContaCorrente::GetDataAbertura() {
-    return (char *) ctime(&DataAbertura);
-}
+
 
 string ContaCorrente::toString() const {
 		string result;
 		ostringstream sContaCorrente;
-		sContaCorrente << "Numero: " << this->Numero << endl
-			<< "CPF Cliente: " << this->CPFcliente << endl
-			<< "Saldo Atual: " << this->SaldoAtual << endl
-			<< "Limite Cheque Especial" << this->LimiteChequeEspecial << endl
-			<< "Data de Abertura" << this->DataAbertura << endl;
+		sContaCorrente << endl << " Numero: " << this->Numero << endl
+			<< " CPF Cliente: " << this->CPFcliente << endl
+			<< fixed << " Saldo Atual: " << this->SaldoAtual << endl
+			<< " Limite Cheque Especial: " << this->LimiteChequeEspecial << endl
+			<< " Data de Abertura: " << this->getDataAbertura() << endl;
 		result = sContaCorrente.str();
 
 		return result;

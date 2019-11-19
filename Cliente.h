@@ -15,6 +15,8 @@ class Cliente{
 public:
     Cliente(string nome, string cpf, string endereco, string telefone, string email); //Construtor
 
+	Cliente();
+
     //métodos
 
     //getter e setters

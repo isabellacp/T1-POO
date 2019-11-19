@@ -2,7 +2,6 @@
 #include <ctime>
 #include <list>
 #include <locale>
-#include <sstream>
 #include "ContaCorrente.h"
 #include "Cliente.h"
 #include "Juridico.h"
@@ -20,6 +19,7 @@ int main() {
 	int menu_geral = 0, menu_clientes = 0, menu_contas = 0;
 	bool sair = false;
 	//Cenario de Teste C1
+	cout << " ----------------CENARIO DE TESTE 1-------------------- " << endl;
 	{
 		//Pessoa Física 01
 		string nomePF1 = "pessoa fisica 1", cpfPF1 = "1101", enderecoPF1 = "pf street, 100 ", telefonePF1 = "123456789", emailPF1 = "fulano@detal.com";
@@ -28,7 +28,6 @@ int main() {
 		cout << "Cliente Criado: Pessoa Física 01" << pf1->toString() << endl;
 		ContaCorrente* ccPessoaF1 = new ContaCorrente(cpfPF1); //criando Conta Corrente para a Pessoa Física 01
 		ListaDeContas.push_front(ccPessoaF1); //adicionando a nova conta na lista de contas correntes
-
 		ccPessoaF1->FazerLancamento(2, 100.00); //creditando 100 reais na conta
 		cout << "Conta Corrente criada para Pessoa Física 01:" << ccPessoaF1->toString() << endl;
 		//criar poupança para PF1
@@ -101,32 +100,35 @@ int main() {
 		cout << ContaPoupanca::getQuantidadeContasP() << endl;
 		//exibir montante total do banco
 		cout << "Montante Total do Banco:" << endl;
-		cout << fixed << ContaCorrente::getMontanteTotal() + ContaPoupanca::getMontanteTotal()) << endl;
+		cout << fixed << ContaCorrente::getMontanteTotal() + ContaPoupanca::getMontanteTotal() << endl;
 
 
 	} 
 	//Cenario de Teste C2
+	cout << " ----------------CENARIO DE TESTE 2-------------------- " << endl;
 	{
 		//Pessoa Física 01
 		string nomePF1 = "pessoa fisica 1", cpfPF1 = "1102", enderecoPF1 = "pf street, 200 ", telefonePF1 = "7891011", emailPF1 = "fulano2@detal.com";
 		Cliente* pf1 = new Cliente(nomePF1, cpfPF1, enderecoPF1, telefonePF1, emailPF1);
 		ListaDeClientes.push_front(pf1); //adicionando o novo cliente na lista de clientes
-		cout << "Cliente Criado: Pessoa Física 01" << pf1->toString() << endl;
+		cout << "Cliente Criado: Pessoa Física 01 " << pf1->toString() << endl;
 		ContaCorrente* ccPessoaF1 = new ContaCorrente(cpfPF1); //criando Conta Corrente para a Pessoa Física 01
 		ListaDeContas.push_front(ccPessoaF1); //adicionando a nova conta na lista de contas correntes
 		ccPessoaF1->FazerLancamento(2, 100.00); //creditando 100 reais na conta
-		cout << "Conta Corrente criada para Pessoa Física 01:" << ccPessoaF1->toString() << endl;
+		cout << "Conta Corrente criada para Pessoa Física 01: " << ccPessoaF1->toString() << endl;
 		//criar poupança para PF1
 		ContaPoupanca* cpPessoaF1 = new ContaPoupanca(cpfPF1);
 		ListaContasPoup.push_front(cpPessoaF1);
 		cpPessoaF1->FazerLancamento(2, 200); // CREDITA 200 REAIS NA CONTA POUPANÇA
-		cout << "Conta Poupança criada para Pessoa Física 01:" << cpPessoaF1->toString() << endl;
-		ccPessoaF1->FazerLancamento(1, 100); //debito de 100,00 na conta 1
-		cout << "Saldo atual de Pessoa Fisica 01:" << cpPessoaF1->getSaldoAtual() << endl; //out saldo atual
-		ccPessoaF1->FazerLancamento(2, 50); //credita 50 na conta 1
-		cout << "Saldo atual de Pessoa Fisica 01:" << cpPessoaF1->getSaldoAtual() << endl; //out saldo atual
-		cpPessoaF1->FazerLancamento(2, 30); //credita 30 na conta 1
-		cout << "Saldo atual de Pessoa Fisica 01:" << cpPessoaF1->getSaldoAtual() << endl; //out saldo atual
+		cout << "Conta Poupança criada para Pessoa Física 01: " << cpPessoaF1->toString() << endl;
+		//lancamentos
+		ccPessoaF1->FazerLancamento(1, 100); //debito de 100,00 na conta corrente
+		cout << "Saldo atual Conta Corrente - Pessoa Fisica 01: " << ccPessoaF1->getSaldoAtual() << endl; //out saldo atual
+		ccPessoaF1->FazerLancamento(2, 50); //credita 50 na conta corrente
+		cout << "Saldo atual Conta Corrente - Pessoa Fisica 01: " << ccPessoaF1->getSaldoAtual() << endl; //out saldo atual
+		cpPessoaF1->FazerLancamento(2, 30); //credita 30 na conta corrente
+		cout << "Saldo atual Conta Poupanca - Pessoa Fisica 01 :" << cpPessoaF1->getSaldoAtual() << endl; //out saldo atual
+		cout << "" << endl;
 		//EXIBIR EXTRATO DE CONTA CORRENTE 1
 		//EXIBIR EXTRATO POUPANCA 1
 		//Pessoa Juridica 01 (vinculado à Pessoa Física 01)
@@ -164,6 +166,7 @@ int main() {
 		cout << fixed << ContaCorrente::getMontanteTotal() << endl;
 	} 
 	//Cenario de Teste C3
+	cout << " ----------------CENARIO DE TESTE 3-------------------- " << endl;
 	{
 		//Pessoa Jurídica 01
 		string nomePJ1 = "pessoa juridica 01", cpfPJ1 = "1111", enderecoPJ1 = "aaaa, 900", telefonePJ1 = "13589", emailPJ1 = "empresaA@fulano.com", cnpjPJ1 = "1222", atuacaoPJ1 = "comercio", funcaoPJ1 = "detal", atualizacaoPJ1 = "10/01/2005";
@@ -178,6 +181,8 @@ int main() {
 	}
         
         //Cenario de Teste C4
+	cout<<" ----------------CENARIO DE TESTE 4-------------------- "<< endl;
+
 	{ 
 	string nomePF1 = "pessoa fisica 1", cpfPF1 = "1102", enderecoPF1 = "pf street, 200 ", telefonePF1 = "7891011", emailPF1 = "fulano2@detal.com";
 	Cliente* pf1 = new Cliente(nomePF1, cpfPF1, enderecoPF1, telefonePF1, emailPF1);
@@ -201,7 +206,7 @@ int main() {
 	}
 
 
-
+	cout << " ----------------MENU DE FUNCIONALIDADES-------------------- " << endl;
 
 	while (!sair) {
 		cin.clear();
@@ -283,6 +288,9 @@ int main() {
 		if (cin.peek() == '\n') {
 			cin.ignore();
 		}
+		if (menu_clientes == 0) {
+			continue;
+		}
 
 		//gerenciamento de clientes
 		switch (menu_clientes) {
@@ -346,7 +354,7 @@ int main() {
 		}
 		case 3: {
 			bool achou = false;
-
+			bool temconta = false; 
 			string cpf;
 			cout << "Insira o CPF do cliente que deseja deletar:" << endl;
 			getline(cin, cpf);
@@ -355,25 +363,30 @@ int main() {
 
 			while (ptrCliente != ListaDeClientes.end()) { // enquanto nao acabar os clientes
 				if (cpf == (*ptrCliente)->getCpf()) {
-					for (auto& ContaCorrente : ListaDeContas) {
-						achou = true;
-						if (cpf == ContaCorrente->getCpFcliente()) {
+					achou = true;
+					break;
 
-							cout << "Esse cliente não pode ser deletado pois há contas vinculados a ele" << endl;
-
-							break;
-						}
-
-						ListaDeClientes.erase(ptrCliente); //remove cliente da lista
-						delete(*ptrCliente);
-						break;
-					}
-					ptrCliente++; // avança para o primeiro cliente
 				}
-				if (!achou)
-					cout << "Cliente não encontrado" << endl;
+				ptrCliente++; // avança para o primeiro cliente
+			}
+			if (!achou) {
+				cout << "Cliente não encontrado" << endl;
 				break;
 			}
+			bool possuiContaCorrente = false;
+			for (auto& ContaCorrente : ListaDeContas) {
+				if (cpf == ContaCorrente->getCpFcliente()) {
+					possuiContaCorrente = true;
+					cout << "Esse cliente não pode ser deletado pois há contas vinculados a ele" << endl;
+					break;
+				}
+			}
+			if (!possuiContaCorrente) {
+				ListaDeClientes.erase(ptrCliente); //remove cliente da lista
+				delete(*ptrCliente);
+			}
+				break;
+			
 		}
 
 		case 4: {
@@ -461,32 +474,36 @@ int main() {
 			getline(cin, cpf);
 
 			auto ptrCliente = ListaClientesJur.begin(); // inicia no primeiro cliente
-
 			while (ptrCliente != ListaClientesJur.end()) { // enquanto nao acabar os clientes
 				if (cpf == (*ptrCliente)->getCpf()) {
-					for (auto& ContaCorrente : ListaDeContas) {
-						achou = true;
-						if (cpf == ContaCorrente->getCpFcliente()) {
-
-							cout << "Esse cliente não pode ser deletado pois há contas vinculados a ele" << endl;
-
-							break;
-						}
-					}
-
-					ListaClientesJur.erase(ptrCliente); //remove cliente da lista
-					delete(*ptrCliente);
+					achou = true;
 					break;
 
-					ptrCliente++; // avança para o primeiro cliente
 				}
-				if (!achou)
-					cout << "Cliente não encontrado" << endl;
+				ptrCliente++; // avança para o primeiro cliente
+			}
+			if (!achou) {
+				cout << "Cliente não encontrado" << endl;
 				break;
 			}
-
-			menu_clientes = 0;
+			bool possuiContaCorrente = false;
+			for (auto& ContaCorrente : ListaDeContas) {
+				if (cpf == ContaCorrente->getCpFcliente()) {
+					possuiContaCorrente = true;
+					cout << "Esse cliente não pode ser deletado pois há contas vinculados a ele" << endl;
+					break;
+				}
+			}
+			if (!possuiContaCorrente) {
+				ListaClientesJur.erase(ptrCliente); //remove cliente da lista
+				delete(*ptrCliente);
+			}
+			break;
 		}
+		}
+		menu_clientes = 0;
+		if (menu_contas == 0) {
+			continue;
 		}
 		//gerenciamento de contas
 		switch (menu_contas) {
@@ -761,8 +778,9 @@ int main() {
 
 			  }
 
-					menu_contas = 0;
 			  }
+			  menu_contas = 0;
+
 
 		}
 	return 0;

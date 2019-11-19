@@ -42,7 +42,7 @@ public:
 
 
 	//getter e setter para a Data de Abertura da conta
-	time_t getDataAbertura() const;
+	char* getDataAbertura() const;
 	void setDataAbertura(time_t dataAbertura);
 
 	//setter e getter para o saldoAtual
