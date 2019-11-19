@@ -19,11 +19,10 @@ int main() {
 	list <ContaPoupanca*> ListaContasPoup; //lista de contas poupança
 	int menu_geral = 0, menu_clientes = 0, menu_contas = 0;
 	bool sair = false;
-
+	//Cenario de Teste C1
 	{
 		//Pessoa Física 01
 		string nomePF1 = "pessoa fisica 1", cpfPF1 = "1101", enderecoPF1 = "pf street, 100 ", telefonePF1 = "123456789", emailPF1 = "fulano@detal.com";
-		//Cenario de Teste C1
 		Cliente* pf1 = new Cliente(nomePF1, cpfPF1, enderecoPF1, telefonePF1, emailPF1);
 		ListaDeClientes.push_front(pf1); //adicionando o novo cliente na lista de clientes
 		cout << "Cliente Criado: Pessoa Física 01" << pf1->toString() << endl;
@@ -102,7 +101,7 @@ int main() {
 		cout << ContaPoupanca::getQuantidadeContasP() << endl;
 		//exibir montante total do banco
 		cout << "Montante Total do Banco:" << endl;
-		cout << fixed << ContaCorrente::getMontanteTotal() << endl;
+		cout << fixed << ContaCorrente::getMontanteTotal() + ContaPoupanca::getMontanteTotal()) << endl;
 
 
 	} 
@@ -247,7 +246,7 @@ int main() {
 		}
 		case 4: {
 			cout << "Montante Total:" << endl;
-			cout << ContaCorrente::getMontanteTotal() << endl;
+			cout << fixed << ContaCorrente::getMontanteTotal() + ContaPoupanca::getMontanteTotal() << endl;
 			break;
 		}
 		case 5: {
