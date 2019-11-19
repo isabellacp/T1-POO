@@ -5,6 +5,7 @@
 #include <string>
 #include "ContaCorrente.h"
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -162,8 +163,19 @@ char *ContaCorrente::GetDataAbertura() {
     return (char *) ctime(&DataAbertura);
 }
 
-string ContaCorrente::toString() {
-    return "Conta: " + to_string(Numero) + "/n"+ " CPF: " + CPFcliente + "/n" + " Saldo: " + to_string(SaldoAtual) + "/n" + " Limite de Cheque Especial:" + to_string (LimiteChequeEspecial) + "/n";
+string ContaCorrente::toString() const {
+		string result;
+		ostringstream sContaCorrente;
+		sContaCorrente << "Numero: " << this->Numero << endl
+			<< "CPF Cliente: " << this->CPFcliente << endl
+			<< "Saldo Atual: " << this->SaldoAtual << endl
+			<< "Limite Cheque Especial" << this->LimiteChequeEspecial << endl
+			<< "Data de Abertura" << this->DataAbertura << endl;
+		result = sContaCorrente.str();
+
+		return result;
+
+	
 }
 
 int ContaCorrente::getQuantidadeContas() {
