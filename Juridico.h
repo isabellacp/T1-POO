@@ -25,10 +25,10 @@ public:
 private: 
     static int TotalClientesJuridico; 
     int NumeroClienteJuridico; 
-    string cnpj;
-    string atuacao;
-    string funcao;
-    string atualizacao;
+    string Cnpj;
+    string Atuacao;
+    string Funcao;
+    string Atualizacao;
             
 };
 

@@ -58,7 +58,7 @@ public:
 
 private:
     static int NumeroGlobal;
-    static float MontanteTotal;
+    static double MontanteTotal;
     int Numero;
     string CPFcliente;
     time_t DataAbertura;

@@ -4,11 +4,12 @@
 
 #include <string>
 #include "ContaCorrente.h"
+#include <iostream>
 
 using namespace std;
 
 int ContaCorrente::NumeroGlobal = 0;
-float ContaCorrente::MontanteTotal = 0;
+double ContaCorrente::MontanteTotal = 0;
 
 ContaCorrente::ContaCorrente(string cpf_cliente) {
 	NumeroGlobal++;
@@ -54,6 +55,8 @@ void ContaCorrente::creditoConta(float valor) {
     //realização do credito em conta
     setSaldoAtual(SaldoAtual + valor);
     //atualização do montante total do banco
+	
+
     MontanteTotal += valor;
 }
 
