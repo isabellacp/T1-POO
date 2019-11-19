@@ -27,7 +27,7 @@ ContaCorrente::~ContaCorrente() {
 
 
 //debita o valor da conta
-bool ContaCorrente::debitoConta(float valor) {
+bool ContaCorrente::debitoConta(float valor, time_t data) {
     if (SaldoAtual+LimiteChequeEspecial < valor) {
         return false;
     }
@@ -35,6 +35,9 @@ bool ContaCorrente::debitoConta(float valor) {
     //inserção da operação no extrato
     lanc.type = "debito";
     lanc.valor = valor;
+    if (data != 0) { 
+        lanc.DataLancamento = data;
+    }
 	lanc.SaldoAnterior = SaldoAtual; 
     lista_lancamentos.push_front(lanc);
     //realização do debito em conta
@@ -45,11 +48,14 @@ bool ContaCorrente::debitoConta(float valor) {
 }
 
 //credita um valor na conta
-void ContaCorrente::creditoConta(float valor) {
+void ContaCorrente::creditoConta(float valor, time_t data) {
     struct Lancamento lanc;
     //inserção da operação no extrato
     lanc.type = "credito";
     lanc.valor = valor;
+    if (data != 0) { 
+        lanc.DataLancamento = data;
+    }
 	lanc.SaldoAnterior = SaldoAtual;
     lista_lancamentos.push_front(lanc);
     //realização do credito em conta
@@ -60,14 +66,14 @@ void ContaCorrente::creditoConta(float valor) {
     MontanteTotal += valor;
 }
 
-bool ContaCorrente::FazerLancamento(int tipo, float valor) {
+bool ContaCorrente::FazerLancamento(int tipo, float valor, time_t data) {
     switch (tipo) {
         case 1: {
-            return debitoConta(valor);
+            return debitoConta(valor, data);
             break;
         }
         case 2: {
-            creditoConta(valor);
+            creditoConta(valor, data);
             return true;
             break;
         }
@@ -157,7 +163,7 @@ char *ContaCorrente::GetDataAbertura() {
 }
 
 string ContaCorrente::toString() {
-    return "Conta: " + to_string(Numero) + " CPF: " + CPFcliente + " Saldo: " + to_string(SaldoAtual) + " Limite de Cheque Especial:" + to_string (LimiteChequeEspecial);
+    return "Conta: " + to_string(Numero) + "/n"+ " CPF: " + CPFcliente + "/n" + " Saldo: " + to_string(SaldoAtual) + "/n" + " Limite de Cheque Especial:" + to_string (LimiteChequeEspecial) + "/n";
 }
 
 int ContaCorrente::getQuantidadeContas() {

@@ -29,10 +29,10 @@ public:
     list <struct Lancamento>  lista_lancamentos; //struct que armazena dados sobre as operações feitas nas contas
     char *GetDataAbertura();    //getter - retorna uma representação em string da data de abertura da conta
     int GetNumero();
-    bool FazerLancamento(int, float);
+    bool FazerLancamento(int, float, time_t data = 0);
     list <struct Lancamento> getLista_lancamentos(); //getter - retorna o extrato
-    bool debitoConta (float);
-    void creditoConta (float);
+    bool debitoConta (float, time_t);
+    void creditoConta (float, time_t);
     static int getQuantidadeContas();
     static float getMontanteTotal();
     void imprimeExtrato(time_t, time_t);

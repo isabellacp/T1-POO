@@ -1,5 +1,9 @@
 #include "Juridico.h"
+#include <string>
 
+#include <iostream>
+
+using namespace std;
 int Juridico::TotalClientesJuridico = 0;
 
 //construtor
@@ -52,4 +56,18 @@ void Juridico::setAtualizacao(string atualizacao) {
 int Juridico::getTotalClientesJuridico() {
 	return TotalClientesJuridico;
 }
+string Juridico::toString() const{
+	string result;
+	ostringstream sJuridico;
+	sJuridico << "CNPJ: " << this->Cnpj << endl
+	     << "Atuação: " << this->Atuacao << endl
+		<< "Funcao: " << this->Funcao << endl
+		<< "Ultima data de atualização do Contrato " << this->Atualizacao <<endl;
+	result = sJuridico.str();
+	
+	return result;
+
+}
+
+
 
