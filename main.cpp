@@ -108,7 +108,7 @@ int main() {
 		ListaDeContas.remove(ccPessoaF1);  // remove conta da lista
 		delete(ccPessoaF1);
 		ListaDeContas.remove(ccPessoaF2);
-		delete(ccPessoaF2); 
+		delete(ccPessoaF2);
 		ListaContasPoup.remove(cpPessoaF1);
 		delete (cpPessoaF1);
 		ListaContasPoup.remove(cpPessoaF2);
@@ -121,17 +121,13 @@ int main() {
 		ListaDeClientes.remove(pf1);
 		delete (pf1);
 		ListaDeClientes.remove(pf2);
-		delete(pf2); 
+		delete(pf2);
 		ListaClientesJur.remove(pj1);
 		delete(pj1);
-		ListaClientesJur.remove(pj2); 
-		delete(pj2); 
-	
-	} 
+		ListaClientesJur.remove(pj2);
+		delete(pj2);
 
-	
-
-	
+	}
 
 	//Cenario de Teste C2
 	cout << " ----------------CENARIO DE TESTE 2-------------------- " << endl;
@@ -205,18 +201,18 @@ int main() {
 		delete(ccPessoaJ1);
 		ListaDeContas.remove(ccPessoaJ2);
 		delete(ccPessoaJ2);
-		
+
 		ListaClientesJur.remove(pj1);
 		delete(pj1);
 		ListaClientesJur.remove(pj2);
 		delete(pj2);
 		ListaDeClientes.remove(pf1);
 		delete(pf1);
-		
-	
 
 
-	} 
+
+
+	}
 	//Cenario de Teste C3
 	cout << " ----------------CENARIO DE TESTE 3-------------------- " << endl;
 	{	//Pessoa Física 01
@@ -241,12 +237,12 @@ int main() {
 		//lançar crédito de 400, 000.00 em 17 / 11 / 2019 em  conta corrente de pj1
 
 		//exibir extrato de c1 considerando todo o período
-	
+
 		//exibir extrato de c1 de 15 / 11 / 2019 a 16 / 11 / 2019
 
 		//exibir extrato de c1 de 16 / 11 / 2019 a 17 / 11 / 2019
-			
-			
+
+
 		//deletando as contas inicializadas
 		ListaDeContas.remove(ccPessoaJ1);
 		delete(ccPessoaJ1);
@@ -254,21 +250,21 @@ int main() {
 		delete(pj1);
 		ListaDeClientes.remove(pf1);
 		delete (pf1);
-	
 
-	
+
+
 	}
-        
-        //Cenario de Teste C4
-	cout<<" ----------------CENARIO DE TESTE 4-------------------- "<< endl;
-	{ 
 
-    	/* OBJETIVO: testar situações de restrição
+	//Cenario de Teste C4
+	cout << " ----------------CENARIO DE TESTE 4-------------------- " << endl;
+	{
+
+		/* OBJETIVO: testar situações de restrição
 		- cadastramento de cliente Pessoa Física para proprietário não cadastrado
 		- criação de conta para cliente não cadastrado
 		- lançamento que geraria saldo negativo em Conta Poupança
 		- remoção de conta com lançamentos
-		- remoção de cliente com contas associadas */ 
+		- remoção de cliente com contas associadas */
 
 
 
@@ -423,7 +419,7 @@ int main() {
 		}
 		case 3: {
 			bool achou = false;
-			bool temconta = false; 
+			bool temconta = false;
 			string cpf;
 			cout << "Insira o CPF do cliente que deseja deletar:" << endl;
 			getline(cin, cpf);
@@ -454,8 +450,8 @@ int main() {
 				ListaDeClientes.erase(ptrCliente); //remove cliente da lista
 				delete(*ptrCliente);
 			}
-				break;
-			
+			break;
+
 		}
 
 		case 4: {
@@ -576,282 +572,283 @@ int main() {
 		}
 		//gerenciamento de contas
 		switch (menu_contas) {
-			  case 1: {
-				  string cpf;
-				  cout << "Insira o cpf do cliente para criação da conta:" << endl;
-				  getline(cin, cpf);
-				  ContaCorrente* nova_conta = new ContaCorrente(cpf);
-				  ListaDeContas.push_front(nova_conta);
-				  cout << "Conta Aberta com Sucesso! O numero da sua conta é:" << nova_conta->GetNumero() << endl;
-				  break;
-			  }
-			  case 2: {
-				  bool achou = false;
-				  int numeroDaConta;
+		case 1: {
+			string cpf;
+			cout << "Insira o cpf do cliente para criação da conta:" << endl;
+			getline(cin, cpf);
+			ContaCorrente* nova_conta = new ContaCorrente(cpf);
+			ListaDeContas.push_front(nova_conta);
+			cout << "Conta Aberta com Sucesso! O numero da sua conta é:" << nova_conta->GetNumero() << endl;
+			break;
+		}
+		case 2: {
+			bool achou = false;
+			int numeroDaConta;
 
-				  cout << "Insira o número da conta que deseja alterar" << endl;
-				  cin >> numeroDaConta;
-				  if (cin.peek() == '\n') {
-					  cin.ignore();
-				  }
+			cout << "Insira o número da conta que deseja alterar" << endl;
+			cin >> numeroDaConta;
+			if (cin.peek() == '\n') {
+				cin.ignore();
+			}
 
-				  for (auto& ContaCorrente : ListaDeContas) {
-					  if (numeroDaConta == ContaCorrente->GetNumero()) {
-						  achou = true;
-						  string cpf;
-						  cout << "Insira o novo cpf para a conta:" << endl;
-						  getline(cin, cpf);
-						  ContaCorrente->setCpFcliente(cpf);
-						  float novoLimite;
-						  cout << "Insira o novo limite de Cheque Especial para a conta:" << endl;
-						  cin >> novoLimite;
-						  ContaCorrente->setLimiteChequeEspecial(novoLimite);
-
-
-
-						  break;
-					  }
-				  }
-				  if (!achou)
-					  cout << "Conta nao encontrada" << endl;
-				  break;
+			for (auto& ContaCorrente : ListaDeContas) {
+				if (numeroDaConta == ContaCorrente->GetNumero()) {
+					achou = true;
+					string cpf;
+					cout << "Insira o novo cpf para a conta:" << endl;
+					getline(cin, cpf);
+					ContaCorrente->setCpFcliente(cpf);
+					float novoLimite;
+					cout << "Insira o novo limite de Cheque Especial para a conta:" << endl;
+					cin >> novoLimite;
+					ContaCorrente->setLimiteChequeEspecial(novoLimite);
 
 
-			  }
-			  case 3: {
-				  bool achou = false;
-				  int numeroDaConta;
-				  cout << "Insira o número da conta que deseja deletar" << endl;
-				  cin >> numeroDaConta;
-				  auto ptrConta = ListaDeContas.begin(); // ponteiro para primeira conta da lista
 
-				  while (ptrConta != ListaDeContas.end()) { // enquanto nao acabarem as contas
-					  if (numeroDaConta == (*ptrConta)->GetNumero()) {
-						  achou = true;
-						  if ((*ptrConta)->getLista_lancamentos().size() != 0) {
-							  cout << "Essa conta não pode ser deletada pois há lançamentos vinculados a ela" << endl;
-							  break;
-						  }
+					break;
+				}
+			}
+			if (!achou)
+				cout << "Conta nao encontrada" << endl;
+			break;
 
 
-						  ListaDeContas.erase(ptrConta); // remove conta da lista
-						  delete(*ptrConta);
-						  break;
-					  }
-					  ptrConta++; // avanca para a proxima conta
-				  }
-				  if (!achou)
-					  cout << "Conta nao encontrada " << endl;
+		}
+		case 3: {
+			bool achou = false;
+			int numeroDaConta;
+			cout << "Insira o número da conta que deseja deletar" << endl;
+			cin >> numeroDaConta;
+			auto ptrConta = ListaDeContas.begin(); // ponteiro para primeira conta da lista
 
-				  break;
-			  }
-			  case 4: {
-				  bool achou = false;
-				  int numeroDaConta;
-				  int tipo_lancamento;
-				  float valor;
-				  cout << "Insira o número da conta que deseja fazer o lançamento:" << endl;
-				  cin >> numeroDaConta;
-
-				  cout << "Escolha o tipo de lançamento:" << endl;
-				  cout << "1- Débito em Conta" << endl;
-				  cout << "2- Crédito em Conta" << endl;
-				  cin >> tipo_lancamento;
-				  cout << "Digite o valor a ser lançado:" << endl;
-				  cin >> valor;
-
-				  for (auto& ContaCorrente : ListaDeContas) {
-
-					  if (numeroDaConta == ContaCorrente->GetNumero()) {
-						  achou = true;
-						  if (!ContaCorrente->FazerLancamento(tipo_lancamento, valor)) {
-							  cout << "Sem saldo suficiente!" << endl;
-						  }
-						  break;
-					  }
-				  }
-				  if (!achou)
-					  cout << "Conta nao encontrada" << endl;
-
-				  break;
-			  }
-
-			  case 5: {
-				  int numeroDaConta;
-				  bool achou = false;
-				  cout << "Insira o número da conta que deseja ver o extrato" << endl;
-				  cin >> numeroDaConta;
-
-				  //loop na lista de contas
-				  for (auto& ContaCorrente : ListaDeContas) {
-					  //encontra a conta desejada
-					  if (numeroDaConta == ContaCorrente->GetNumero()) {
-						  achou = true;
-						  /* loop na lista de lancamento da conta desejada
-						  for (auto const &lancamento : ContaCorrente->getLista_lancamentos()) {
-							  std::cout << lancamento.valor << "-" << lancamento.type << "-"
-										<< ctime(&lancamento.DataLancamento) << endl;
-						  } */
-						  time_t inicio, fim;
-						  struct tm temp_tm = { 0 };
-						  cout << "Insira o intervalo de duração do extrato:" << endl;
-						  cout << "Inicio (Formato dd/mm/aaaa): ";
-						  scanf("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
-						  temp_tm.tm_year -= 1900;
-						  temp_tm.tm_mon -= 1;
-						  inicio = mktime(&temp_tm);
-
-						  cout << "Final (Formato dd/mm/aaaa): ";
-						  scanf("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
-						  temp_tm.tm_year -= 1900;
-						  temp_tm.tm_mon -= 1;
-						  fim = mktime(&temp_tm);
+			while (ptrConta != ListaDeContas.end()) { // enquanto nao acabarem as contas
+				if (numeroDaConta == (*ptrConta)->GetNumero()) {
+					achou = true;
+					if ((*ptrConta)->getLista_lancamentos().size() != 0) {
+						cout << "Essa conta não pode ser deletada pois há lançamentos vinculados a ela" << endl;
+						break;
+					}
 
 
-						  ContaCorrente->imprimeExtrato(inicio, fim);
-						  break;
-					  }
-				  }
-				  if (!achou)
-					  cout << "Conta nao encontrada" << endl;
+					ListaDeContas.erase(ptrConta); // remove conta da lista
+					delete(*ptrConta);
+					break;
+				}
+				ptrConta++; // avanca para a proxima conta
+			}
+			if (!achou)
+				cout << "Conta nao encontrada " << endl;
 
-				  break;
-			  }
-			  case 6: {
-				  int numeroDaConta;
-				  bool achou = false;
-				  cout << "Insira o número da conta que deseja ver" << endl;
-				  cin >> numeroDaConta;
+			break;
+		}
+		case 4: {
+			bool achou = false;
+			int numeroDaConta;
+			int tipo_lancamento;
+			float valor;
+			cout << "Insira o número da conta que deseja fazer o lançamento:" << endl;
+			cin >> numeroDaConta;
 
-				  //loop na lista de contas
-				  for (auto& ContaCorrente : ListaDeContas) {
-					  //encontra a conta desejada
-					  if (numeroDaConta == ContaCorrente->GetNumero()) {
-						  achou = true;
-						  cout << ContaCorrente->toString() << endl;
+			cout << "Escolha o tipo de lançamento:" << endl;
+			cout << "1- Débito em Conta" << endl;
+			cout << "2- Crédito em Conta" << endl;
+			cin >> tipo_lancamento;
+			cout << "Digite o valor a ser lançado:" << endl;
+			cin >> valor;
 
-						  break;
-					  }
-				  }
-				  if (!achou)
-					  cout << "Conta nao encontrada" << endl;
+			for (auto& ContaCorrente : ListaDeContas) {
 
-				  break;
-			  }
-			  case 7: {
-				  string cpf;
-				  cout << "Insira o cpf do cliente para criação da conta poupança:" << endl;
-				  getline(cin, cpf);
-				  ContaPoupanca* nova_conta = new ContaPoupanca(cpf);
-				  ListaContasPoup.push_front(nova_conta);
-				  cout << "Conta Aberta com Sucesso! O numero da sua conta é:" << nova_conta->GetNumero() << endl;
-				  break;
-			  }
-			  case 8: {
-				  bool achou = false;
-				  int numeroDaConta;
-				  cout << "Insira o número da conta poupanca que deseja deletar" << endl;
-				  cin >> numeroDaConta;
-				  auto ptrConta = ListaContasPoup.begin(); // ponteiro para primeira conta da lista
+				if (numeroDaConta == ContaCorrente->GetNumero()) {
+					achou = true;
+					if (!ContaCorrente->FazerLancamento(tipo_lancamento, valor)) {
+						cout << "Sem saldo suficiente!" << endl;
+					}
+					break;
+				}
+			}
+			if (!achou)
+				cout << "Conta nao encontrada" << endl;
 
-				  while (ptrConta != ListaContasPoup.end()) { // enquanto nao acabarem as contas
-					  if (numeroDaConta == (*ptrConta)->GetNumero()) {
-						  achou = true;
-						  if ((*ptrConta)->getExtrato().size() != 0) {
-							  cout << "Essa conta não pode ser deletada pois há lançamentos vinculados a ela" << endl;
-							  break;
-						  }
+			break;
+		}
 
+		case 5: {
+			int numeroDaConta;
+			bool achou = false;
+			cout << "Insira o número da conta que deseja ver o extrato" << endl;
+			cin >> numeroDaConta;
 
-						  ListaContasPoup.erase(ptrConta); // remove conta da lista
-						  delete(*ptrConta);
-						  break;
-					  }
-					  ptrConta++; // avanca para a proxima conta
-				  }
-				  if (!achou)
-					  cout << "Conta nao encontrada " << endl;
+			//loop na lista de contas
+			for (auto& ContaCorrente : ListaDeContas) {
+				//encontra a conta desejada
+				if (numeroDaConta == ContaCorrente->GetNumero()) {
+					achou = true;
+					/* loop na lista de lancamento da conta desejada
+					for (auto const &lancamento : ContaCorrente->getLista_lancamentos()) {
+						std::cout << lancamento.valor << "-" << lancamento.type << "-"
+								  << ctime(&lancamento.DataLancamento) << endl;
+					} */
+					time_t inicio, fim;
+					struct tm temp_tm = { 0 };
+					cout << "Insira o intervalo de duração do extrato:" << endl;
+					cout << "Inicio (Formato dd/mm/aaaa): ";
+					scanf("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
+					temp_tm.tm_year -= 1900;
+					temp_tm.tm_mon -= 1;
+					inicio = mktime(&temp_tm);
 
-				  break;
-			  }
-			  case 9: {
-				  bool achou = false;
-				  int numeroDaConta;
-				  int tipo_lancamento;
-				  float valor;
-				  cout << "Insira o número da conta que deseja fazer o lançamento:" << endl;
-				  cin >> numeroDaConta;
-
-				  cout << "Escolha o tipo de lançamento:" << endl;
-				  cout << "1- Débito em Conta" << endl;
-				  cout << "2- Crédito em Conta" << endl;
-				  cin >> tipo_lancamento;
-				  cout << "Digite o valor a ser lançado:" << endl;
-				  cin >> valor;
-
-				  for (auto& ContaPoupanca : ListaDeContas) {
-
-					  if (numeroDaConta == ContaPoupanca->GetNumero()) {
-						  achou = true;
-						  if (!ContaPoupanca->FazerLancamento(tipo_lancamento, valor)) {
-							  cout << "Sem saldo suficiente!" << endl;
-						  }
-						  break;
-					  }
-				  }
-				  if (!achou)
-					  cout << "Conta nao encontrada" << endl;
-
-				  break;
-			  }
-			  case 0: {
-				  int numeroDaConta;
-				  bool achou = false;
-				  cout << "Insira o número da conta que deseja ver o extrato" << endl;
-				  cin >> numeroDaConta;
-
-				  //loop na lista de contas
-				  for (auto& ContaPoupanca : ListaDeContas) {
-					  //encontra a conta desejada
-					  if (numeroDaConta == ContaPoupanca->GetNumero()) {
-						  achou = true;
-						  /* //loop na lista de lancamento da conta desejada
-						  for (auto const &lancamento : ContaCorrente->getLista_lancamentos()) {
-							  std::cout << lancamento.valor << "-" << lancamento.type << "-"
-										<< ctime(&lancamento.DataLancamento) << endl;
-						  } */
-						  time_t inicio, fim;
-						  struct tm temp_tm = { 0 };
-						  cout << "Insira o intervalo de duração do extrato:" << endl;
-						  cout << "Inicio (Formato dd/mm/aaaa): ";
-						  scanf("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
-						  temp_tm.tm_year -= 1900;
-						  temp_tm.tm_mon -= 1;
-						  inicio = mktime(&temp_tm);
-
-						  cout << "Final (Formato dd/mm/aaaa): ";
-						  scanf("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
-						  temp_tm.tm_year -= 1900;
-						  temp_tm.tm_mon -= 1;
-						  fim = mktime(&temp_tm);
+					cout << "Final (Formato dd/mm/aaaa): ";
+					scanf("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
+					temp_tm.tm_year -= 1900;
+					temp_tm.tm_mon -= 1;
+					fim = mktime(&temp_tm);
 
 
-						  ContaPoupanca->imprimeExtrato(inicio, fim);
-						  break;
-					  }
-				  }
-				  if (!achou)
-					  cout << "Conta nao encontrada" << endl;
+					ContaCorrente->imprimeExtrato(inicio, fim);
+					break;
+				}
+			}
+			if (!achou)
+				cout << "Conta nao encontrada" << endl;
 
-				  break;
+			break;
+		}
+		case 6: {
+			int numeroDaConta;
+			bool achou = false;
+			cout << "Insira o número da conta que deseja ver" << endl;
+			cin >> numeroDaConta;
 
-			  }
+			//loop na lista de contas
+			for (auto& ContaCorrente : ListaDeContas) {
+				//encontra a conta desejada
+				if (numeroDaConta == ContaCorrente->GetNumero()) {
+					achou = true;
+					cout << ContaCorrente->toString() << endl;
 
-			  }
-			  menu_contas = 0;
+					break;
+				}
+			}
+			if (!achou)
+				cout << "Conta nao encontrada" << endl;
 
-			
-		} 
-	return 0;
+			break;
+		}
+		case 7: {
+			string cpf;
+			cout << "Insira o cpf do cliente para criação da conta poupança:" << endl;
+			getline(cin, cpf);
+			ContaPoupanca* nova_conta = new ContaPoupanca(cpf);
+			ListaContasPoup.push_front(nova_conta);
+			cout << "Conta Aberta com Sucesso! O numero da sua conta é:" << nova_conta->GetNumero() << endl;
+			break;
+		}
+		case 8: {
+			bool achou = false;
+			int numeroDaConta;
+			cout << "Insira o número da conta poupanca que deseja deletar" << endl;
+			cin >> numeroDaConta;
+			auto ptrConta = ListaContasPoup.begin(); // ponteiro para primeira conta da lista
+
+			while (ptrConta != ListaContasPoup.end()) { // enquanto nao acabarem as contas
+				if (numeroDaConta == (*ptrConta)->GetNumero()) {
+					achou = true;
+					if ((*ptrConta)->getExtrato().size() != 0) {
+						cout << "Essa conta não pode ser deletada pois há lançamentos vinculados a ela" << endl;
+						break;
+					}
+
+
+					ListaContasPoup.erase(ptrConta); // remove conta da lista
+					delete(*ptrConta);
+					break;
+				}
+				ptrConta++; // avanca para a proxima conta
+			}
+			if (!achou)
+				cout << "Conta nao encontrada " << endl;
+
+			break;
+		}
+		case 9: {
+			bool achou = false;
+			int numeroDaConta;
+			int tipo_lancamento;
+			float valor;
+			cout << "Insira o número da conta que deseja fazer o lançamento:" << endl;
+			cin >> numeroDaConta;
+
+			cout << "Escolha o tipo de lançamento:" << endl;
+			cout << "1- Débito em Conta" << endl;
+			cout << "2- Crédito em Conta" << endl;
+			cin >> tipo_lancamento;
+			cout << "Digite o valor a ser lançado:" << endl;
+			cin >> valor;
+
+			for (auto& ContaPoupanca : ListaDeContas) {
+
+				if (numeroDaConta == ContaPoupanca->GetNumero()) {
+					achou = true;
+					if (!ContaPoupanca->FazerLancamento(tipo_lancamento, valor)) {
+						cout << "Sem saldo suficiente!" << endl;
+					}
+					break;
+				}
+			}
+			if (!achou)
+				cout << "Conta nao encontrada" << endl;
+
+			break;
+		}
+		case 0: {
+			int numeroDaConta;
+			bool achou = false;
+			cout << "Insira o número da conta que deseja ver o extrato" << endl;
+			cin >> numeroDaConta;
+
+			//loop na lista de contas
+			for (auto& ContaPoupanca : ListaDeContas) {
+				//encontra a conta desejada
+				if (numeroDaConta == ContaPoupanca->GetNumero()) {
+					achou = true;
+					/* //loop na lista de lancamento da conta desejada
+					for (auto const &lancamento : ContaCorrente->getLista_lancamentos()) {
+						std::cout << lancamento.valor << "-" << lancamento.type << "-"
+								  << ctime(&lancamento.DataLancamento) << endl;
+					} */
+					time_t inicio, fim;
+					struct tm temp_tm = { 0 };
+					cout << "Insira o intervalo de duração do extrato:" << endl;
+					cout << "Inicio (Formato dd/mm/aaaa): ";
+					scanf("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
+					temp_tm.tm_year -= 1900;
+					temp_tm.tm_mon -= 1;
+					inicio = mktime(&temp_tm);
+
+					cout << "Final (Formato dd/mm/aaaa): ";
+					scanf("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
+					temp_tm.tm_year -= 1900;
+					temp_tm.tm_mon -= 1;
+					fim = mktime(&temp_tm);
+
+
+					ContaPoupanca->imprimeExtrato(inicio, fim);
+					break;
+				}
+			}
+			if (!achou)
+				cout << "Conta nao encontrada" << endl;
+
+			break;
+
+		}
+
+		}
+		menu_contas = 0;
+
+
 	}
-	
+	return 0;
+}
+
+
