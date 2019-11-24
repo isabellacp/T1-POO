@@ -31,15 +31,15 @@ ContaCorrente::~ContaCorrente() {
 
 
 //debita o valor da conta
-bool ContaCorrente::debitoConta(float valor, time_t data) {
+bool ContaCorrente::debitoConta(float valor, tm data) {
 	if (SaldoAtual + LimiteChequeEspecial < valor) {
 		return false;
 	}
 	Lancamento* lancamento = new Lancamento("debito", valor, SaldoAtual);
 	//inserção da operação no extrato
-	if (data != 0) {
-		lancamento->setDataLancamento(data);
-	}
+	
+	lancamento->setDataLancamento(data);
+	
 	lista_lancamentos.push_front(lancamento);
 	//realização do debito em conta
 	setSaldoAtual(SaldoAtual - valor);
@@ -51,12 +51,12 @@ bool ContaCorrente::debitoConta(float valor, time_t data) {
 }
 
 //credita um valor na conta
-void ContaCorrente::creditoConta(float valor, time_t data) {
+void ContaCorrente::creditoConta(float valor, tm data) {
 	Lancamento* lancamento = new Lancamento("credito", valor, SaldoAtual);
 	//inserção da operação no extrato
-	if (data != 0) {
+	
 		lancamento->setDataLancamento(data);
-	}
+	
 	lista_lancamentos.push_front(lancamento);
 	//realização do credito em conta
 	setSaldoAtual(SaldoAtual + valor);
@@ -66,7 +66,7 @@ void ContaCorrente::creditoConta(float valor, time_t data) {
 	MontanteTotal += valor;
 }
 
-bool ContaCorrente::FazerLancamento(int tipo, float valor, time_t data) {
+bool ContaCorrente::FazerLancamento(int tipo, float valor, tm data) {
 	switch (tipo) {
 	case 1: {
 		return debitoConta(valor, data);
@@ -81,25 +81,37 @@ bool ContaCorrente::FazerLancamento(int tipo, float valor, time_t data) {
 	return true;
 
 }
+bool ContaCorrente::FazerLancamento(int tipo, float valor) {
+    time_t t = time(0); 
+	tm* agora = localtime(&t);
+	return FazerLancamento(tipo, valor, *agora);
 
-void ContaCorrente::imprimeExtrato(time_t inicial, time_t final) {
+}
+
+void ContaCorrente::imprimeExtrato(tm inicial_struct, tm final_struct) {
+
+	time_t final = mktime(&final_struct);
+	time_t inicial = mktime(&inicial_struct);
+
 	if (final < inicial) {
 		return;
 	}
 	float SaldoInicial, SaldoFinal;
 	bool primeiro = false;
 	for (auto& lancamento : this->getLancamentos()) {
-		if (lancamento->getDataLancamento() >= inicial && lancamento->getDataLancamento()<= final) {
+		time_t dataLancamento = mktime(&lancamento->getDataLancamento());
+
+		if (dataLancamento >= inicial && dataLancamento <= final) {
 			if (primeiro == false) {
 				primeiro = true;
 				SaldoInicial = lancamento->getSaldoAnterior();
 			}
 			if (lancamento->getType() == "debito") {
-				cout << lancamento->getDataLancamento() << ":" << lancamento->getValor()<< endl;
+				cout << dataLancamento << ":" << lancamento->getValor()<< endl;
 				SaldoFinal = lancamento->getSaldoAnterior() - lancamento->getValor();
 			}
 			else if (lancamento->getType() == "credito") {
-				cout << lancamento->getDataLancamento()<< ":" << lancamento->getValor()<< endl;
+				cout << dataLancamento<< ":" << lancamento->getValor()<< endl;
 				SaldoFinal = lancamento->getSaldoAnterior()+ lancamento->getValor();
 			}
 		}
@@ -130,12 +142,12 @@ void ContaCorrente::setCpFcliente(const string& cpFcliente) {
 	CPFcliente = cpFcliente;
 }
 
-char* ContaCorrente::getDataAbertura() const {
-	return (char*)ctime(&DataAbertura);
+tm ContaCorrente::getDataAbertura() const {
+	return *localtime(&DataAbertura);
 }
 
-void ContaCorrente::setDataAbertura(time_t dataAbertura) {
-	DataAbertura = dataAbertura;
+void ContaCorrente::setDataAbertura(tm dataAbertura) {
+	DataAbertura = mktime(&dataAbertura);
 }
 
 float ContaCorrente::getSaldoAtual() const {
@@ -160,13 +172,14 @@ void ContaCorrente::setLimiteChequeEspecial(float limiteChequeEspecial)
 
 
 string ContaCorrente::toString() const {
+	
 	string result;
 	ostringstream sContaCorrente;
 	sContaCorrente << endl << " Numero: " << this->Numero << endl
 		<< " CPF Cliente: " << this->CPFcliente << endl
 		<< fixed << " Saldo Atual: " << this->SaldoAtual << endl
 		<< " Limite Cheque Especial: " << this->LimiteChequeEspecial << endl
-		<< " Data de Abertura: " << this->getDataAbertura() << endl;
+		<< " Data de Abertura: " << ctime(&this->DataAbertura) << endl;
 	result = sContaCorrente.str();
 
 	return result;

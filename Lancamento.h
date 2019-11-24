@@ -9,16 +9,18 @@ public:
 	Lancamento(string type, float valor, float saldoAnterior);
 	string getType();
 	float getValor();
-	time_t getDataLancamento();
-	void setDataLancamento(time_t);
+	tm getDataLancamento();
+	void setDataLancamento(int dia, int mes, int ano, int hora, int segundo);
+	void setDataLancamento(tm);
 
 	float getSaldoAnterior();
+	string toString();
 
 
 private:
 	string type;
 	float valor = 0;
-	time_t DataLancamento = time(0);
+	time_t DataLancamento;
 	float SaldoAnterior;
 
 };

@@ -23,13 +23,15 @@ public:
     ~ContaCorrente();
 	list <Lancamento*>  lista_lancamentos; //struct que armazena dados sobre as operações feitas nas contas
     int GetNumero();
-    bool FazerLancamento(int, float, time_t data = 0);
+	bool FazerLancamento(int, float);
+
+    bool FazerLancamento(int, float, tm data);
     list <Lancamento*> getLancamentos(); //getter - retorna o extrato
-    bool debitoConta (float, time_t);
-    void creditoConta (float, time_t);
+    bool debitoConta (float, tm);
+    void creditoConta (float, tm);
     static int getQuantidadeContas();
     static float getMontanteTotal();
-    void imprimeExtrato(time_t, time_t);
+    void imprimeExtrato(tm, tm);
     string toString() const;
 
     //getter e setter para o CPF do cliente
@@ -37,8 +39,8 @@ public:
     void setCpFcliente(const string &cpFcliente);
 
     //getter e setter para a Data de Abertura da conta
-    char* getDataAbertura() const;
-    void setDataAbertura(time_t dataAbertura);
+    tm getDataAbertura() const;
+    void setDataAbertura(tm dataAbertura);
 
     //getter e setter para o SaldoAtual
     float getSaldoAtual() const;

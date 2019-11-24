@@ -74,13 +74,13 @@ int main() {
 
 
 
-        /*ignora /n que pode ainda estar no cin depois de ler o numero acima
+        //ignora /n que pode ainda estar no cin depois de ler o numero acima
         if (cin.peek() == '\n') {
             cin.ignore();
         }
-        if (menu_clientes == 0) {
+        if (optClientes == 0) {
             continue;
-        } */
+        } 
 
         //gerenciamento de clientes
         switch (optClientes) {

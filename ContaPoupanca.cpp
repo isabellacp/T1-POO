@@ -137,24 +137,28 @@ void ContaPoupanca::setSaldoAtual(float saldoAtual) {
 
 }
 
-void ContaPoupanca::imprimeExtrato(time_t inicial, time_t final) {
+void ContaPoupanca::imprimeExtrato(tm inicial_t, tm final_t) {
+	time_t inicial = mktime(&inicial_t);
+	time_t final = mktime(&final_t);
+
 	 if (final < inicial) {
 		return;
 	}
 	float SaldoInicial, SaldoFinal;
 	bool primeiro = false;
 	for (auto& lancamento : this->getLancamentos()) {
-		if (lancamento->getDataLancamento() >= inicial && lancamento->getDataLancamento() <= final) {
+		time_t dataLancamento = mktime(&lancamento->getDataLancamento());
+		if (dataLancamento >= inicial && dataLancamento <= final) {
 			if (primeiro == false) {
 				primeiro = true;
 				SaldoInicial = lancamento->getSaldoAnterior();
 			}
 			if (lancamento->getType()== "debito") {
-				cout << lancamento->getDataLancamento() << ":" << lancamento->getValor() << endl;
+				cout << dataLancamento << ":" << lancamento->getValor() << endl;
 				SaldoFinal = lancamento->getSaldoAnterior() - lancamento->getValor();
 			}
 			else if (lancamento->getType() == "credito") {
-				cout << lancamento->getDataLancamento() << ":" << lancamento->getValor() << endl;
+				cout << dataLancamento << ":" << lancamento->getValor() << endl;
 				SaldoFinal = lancamento->getSaldoAnterior() + lancamento->getValor();
 			}
 		}

@@ -26,7 +26,7 @@ public:
 	bool debitoConta(float);
 	void creditoConta(float);
 	bool FazerLancamento(int, float);
-	void imprimeExtrato(time_t inicial, time_t final);
+	void imprimeExtrato(tm inicial, tm final);
 	//retorna o extrato
 	list <Lancamento*> getLancamentos();
 	static int getQuantidadeContasP();

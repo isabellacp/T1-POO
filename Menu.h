@@ -7,7 +7,7 @@
 #include "Juridico.h"
 #include "ContaPoupanca.h"
 
-
+tm LerData();
 int menuGeral();
 int menuContas();
 int menuClientes();

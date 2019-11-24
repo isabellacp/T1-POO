@@ -8,7 +8,33 @@
 
 using namespace std;
 
+tm LerData() {
+	int dia, mes, ano, hora, minuto;
+
+	cout << "Insira o dia" << endl;
+	cin >> dia;
+	cout << "Insira o mes" << endl;
+	cin >> mes;
+	cout << "Insira o ano" << endl;
+	cin >> ano;
+	cout << "Insira a hora" << endl;
+	cin >> hora;
+	cout << "Insira o minuto" << endl;
+	cin >> minuto;
+
+	time_t now = time(0);
+	tm *data = localtime(&now);
+	data->tm_mday = dia;
+	data->tm_mon = mes - 1;
+	data->tm_year = ano - 1900;
+	data->tm_hour = hora;
+	data->tm_min = minuto;
+	return *data;
+
+}
+
 int menuGeral() {
+	std::locale::global(std::locale("en_US.utf8")); // acentos
 	int opt;
 	cout << "----:: Escolha a Funcionalidade desejada ::-------" << endl;
 	cout << "--------------------------------------------" << endl;
@@ -16,14 +42,15 @@ int menuGeral() {
 	cout << "2- Gerenciamento de Contas" << endl;
 	cout << "3- Consulta de Total de Contas Correntes" << endl;
 	cout << "4- Consulta de Montante Total" << endl;
-	cout << "5- Consulta de Total de Clientes F�sicos" << endl;
-	cout << "6- Consulta de Total de Clientes Juridicos" << endl;
-	cout << "7- Consulta de Total de Contas Poupanca" << endl;
+	cout << "5- Consulta de Total de Clientes Físicos" << endl;
+	cout << "6- Consulta de Total de Clientes Jurídicos" << endl;
+	cout << "7- Consulta de Total de Contas Poupança" << endl;
 	cin >> opt;
 
 	return opt; 
 }
 int menuContas() {
+	std::locale::global(std::locale("en_US.utf8")); // acentos
 	int opt;
 	cout << "----:: Escolha a Funcionalidade desejada ::-------" << endl;
 	cout << "--------------------------------------------" << endl;
@@ -33,14 +60,15 @@ int menuContas() {
 	cout << "4- Lan�amento em Conta Corrente" << endl;
 	cout << "5- Extrato de Conta Corrente" << endl;
 	cout << "6- Exibir dados de Conta Corrente" << endl;
-	cout << "7- Abrir Conta Poupan�a" << endl;
-	cout << "8- Excluir Conta Poupan�a" << endl;
-	cout << "9- Lan�amento em Conta Poupan�a" << endl;
-	cout << "10- Extrato de Conta Poupan�a" << endl;
+	cout << "7- Abrir Conta Poupança" << endl;
+	cout << "8- Excluir Conta Poupança" << endl;
+	cout << "9- Lan�amento em Conta Poupança" << endl;
+	cout << "10- Extrato de Conta Poupança" << endl;
 	cin >> opt;
 	return opt; 
 }
 int menuClientes(){
+	std::locale::global(std::locale("en_US.utf8")); // acentos
 	int opt;
 	cout << "----:: Escolha a Funcionalidade desejada ::-------" << endl;
 	cout << "--------------------------------------------" << endl;
@@ -322,12 +350,13 @@ void lancamentoContaCorrente(list<ContaCorrente*>ListaDeContas) {
     cin >> tipo_lancamento;
     cout << "Digite o valor a ser lançado:" << endl;
     cin >> valor;
+	tm data = LerData();
 
     for (auto& ContaCorrente : ListaDeContas) {
 
         if (numeroDaConta == ContaCorrente->GetNumero()) {
             achou = true;
-            if (!ContaCorrente->FazerLancamento(tipo_lancamento, valor)) {
+            if (!ContaCorrente->FazerLancamento(tipo_lancamento, valor, data)) {
                 cout << "Sem saldo suficiente!" << endl;
             }
 
@@ -338,44 +367,28 @@ void lancamentoContaCorrente(list<ContaCorrente*>ListaDeContas) {
 
 }
 void exibeExtratoContaCorrente(list<ContaCorrente*>ListaDeContas) {
-    /*int numeroDaConta;
-    bool achou = false;
-    cout << "Insira o número da conta que deseja ver o extrato" << endl;
-    cin >> numeroDaConta;
+	int numeroDaConta;
+	bool achou = false;
+	cout << "Insira o número da conta que deseja ver o extrato" << endl;
+	cin >> numeroDaConta;
 
-    //loop na lista de contas
-    for (auto& ContaCorrente : ListaDeContas) {
-        //encontra a conta desejada
-        if (numeroDaConta == ContaCorrente->GetNumero()) {
-            achou = true;
-            /* loop na lista de lancamento da conta desejada
-            for (auto const &lancamento : ContaCorrente->getLista_lancamentos()) {
-                std::cout << lancamento.valor << "-" << lancamento.type << "-"
-                          << ctime(&lancamento.DataLancamento) << endl;
-            }
-            time_t inicio, fim;
-            struct tm temp_tm = { 0 };
-            cout << "Insira o intervalo de duração do extrato:" << endl;
-            cout << "Inicio (Formato dd/mm/aaaa): ";
-            scanf("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
-            temp_tm.tm_year -= 1900;
-            temp_tm.tm_mon -= 1;
-            inicio = mktime(&temp_tm);
+	//loop na lista de contas
+	for (auto& contaCorrente : ListaDeContas) {
+		if (numeroDaConta == contaCorrente->GetNumero()) {
+			achou = true;
+			tm inicio, fim;
+			cout << "Insira o inicio do intervalo de duração do extrato:" << endl;
+			inicio = LerData();
+			cout << "Insira o final do intervalo de duração do extrato:" << endl;
+			fim = LerData();
 
-            cout << "Final (Formato dd/mm/aaaa): ";
-            scanf("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
-            temp_tm.tm_year -= 1900;
-            temp_tm.tm_mon -= 1;
-            fim = mktime(&temp_tm);
+			contaCorrente->imprimeExtrato(inicio, fim);
 
+		}
+	}
+	if (!achou)
+		cout << "Conta nao encontrada" << endl;
 
-            ContaCorrente->imprimeExtrato(inicio, fim);
-            break;
-        }
-    }
-    if (!achou)
-        cout << "Conta nao encontrada" << endl;
-*/
 }
 void exibeDadosContaCorrente(list<ContaCorrente*>ListaDeContas) {
     int numeroDaConta;
@@ -384,11 +397,11 @@ void exibeDadosContaCorrente(list<ContaCorrente*>ListaDeContas) {
     cin >> numeroDaConta;
 
     //loop na lista de contas
-    for (auto& ContaCorrente : ListaDeContas) {
+    for (auto& contaCorrente : ListaDeContas) {
         //encontra a conta desejada
-        if (numeroDaConta == ContaCorrente->GetNumero()) {
+        if (numeroDaConta == contaCorrente->GetNumero()) {
             achou = true;
-            cout << ContaCorrente->toString() << endl;
+            cout << contaCorrente->toString() << endl;
         }
     }
     if (!achou)
@@ -453,42 +466,27 @@ void lancamentoContaPoup(list<ContaPoupanca*> ListaContasPoup) {
 
 }
 void exibeExtratoContaPoup(list<ContaPoupanca*> ListaContasPoup){
-    /* int numeroDaConta;
+    int numeroDaConta;
     bool achou = false;
     cout << "Insira o número da conta que deseja ver o extrato" << endl;
     cin >> numeroDaConta;
 
     //loop na lista de contas
-    for (auto& ContaPoupanca : ListaContasPoup) {
-        //encontra a conta desejada
-        if (numeroDaConta == ContaPoupanca->GetNumero()) {
+    for (auto& contaPoupanca : ListaContasPoup) {
+        if (numeroDaConta == contaPoupanca->GetNumero()) {
             achou = true;
-            /* //loop na lista de lancamento da conta desejada
-            for (auto const &lancamento : ContaCorrente->getLista_lancamentos()) {
-                std::cout << lancamento.valor << "-" << lancamento.type << "-"
-                          << ctime(&lancamento.DataLancamento) << endl;
-            }
-            time_t inicio, fim;
-            struct tm temp_tm = { 0 };
-            cout << "Insira o intervalo de duração do extrato:" << endl;
-            cout << "Inicio (Formato dd/mm/aaaa):";
-            scanf ("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
-            temp_tm.tm_year -= 1900;
-            temp_tm.tm_mon -= 1;
-            inicio = mktime(&temp_tm);
+            tm inicio, fim;
+            cout << "Insira o inicio do intervalo de duração do extrato:" << endl;
+			inicio = LerData();
+			cout << "Insira o final do intervalo de duração do extrato:" << endl;
+			fim = LerData();
 
-            cout << "Final (Formato dd/mm/aaaa):";
-            scanf("%d/%d/%d", &temp_tm.tm_mday, &temp_tm.tm_mon, &temp_tm.tm_year);
-            temp_tm.tm_year -= 1900;
-            temp_tm.tm_mon -= 1;
-            fim = mktime(&temp_tm);
-
-
-            ContaPoupanca->imprimeExtrato(inicio, fim);
+			contaPoupanca->imprimeExtrato(inicio, fim);
 
         }
     }
     if (!achou)
         cout << "Conta nao encontrada" << endl;
-    */
+    
 }
+
