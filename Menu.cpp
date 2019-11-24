@@ -106,8 +106,11 @@ void CadastrarClienteFis(list<Cliente*> ListaDeClientes) {
     getline(cin, email);
     Cliente* novoCliente = new Cliente(nome, cpf, endereco, telefone, email);
     ListaDeClientes.push_front(novoCliente);
+    cout << "Cliente Cadastrado com sucesso!" << endl;
+    cout << "________________________________" << endl;
+    cout << novoCliente->toString() << endl;
+    cout << "________________________________" << endl;
 }
-
 void AlteraDadosClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>ListaDeContas) {
     bool achou = false;
     string cpf, nome, email, endereco, telefone;
@@ -182,29 +185,44 @@ void deletaClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>ListaDe
         delete(*ptrCliente);
     }
 }
-void CadastrarClienteJur(list<Juridico*>ListaClientesJur) {
-    string nomePJ, cpfPJ, enderecoPJ, telefonePJ, emailPJ, cnpjPJ, atuacaoPJ, funcaoPJ, atualizacaoPJ;
-    cout << "Insira o nome da Pessoa Juridica:" << endl;
-    getline(cin, nomePJ);
+void CadastrarClienteJur(list<Juridico*>ListaClientesJur, list<Cliente*>ListaDeClientes) {
+    bool achou = false;
+    string cpfPJ;
     cout << "Insira o CPF do sócio marjoritario:" << endl;
     getline(cin, cpfPJ);
-    cout << "Insira o endereço:" << endl;
-    getline(cin, enderecoPJ);
-    cout << "Insira o telefone:" << endl;
-    getline(cin, telefonePJ);
-    cout << "Insira o e-mail:" << endl;
-    getline(cin, emailPJ);
-    cout << "Insira o CNPJ:" << endl;
-    getline(cin, cnpjPJ);
-    cout << "Insira a atuação:" << endl;
-    getline(cin, atuacaoPJ);
-    cout << "Insira a funcao" << endl;
-    getline(cin, funcaoPJ);
-    cout << "Insira a data da ultima atualização do contrato" << endl;
-    getline(cin, atualizacaoPJ);
+    //busca cpf do cliente na lista de clientes
+    for (auto& cliente : ListaDeClientes) {
+        if (cpfPJ == cliente->getCpf()) {
+            achou = true;
+            string nomePJ, cpfPJ, enderecoPJ, telefonePJ, emailPJ, cnpjPJ, atuacaoPJ, funcaoPJ, atualizacaoPJ;
+            cout << "Insira o nome da Pessoa Juridica:" << endl;
+            getline(cin, nomePJ);
+            cout << "Insira o endereço:" << endl;
+            getline(cin, enderecoPJ);
+            cout << "Insira o telefone:" << endl;
+            getline(cin, telefonePJ);
+            cout << "Insira o e-mail:" << endl;
+            getline(cin, emailPJ);
+            cout << "Insira o CNPJ:" << endl;
+            getline(cin, cnpjPJ);
+            cout << "Insira a atuação:" << endl;
+            getline(cin, atuacaoPJ);
+            cout << "Insira a funcao" << endl;
+            getline(cin, funcaoPJ);
+            cout << "Insira a data da ultima atualização do contrato" << endl;
+            getline(cin, atualizacaoPJ);
 
-    Juridico* pj = new Juridico(nomePJ, cpfPJ, enderecoPJ, telefonePJ, emailPJ, cnpjPJ, atuacaoPJ, funcaoPJ, atualizacaoPJ);
-    ListaClientesJur.push_front(pj);
+            Juridico* pj = new Juridico(nomePJ, cpfPJ, enderecoPJ, telefonePJ, emailPJ, cnpjPJ, atuacaoPJ, funcaoPJ, atualizacaoPJ);
+            ListaClientesJur.push_front(pj);
+            cout << "Cliente Cadastrado com sucesso!" << endl;
+            cout << "________________________________" << endl;
+            cout << pj->toString() << endl;
+            cout << "________________________________" << endl;
+
+        }
+    }
+    if (!achou)
+        cout << "CADASTRO DE PESSOA JÚRIDICA NÃO AUTORIZADO! O sócio marjoritário não está cadastrado como cliente físico." << endl;
 
 }
 void AlteraDadosClienteJur(list<Juridico*>ListaClientesJur) {
@@ -287,13 +305,26 @@ void deletaClienteJur(list<Juridico*>ListaClientesJur, list<ContaCorrente*>Lista
         delete(*ptrCliente);
     }
 }
-void criaContaCorrente(list<ContaCorrente*> ListaDeContas) {
+void criaContaCorrente(list<ContaCorrente*> ListaDeContas, list<Cliente*>ListaDeClientes) {
+    bool achou = false;
     string cpf;
-    cout << "Insira o cpf do cliente para criação da conta corrente:" << endl;
+    cout << "Insira o CPF do cliente ja cadastrado no sistema:" << endl;
     getline(cin, cpf);
-    ContaCorrente* nova_conta = new ContaCorrente(cpf);
-    ListaDeContas.push_front(nova_conta);
-    cout << "Conta Aberta com Sucesso! O numero da sua conta corrente é:" << nova_conta->GetNumero() << endl;
+    //busca cpf do cliente na lista de clientes
+    for (auto& cliente : ListaDeClientes) {
+        if (cpf == cliente->getCpf()) {
+            achou = true;
+            ContaCorrente* nova_conta = new ContaCorrente(cpf);
+            ListaDeContas.push_front(nova_conta);
+            cout << "Conta Aberta com Sucesso! O numero da sua conta corrente é:" << nova_conta->GetNumero() << endl;
+
+        }
+    }
+    if (!achou)
+        cout << "ABERTURA DE CONTA NÃO AUTORIZADA! O cliente náo esta cadastrado no sistema." << endl;
+
+
+
 }
 void alteraContaCorrente(list<ContaCorrente*>ListaDeContas) {
     bool achou = false;

@@ -149,9 +149,9 @@ void RodarTeste2() {
     cpPessoaF1->FazerLancamento(2, 200); // CREDITA 200 REAIS NA CONTA POUPANÇA
     cout << "Conta Poupança p1 criada para pf1: " << cpPessoaF1->toString() << endl;
     //lancamentos
-    cout << "-________________" <<endl;
-    cout << "   Lançamentos   " <<endl;
-    cout << "-________________" <<endl;
+    cout << "-________________" << endl;
+    cout << "   Lançamentos   " << endl;
+    cout << "-________________" << endl;
     ccPessoaF1->FazerLancamento(1, 100); //debito de 100,00 na conta corrente
     cout << "Saldo atual Conta Corrente c1: " << ccPessoaF1->getSaldoAtual() << endl; //out saldo atual
     ccPessoaF1->FazerLancamento(2, 50); //credita 50 na conta corrente
@@ -265,15 +265,15 @@ void RodarTeste3() {
     cout << ccPessoaJ1->getLancamentos().front()->toString();
 
     //lançar débito de 100, 000.00 em 15 / 11 / 2019 em conta corrente de pj1
-    ccPessoaJ1->FazerLancamento(1,100000,ConstrutorData(15,11,2019));
+    ccPessoaJ1->FazerLancamento(1, 100000, ConstrutorData(15, 11, 2019));
     cout << "Saldo atual Conta Corrente c1: " << ccPessoaJ1->getSaldoAtual() << endl;
 
     //lançar débito de 200, 000.00 em 16 / 11 / 2019 em  conta corrente de pj1
-    ccPessoaJ1->FazerLancamento(1,200000,ConstrutorData(16,11,2019));
+    ccPessoaJ1->FazerLancamento(1, 200000, ConstrutorData(16, 11, 2019));
     cout << "Saldo atual Conta Corrente c1: " << ccPessoaJ1->getSaldoAtual() << endl;
 
     //lançar crédito de 400, 000.00 em 17 / 11 / 2019 em  conta corrente de pj1
-    ccPessoaJ1->FazerLancamento(2,400000,ConstrutorData(17,11,2019));
+    ccPessoaJ1->FazerLancamento(2, 400000, ConstrutorData(17, 11, 2019));
     cout << "Saldo atual Conta Corrente c1: " << ccPessoaJ1->getSaldoAtual() << endl;
 
 
@@ -283,13 +283,11 @@ void RodarTeste3() {
     for (auto &lancamento : ccPessoaJ1->getLancamentos()) {
         cout << lancamento->toString() << endl;
     }
-
     //exibir extrato de c1 de 15 / 11 / 2019 a 16 / 11 / 2019
-    ccPessoaJ1->imprimeExtrato(ConstrutorData(15,11,2019), ConstrutorData(16,11,2019));
+    ccPessoaJ1->imprimeExtrato(ConstrutorData(15, 11, 2019), ConstrutorData(16, 11, 2019));
 
     //exibir extrato de c1 de 16 / 11 / 2019 a 17 / 11 / 2019
-
-    ccPessoaJ1->imprimeExtrato(ConstrutorData(16,11,2019), ConstrutorData(17,11,2019));
+    ccPessoaJ1->imprimeExtrato(ConstrutorData(16, 11, 2019), ConstrutorData(17, 11, 2019));
 
     //deletando as contas inicializadas
     ListaDeContas.remove(ccPessoaJ1);
@@ -309,13 +307,105 @@ void RodarTeste4() {
     list<ContaPoupanca *> ListaContasPoup; //lista de contas poupança
     cout << " ----------------CENARIO DE TESTE 4-------------------- " << endl;
 
+    string nomePF1 = "pessoa fisica 1", cpfPF1 = "1101", enderecoPF1 = "pf street, 100 ", telefonePF1 = "123456789", emailPF1 = "fulano@detal.com";
+    Cliente *pf1 = new Cliente(nomePF1, cpfPF1, enderecoPF1, telefonePF1, emailPF1);
+    ListaDeClientes.push_front(pf1); //adicionando o novo cliente na lista de clientes
+    cout << "Cliente Criado: Pessoa Física 01" << pf1->toString() << endl;
+    //criando Conta Corrente para a Pessoa Física 01
+    ContaCorrente *ccPessoaF1 = new ContaCorrente(cpfPF1);
+    ListaDeContas.push_front(ccPessoaF1);
+    ccPessoaF1->FazerLancamento(2, 100.00); //creditando 100 reais na conta
+    cout << "Conta Corrente criada para Pessoa Física 01:" << ccPessoaF1->toString() << endl;
+    //criando poupança para PF1
+    ContaPoupanca *cpPessoaF1 = new ContaPoupanca(cpfPF1);
+    ListaContasPoup.push_front(cpPessoaF1);
+    cpPessoaF1->FazerLancamento(2, 200); // CREDITA 200 REAIS NA CONTA POUPANÇA
 
-    /* OBJETIVO: testar situações de restrição
-    - cadastramento de cliente Pessoa Física para proprietário não cadastrado
-    - criação de conta para cliente não cadastrado
-    - lançamento que geraria saldo negativo em Conta Poupança
-    - remoção de conta com lançamentos
-    - remoção de cliente com contas associadas */
+    cout << "Conta Poupança criada para Pessoa Física 01:" << cpPessoaF1->toString() << endl;
+    cout << "  " << endl;
+
+    cout << " Testar situações de restrição " << endl;
+    cout << " SITUACAO 01" << endl;
+    //cadastramento de cliente Pessoa Física (Jurídica?)para proprietário não cadastrado
+    cout << "cadastramento de cliente Pessoa Física (Jurídica?)para proprietário não cadastrado" << endl;
+    CadastrarClienteJur(ListaClientesJur, ListaDeClientes);
+    cout << "  " << endl;
+
+    //criação de conta para cliente não cadastrado
+    cout << " SITUACAO 02" << endl;
+    cout << "criação de conta para cliente não cadastrado" << endl;
+    criaContaCorrente(ListaDeContas,ListaDeClientes);
+    cout << "  " << endl;
 
 
+    //lançamento que geraria saldo negativo em Conta Poupança
+    cout << " SITUACAO 03" << endl;
+    cout << "lançamento que geraria saldo negativo em Conta Poupança" << endl;
+    cpPessoaF1->FazerLancamento(2, 300);
+    cout << "  " << endl;
+
+    //remoção de conta com lançamentos
+    cout << " SITUACAO 04" << endl;
+    cout << "remoção de conta com lançamentos" << endl;
+    {
+    int numeroDaConta = ccPessoaF1->GetNumero();
+    bool achou = false;
+    auto ptrConta = ListaDeContas.begin(); // ponteiro para primeira conta da lista
+    while (ptrConta != ListaDeContas.end()) { // enquanto nao acabarem as contas
+        if (numeroDaConta == (*ptrConta)->GetNumero()) {
+            achou = true;
+            if ((*ptrConta)->getLancamentos().size() != 0) {
+                cout << "Essa conta não pode ser deletada pois há lançamentos vinculados a ela" << endl;
+                break;
+            }
+            ListaDeContas.erase(ptrConta); // remove conta da lista
+            delete (*ptrConta);
+            break;
+        }
+        ptrConta++; // avanca para a proxima conta
+    }
+    if (!achou) {
+        cout << "Conta nao encontrada " << endl;
+    }
+}
+    cout << "  " << endl;
+
+    // remoção de cliente com contas associadas
+    cout << " SITUACAO 05" << endl;
+    cout << "remoção de cliente com contas associadas " << endl;
+    {
+        bool achou = false;
+        bool temconta = false;
+        string cpf = pf1->getCpf();
+
+        auto ptrCliente = ListaDeClientes.begin(); // inicia no primeiro cliente
+
+        while (ptrCliente != ListaDeClientes.end()) { // enquanto nao acabar os clientes
+            if (cpf == (*ptrCliente)->getCpf()) {
+                achou = true;
+                break;
+
+            }
+            ptrCliente++; // avança para o primeiro cliente
+        }
+        if (!achou) {
+            cout << "Cliente não encontrado" << endl;
+
+        }
+
+        bool possuiContaCorrente = false;
+        for (auto &ContaCorrente : ListaDeContas) {
+            if (cpf == ContaCorrente->getCpFcliente()) {
+                possuiContaCorrente = true;
+                cout << "Esse cliente não pode ser deletado pois há contas vinculados a ele" << endl;
+                break;
+            }
+        }
+        if (!possuiContaCorrente) {
+            ListaDeClientes.erase(ptrCliente); //remove cliente da lista
+            delete (*ptrCliente);
+        }
+
+    }
+    cout << "  " << endl;
 }

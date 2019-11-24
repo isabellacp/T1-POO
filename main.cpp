@@ -97,7 +97,7 @@ int main() {
                 break;
             }
             case 4: {
-                CadastrarClienteJur(ListaClientesJur);
+                CadastrarClienteJur(ListaClientesJur, ListaDeClientes);
                 break;
             }
             case 5: {
@@ -117,7 +117,7 @@ int main() {
         //gerenciamento de contas
         switch (optContas) {
             case 1: {
-                criaContaCorrente(ListaDeContas);
+                criaContaCorrente(ListaDeContas,ListaDeClientes);
                 break;
             }
             case 2: {
