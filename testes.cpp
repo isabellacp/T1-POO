@@ -130,7 +130,6 @@ void RodarTeste2() {
     list<Juridico *> ListaClientesJur;        //lista de clientes jur
     list<ContaCorrente *> ListaDeContas;    //lista de contas correntes
     list<ContaPoupanca *> ListaContasPoup; //lista de contas poupança
-    //Cenario de Teste C1
 
     //Cenario de Teste C2
     std::cout << " ----------------CENARIO DE TESTE 2-------------------- " << endl;
@@ -158,8 +157,18 @@ void RodarTeste2() {
     cout << "Saldo atual Conta Poupanca - Pessoa Fisica 01 :" << cpPessoaF1->getSaldoAtual() << endl; //out saldo atual
     cout << "" << endl;
 
+	
     //EXIBIR EXTRATO DE CONTA CORRENTE 1
+	cout << "EXTRATO DE CONTA CORRENTE " << endl;
+	for (auto& lancamento : ccPessoaF1->getLancamentos()) {
+		cout << lancamento->toString() << endl;
+	}
+
     //EXIBIR EXTRATO POUPANCA 1
+	cout << "EXTRATO DE CONTA POUPANCA" << endl;
+	for (auto& lancamentoPoup : cpPessoaF1->getLancamentos()) {
+		cout << lancamentoPoup->toString() << endl;
+	}
 
     //Pessoa Juridica 01 (vinculado à Pessoa Física 01)
     string nomePJ1 = "pessoa juridica 01", telefonePJ1 = "13579", emailPJ1 = "empresa1@fulano.com", cnpjPJ1 = "1201", atuacaoPJ1 = "comercio", funcaoPJ1 = "detal", atualizacaoPJ1 = "10/01/2005";

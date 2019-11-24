@@ -37,10 +37,10 @@ int ContaPoupanca::GetNumero() {
 }
 
 //debita o valor da conta
-bool ContaPoupanca::debitoConta(float valor) {
-	Lancamento* lancamento = new Lancamento("credito", valor, SaldoAtualP);
+bool ContaPoupanca::debitoConta(double valor) {
+	Lancamento* lancamento = new Lancamento("debito", valor, SaldoAtualP);
 
-	lancamentos.push_front(lancamento);
+	lancamentos.push_back(lancamento);
 	//realização de debito em conta
 	setSaldoAtual(SaldoAtualP - valor);
 	//atualização do montante total do banco
@@ -49,10 +49,10 @@ bool ContaPoupanca::debitoConta(float valor) {
 }
 
 //credita um valor na conta
-void ContaPoupanca::creditoConta(float valor) {
+void ContaPoupanca::creditoConta(double valor) {
     Lancamento* lancamento = new Lancamento("credito", valor,  SaldoAtualP);
 
-    lancamentos.push_front(lancamento);
+    lancamentos.push_back(lancamento);
     //realização do credito em conta
     setSaldoAtual(SaldoAtualP + valor);
     //atualização do montante total do banco
@@ -60,7 +60,7 @@ void ContaPoupanca::creditoConta(float valor) {
 }
 
 //retorna se o lancamento eh feito
-bool ContaPoupanca::FazerLancamento(int tipo, float valorP){
+bool ContaPoupanca::FazerLancamento(int tipo, double valorP){
 	switch (tipo) {
 	case 1: {
 		return debitoConta(valorP);
@@ -127,12 +127,12 @@ void ContaPoupanca::setDataAbertura(time_t dataAbertura) {
 }
 
 //retorna o saldo total atual
-float ContaPoupanca::getSaldoAtual() const {
+double ContaPoupanca::getSaldoAtual() const {
     return SaldoAtualP;
 }
 
 //define o saldo atual 
-void ContaPoupanca::setSaldoAtual(float saldoAtual) {
+void ContaPoupanca::setSaldoAtual(double saldoAtual) {
     SaldoAtualP = saldoAtual;
 
 }
@@ -144,7 +144,7 @@ void ContaPoupanca::imprimeExtrato(tm inicial_t, tm final_t) {
 	 if (final < inicial) {
 		return;
 	}
-	float SaldoInicial, SaldoFinal;
+	double SaldoInicial, SaldoFinal;
 	bool primeiro = false;
 	for (auto& lancamento : this->getLancamentos()) {
 		time_t dataLancamento = mktime(&lancamento->getDataLancamento());

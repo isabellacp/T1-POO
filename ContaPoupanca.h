@@ -23,9 +23,9 @@ public:
 
 	//retorna o numero da conta
 	int GetNumero();
-	bool debitoConta(float);
-	void creditoConta(float);
-	bool FazerLancamento(int, float);
+	bool debitoConta(double);
+	void creditoConta(double);
+	bool FazerLancamento(int, double);
 	void imprimeExtrato(tm inicial, tm final);
 	//retorna o extrato
 	list <Lancamento*> getLancamentos();
@@ -43,15 +43,15 @@ public:
 	void setDataAbertura(time_t dataAbertura);
 
 	//setter e getter para o saldoAtual
-	float getSaldoAtual() const;
-	void setSaldoAtual(float saldoAtual);
+	double getSaldoAtual() const;
+	void setSaldoAtual(double saldoAtual);
 private:
 	static int NumeroGlobalP; //controla o numero da conta
 	static double MontanteTotalP;
 	int NumeroP;  //numero da conta
 	string CPFcliente;
 	time_t DataAbertura;
-	float SaldoAtualP;
+	double SaldoAtualP;
 };
 
 

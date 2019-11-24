@@ -31,7 +31,7 @@ ContaCorrente::~ContaCorrente() {
 
 
 //debita o valor da conta
-bool ContaCorrente::debitoConta(float valor, tm data) {
+bool ContaCorrente::debitoConta(double valor, tm data) {
 	if (SaldoAtual + LimiteChequeEspecial < valor) {
 		return false;
 	}
@@ -40,7 +40,7 @@ bool ContaCorrente::debitoConta(float valor, tm data) {
 	
 	lancamento->setDataLancamento(data);
 	
-	lista_lancamentos.push_front(lancamento);
+	lista_lancamentos.push_back(lancamento);
 	//realização do debito em conta
 	setSaldoAtual(SaldoAtual - valor);
 	//atualização do montante total do banco
@@ -51,13 +51,13 @@ bool ContaCorrente::debitoConta(float valor, tm data) {
 }
 
 //credita um valor na conta
-void ContaCorrente::creditoConta(float valor, tm data) {
+void ContaCorrente::creditoConta(double valor, tm data) {
 	Lancamento* lancamento = new Lancamento("credito", valor, SaldoAtual);
 	//inserção da operação no extrato
 	
 		lancamento->setDataLancamento(data);
 	
-	lista_lancamentos.push_front(lancamento);
+	lista_lancamentos.push_back(lancamento);
 	//realização do credito em conta
 	setSaldoAtual(SaldoAtual + valor);
 	//atualização do montante total do banco
@@ -66,7 +66,7 @@ void ContaCorrente::creditoConta(float valor, tm data) {
 	MontanteTotal += valor;
 }
 
-bool ContaCorrente::FazerLancamento(int tipo, float valor, tm data) {
+bool ContaCorrente::FazerLancamento(int tipo, double valor, tm data) {
 	switch (tipo) {
 	case 1: {
 		return debitoConta(valor, data);
@@ -81,7 +81,7 @@ bool ContaCorrente::FazerLancamento(int tipo, float valor, tm data) {
 	return true;
 
 }
-bool ContaCorrente::FazerLancamento(int tipo, float valor) {
+bool ContaCorrente::FazerLancamento(int tipo, double valor) {
     time_t t = time(0); 
 	tm* agora = localtime(&t);
 	return FazerLancamento(tipo, valor, *agora);
@@ -96,10 +96,11 @@ void ContaCorrente::imprimeExtrato(tm inicial_struct, tm final_struct) {
 	if (final < inicial) {
 		return;
 	}
-	float SaldoInicial, SaldoFinal;
+	double SaldoInicial, SaldoFinal;
 	bool primeiro = false;
 	for (auto& lancamento : this->getLancamentos()) {
-		time_t dataLancamento = mktime(&lancamento->getDataLancamento());
+	    tm tmCopy = lancamento->getDataLancamento();
+		time_t dataLancamento = mktime(&tmCopy);
 
 		if (dataLancamento >= inicial && dataLancamento <= final) {
 			if (primeiro == false) {
@@ -150,21 +151,21 @@ void ContaCorrente::setDataAbertura(tm dataAbertura) {
 	DataAbertura = mktime(&dataAbertura);
 }
 
-float ContaCorrente::getSaldoAtual() const {
+double ContaCorrente::getSaldoAtual() const {
 	return SaldoAtual;
 }
 
-void ContaCorrente::setSaldoAtual(float saldoAtual) {
+void ContaCorrente::setSaldoAtual(double saldoAtual) {
 	SaldoAtual = saldoAtual;
 
 }
 
-float ContaCorrente::getLimiteChequeEspecial() const
+double ContaCorrente::getLimiteChequeEspecial() const
 {
 	return LimiteChequeEspecial;
 }
 
-void ContaCorrente::setLimiteChequeEspecial(float limiteChequeEspecial)
+void ContaCorrente::setLimiteChequeEspecial(double limiteChequeEspecial)
 {
 	LimiteChequeEspecial = limiteChequeEspecial;
 }
@@ -191,6 +192,6 @@ int ContaCorrente::getQuantidadeContas() {
 	return NumeroGlobal;
 }
 
-float ContaCorrente::getMontanteTotal() {
+double ContaCorrente::getMontanteTotal() {
 	return MontanteTotal;
 }

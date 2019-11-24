@@ -4,9 +4,11 @@
 using namespace std;
 Lancamento::Lancamento(string type, float valor, float saldoAnterior)
 {
+
 	this->type = type;
 	this->valor = valor;
 	this->SaldoAnterior = saldoAnterior;
+	this->DataLancamento = time(0);
 }
 
 string Lancamento::getType()
@@ -34,14 +36,13 @@ float Lancamento::getSaldoAnterior()
 	return SaldoAnterior;
 }
 string Lancamento::toString() {
-		
+	
 		ostringstream output;
-		output << "Tipo: " << type << endl;
-		output << "Valor: " << valor << endl;
-			output << "Saldo Anterior: " << SaldoAnterior << endl;
+		output << "Tipo: " << type << " | ";
+		output << "Valor: " << valor << " | ";
+			output << "Saldo Anterior: " << SaldoAnterior << " | ";
 			output << "Data: " << ctime(&DataLancamento) << endl;
 	
 		return output.str();
-	
 
 }

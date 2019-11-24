@@ -10,7 +10,6 @@ public:
 	string getType();
 	float getValor();
 	tm getDataLancamento();
-	void setDataLancamento(int dia, int mes, int ano, int hora, int segundo);
 	void setDataLancamento(tm);
 
 	float getSaldoAnterior();

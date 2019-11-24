@@ -23,14 +23,14 @@ public:
     ~ContaCorrente();
 	list <Lancamento*>  lista_lancamentos; //struct que armazena dados sobre as operações feitas nas contas
     int GetNumero();
-	bool FazerLancamento(int, float);
+	bool FazerLancamento(int, double);
 
-    bool FazerLancamento(int, float, tm data);
+    bool FazerLancamento(int, double, tm data);
     list <Lancamento*> getLancamentos(); //getter - retorna o extrato
-    bool debitoConta (float, tm);
-    void creditoConta (float, tm);
+    bool debitoConta (double, tm);
+    void creditoConta (double, tm);
     static int getQuantidadeContas();
-    static float getMontanteTotal();
+    static double getMontanteTotal();
     void imprimeExtrato(tm, tm);
     string toString() const;
 
@@ -43,12 +43,12 @@ public:
     void setDataAbertura(tm dataAbertura);
 
     //getter e setter para o SaldoAtual
-    float getSaldoAtual() const;
-    void setSaldoAtual(float saldoAtual);
+    double getSaldoAtual() const;
+    void setSaldoAtual(double saldoAtual);
 
 	//getter e setter para o LimiteChequeEspecial
-	float getLimiteChequeEspecial() const;
-	void setLimiteChequeEspecial(float limiteChequeEspecial);
+	double getLimiteChequeEspecial() const;
+	void setLimiteChequeEspecial(double limiteChequeEspecial);
 
 
 
@@ -58,8 +58,8 @@ private:
     int Numero;
     string CPFcliente;
     time_t DataAbertura;
-    float SaldoAtual;
-	float LimiteChequeEspecial;
+    double SaldoAtual;
+	double LimiteChequeEspecial;
 
 };
 
