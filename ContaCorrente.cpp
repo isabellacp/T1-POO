@@ -1,11 +1,14 @@
 //
 // Created by isabe on 03/10/2019.
 //
-
+#include <ctime>
+#include <list>
 #include <string>
 #include "ContaCorrente.h"
-#include <iostream>
+
 #include <sstream>
+#include <iostream>
+#include "Lancamento.h"
 
 using namespace std;
 
@@ -32,33 +35,29 @@ bool ContaCorrente::debitoConta(float valor, time_t data) {
 	if (SaldoAtual + LimiteChequeEspecial < valor) {
 		return false;
 	}
-	struct Lancamento lanc;
+	Lancamento* lancamento = new Lancamento("debito", valor, SaldoAtual);
 	//inserção da operação no extrato
-	lanc.type = "debito";
-	lanc.valor = valor;
 	if (data != 0) {
-		lanc.DataLancamento = data;
+		lancamento->setDataLancamento(data);
 	}
-	lanc.SaldoAnterior = SaldoAtual;
-	lista_lancamentos.push_front(lanc);
+	lista_lancamentos.push_front(lancamento);
 	//realização do debito em conta
 	setSaldoAtual(SaldoAtual - valor);
 	//atualização do montante total do banco
+
+
 	MontanteTotal -= valor;
 	return true;
 }
 
 //credita um valor na conta
 void ContaCorrente::creditoConta(float valor, time_t data) {
-	struct Lancamento lanc;
+	Lancamento* lancamento = new Lancamento("credito", valor, SaldoAtual);
 	//inserção da operação no extrato
-	lanc.type = "credito";
-	lanc.valor = valor;
 	if (data != 0) {
-		lanc.DataLancamento = data;
+		lancamento->setDataLancamento(data);
 	}
-	lanc.SaldoAnterior = SaldoAtual;
-	lista_lancamentos.push_front(lanc);
+	lista_lancamentos.push_front(lancamento);
 	//realização do credito em conta
 	setSaldoAtual(SaldoAtual + valor);
 	//atualização do montante total do banco
@@ -89,19 +88,19 @@ void ContaCorrente::imprimeExtrato(time_t inicial, time_t final) {
 	}
 	float SaldoInicial, SaldoFinal;
 	bool primeiro = false;
-	for (auto& Lancamento : this->getLista_lancamentos()) {
-		if (Lancamento.DataLancamento >= inicial && Lancamento.DataLancamento <= final) {
+	for (auto& lancamento : this->getLancamentos()) {
+		if (lancamento->getDataLancamento() >= inicial && lancamento->getDataLancamento()<= final) {
 			if (primeiro == false) {
 				primeiro = true;
-				SaldoInicial = Lancamento.SaldoAnterior;
+				SaldoInicial = lancamento->getSaldoAnterior();
 			}
-			if (Lancamento.type == "debito") {
-				cout << Lancamento.DataLancamento << ":" << Lancamento.valor << endl;
-				SaldoFinal = Lancamento.SaldoAnterior - Lancamento.valor;
+			if (lancamento->getType() == "debito") {
+				cout << lancamento->getDataLancamento() << ":" << lancamento->getValor()<< endl;
+				SaldoFinal = lancamento->getSaldoAnterior() - lancamento->getValor();
 			}
-			else if (Lancamento.type == "credito") {
-				cout << Lancamento.DataLancamento << ":" << Lancamento.valor << endl;
-				SaldoFinal = Lancamento.SaldoAnterior + Lancamento.valor;
+			else if (lancamento->getType() == "credito") {
+				cout << lancamento->getDataLancamento()<< ":" << lancamento->getValor()<< endl;
+				SaldoFinal = lancamento->getSaldoAnterior()+ lancamento->getValor();
 			}
 		}
 	}
@@ -113,8 +112,7 @@ void ContaCorrente::imprimeExtrato(time_t inicial, time_t final) {
 	}
 }
 
-//retorna o extrato
-list<struct Lancamento> ContaCorrente::getLista_lancamentos() {
+list<Lancamento*> ContaCorrente::getLancamentos() {
 	return lista_lancamentos;
 }
 

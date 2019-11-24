@@ -2,9 +2,8 @@
 #ifndef JURIDICO_H
 #define JURIDICO_H
 #include <string>
+#include <ctime>
 #include "Cliente.h"
-#include <iostream>
-#include<sstream>
 
 
 using namespace std;

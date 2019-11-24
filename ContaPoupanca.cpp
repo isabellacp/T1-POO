@@ -1,5 +1,8 @@
+#include <list>
+#include <ctime>
 #include <string>
 #include <sstream>
+
 #include "ContaPoupanca.h"
 #include "Cliente.h"
 using namespace std;
@@ -34,32 +37,26 @@ int ContaPoupanca::GetNumero() {
 }
 
 //debita o valor da conta
-bool ContaPoupanca::debitoConta(float valorP) {
-    struct LancamentoP lancP;
-    //inserção da operação no extrato
-    lancP.typeP = "debito";
-    lancP.valorP = valorP;
-	lancP.SaldoAnteriorP = SaldoAtualP; 
-    extratoP.push_front(lancP);
-    //realização do debito em conta
-    setSaldoAtual(SaldoAtualP - valorP);
-    //atualização do montante total do banco
-    MontanteTotalP -= valorP;
+bool ContaPoupanca::debitoConta(float valor) {
+	Lancamento* lancamento = new Lancamento("credito", valor, SaldoAtualP);
+
+	lancamentos.push_front(lancamento);
+	//realização de debito em conta
+	setSaldoAtual(SaldoAtualP - valor);
+	//atualização do montante total do banco
+	MontanteTotalP -= valor;
     return true;
 }
 
 //credita um valor na conta
-void ContaPoupanca::creditoConta(float valorP) {
-    struct LancamentoP lancP;
-    //inserção da operação no extrato
-    lancP.typeP = "credito";
-    lancP.valorP = valorP;
-	lancP.SaldoAnteriorP = SaldoAtualP;
-    extratoP.push_front(lancP);
+void ContaPoupanca::creditoConta(float valor) {
+    Lancamento* lancamento = new Lancamento("credito", valor,  SaldoAtualP);
+
+    lancamentos.push_front(lancamento);
     //realização do credito em conta
-    setSaldoAtual(SaldoAtualP + valorP);
+    setSaldoAtual(SaldoAtualP + valor);
     //atualização do montante total do banco
-    MontanteTotalP += valorP;
+    MontanteTotalP += valor;
 }
 
 //retorna se o lancamento eh feito
@@ -80,8 +77,8 @@ bool ContaPoupanca::FazerLancamento(int tipo, float valorP){
 
 
 //retorna o extrato
-list<struct LancamentoP> ContaPoupanca::getExtrato() {
-    return extratoP;
+list<Lancamento*> ContaPoupanca::getLancamentos() {
+    return lancamentos;
 }
 
 //retorna a quantidade de contas poupanca
@@ -140,5 +137,35 @@ void ContaPoupanca::setSaldoAtual(float saldoAtual) {
 
 }
 
+void ContaPoupanca::imprimeExtrato(time_t inicial, time_t final) {
+	 if (final < inicial) {
+		return;
+	}
+	float SaldoInicial, SaldoFinal;
+	bool primeiro = false;
+	for (auto& lancamento : this->getLancamentos()) {
+		if (lancamento->getDataLancamento() >= inicial && lancamento->getDataLancamento() <= final) {
+			if (primeiro == false) {
+				primeiro = true;
+				SaldoInicial = lancamento->getSaldoAnterior();
+			}
+			if (lancamento->getType()== "debito") {
+				cout << lancamento->getDataLancamento() << ":" << lancamento->getValor() << endl;
+				SaldoFinal = lancamento->getSaldoAnterior() - lancamento->getValor();
+			}
+			else if (lancamento->getType() == "credito") {
+				cout << lancamento->getDataLancamento() << ":" << lancamento->getValor() << endl;
+				SaldoFinal = lancamento->getSaldoAnterior() + lancamento->getValor();
+			}
+		}
+	}
+	if (primeiro == false) {
+		cout << "Não há lançamentos neste intervalo";
+	}
+	else {
+		cout << "Saldo Final: " << SaldoFinal;
 
+	}
+
+}
 

@@ -8,16 +8,11 @@
 #include <ctime>
 #include <string>
 #include <list>
-#include <iostream>
+#include <sstream>
+#include "Lancamento.h"
+
 using  namespace std;
 
-struct Lancamento{
-    string type;
-    float valor = 0;
-    time_t DataLancamento = time (0);
-	float SaldoAnterior; 
-
-};
 
 
 class ContaCorrente {
@@ -26,10 +21,10 @@ public:
     ContaCorrente(string cpf_cliente);
 
     ~ContaCorrente();
-    list <struct Lancamento>  lista_lancamentos; //struct que armazena dados sobre as operações feitas nas contas
+	list <Lancamento*>  lista_lancamentos; //struct que armazena dados sobre as operações feitas nas contas
     int GetNumero();
     bool FazerLancamento(int, float, time_t data = 0);
-    list <struct Lancamento> getLista_lancamentos(); //getter - retorna o extrato
+    list <Lancamento*> getLancamentos(); //getter - retorna o extrato
     bool debitoConta (float, time_t);
     void creditoConta (float, time_t);
     static int getQuantidadeContas();

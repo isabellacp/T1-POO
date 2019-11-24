@@ -1,0 +1,281 @@
+#include <list>
+#include <string>
+#include "ContaCorrente.h"
+#include "Cliente.h"
+#include "Juridico.h"
+#include "ContaPoupanca.h"
+#include <iostream>
+
+void RodarTeste1() {
+    list<Cliente *> ListaDeClientes;            //lista de clientes físicos
+    list<Juridico *> ListaClientesJur;        //lista de clientes jur
+    list<ContaCorrente *> ListaDeContas;    //lista de contas correntes
+    list<ContaPoupanca *> ListaContasPoup; //lista de contas poupança
+    bool sair = false;
+    //Cenario de Teste C1
+    cout << " ----------------CENARIO DE TESTE 1-------------------- " << endl;
+
+    //Pessoa Física 01
+    string nomePF1 = "pessoa fisica 1", cpfPF1 = "1101", enderecoPF1 = "pf street, 100 ", telefonePF1 = "123456789", emailPF1 = "fulano@detal.com";
+    Cliente *pf1 = new Cliente(nomePF1, cpfPF1, enderecoPF1, telefonePF1, emailPF1);
+    ListaDeClientes.push_front(pf1); //adicionando o novo cliente na lista de clientes
+    cout << "Cliente Criado: Pessoa Física 01" << pf1->toString() << endl;
+    ContaCorrente *ccPessoaF1 = new ContaCorrente(cpfPF1); //criando Conta Corrente para a Pessoa Física 01
+    ListaDeContas.push_front(ccPessoaF1); //adicionando a nova conta na lista de contas correntes
+    ccPessoaF1->FazerLancamento(2, 100.00); //creditando 100 reais na conta
+    cout << "Conta Corrente criada para Pessoa Física 01:" << ccPessoaF1->toString() << endl;
+    //criar poupança para PF1
+    ContaPoupanca *cpPessoaF1 = new ContaPoupanca(cpfPF1);
+    ListaContasPoup.push_front(cpPessoaF1);
+    cpPessoaF1->FazerLancamento(2, 200); // CREDITA 200 REAIS NA CONTA POUPANÇA
+    cout << "Conta Poupança criada para Pessoa Física 01:" << cpPessoaF1->toString() << endl;
+
+    //Pessoa Física 02
+    string nomePF2 = "pessoa fisica 2", cpfPF2 = "1102", enderecoPF2 = "pf street, 200 ", telefonePF2 = "7891011", emailPF2 = "fulano2@detal.com";
+    Cliente *pf2 = new Cliente(nomePF2, cpfPF2, enderecoPF2, telefonePF2, emailPF2);
+    ListaDeClientes.push_front(pf2);
+    cout << "Cliente Criado: Pessoa Física 02" << pf2->toString() << endl;
+    ContaCorrente *ccPessoaF2 = new ContaCorrente(cpfPF2);
+    ListaDeContas.push_front(ccPessoaF2);
+    cout << "Conta Corrente criada para Pessoa Física 02:" << ccPessoaF2->toString() << endl;
+
+    //cria poupança para PF02
+    ContaPoupanca *cpPessoaF2 = new ContaPoupanca(cpfPF2);
+    ListaContasPoup.push_front(cpPessoaF2);
+    cpPessoaF1->FazerLancamento(2, 50); //creditando 50 reais na conta poupança
+    cout << "Conta Poupança criada para Pessoa Física 02:" << cpPessoaF2->toString() << endl;
+
+
+    //listar clientes fisicos
+    cout << "Total de Clientes Físicos Cadastrados:" << endl;
+    cout << Cliente::getTotalClientesFisico() << endl;
+    //listar clientes juridicos
+    cout << "Total de Clientes Juridicos Cadastrados:" << endl;
+    cout << Juridico::getTotalClientesJuridico() << endl;
+    //listar contas correntes
+    cout << "Total de Contas Correntes:" << endl;
+    cout << ContaCorrente::getQuantidadeContas() << endl;
+    //listar contas poupança
+    cout << "Total de Contas Poupança:" << endl;
+    cout << ContaPoupanca::getQuantidadeContasP() << endl;
+
+    //Pessoa Juridica 01 (vinculado à Pessoa Física 01)
+    string nomePJ1 = "pessoa juridica 01", telefonePJ1 = "13579", emailPJ1 = "empresa1@fulano.com", cnpjPJ1 = "1201", atuacaoPJ1 = "comercio", funcaoPJ1 = "detal", atualizacaoPJ1 = "10/01/2005";
+    Juridico *pj1 = new Juridico(nomePF2, cpfPF1, enderecoPF1, telefonePJ1, emailPJ1, cnpjPJ1, atuacaoPJ1, funcaoPJ1,
+                                 atualizacaoPJ1);
+    ListaClientesJur.push_front(pj1);
+    cout << "Cliente Criado: Pessoa JurÍdica 01" << pj1->toString() << endl;
+    ContaCorrente *ccPessoaJ1 = new ContaCorrente(cnpjPJ1); //criando Conta Corrente para a Pessoa Jurídica 01
+    ListaDeContas.push_front(ccPessoaJ1); //adicionando a nova conta na lista de contas correntes
+    ccPessoaJ1->FazerLancamento(2, 1000000); //creditando 1,000,000.00 reais na conta
+    cout << "Conta Corrente criada para Pessoa Jurídica 01:" << ccPessoaJ1->toString() << endl;
+
+    //Pessoa Juridica 02 (vinculado à Pessoa Física 02)
+    string nomePJ2 = "pessoa juridica 02", telefonePJ2 = "12345", emailPJ2 = "empresa2@fulano.com", cnpjPJ2 = "1202", atuacaoPJ2 = "educação", funcaoPJ2 = "etcetc", atualizacaoPJ2 = "10/01/2005";
+    Juridico *pj2 = new Juridico(nomePJ2, cpfPF2, enderecoPF2, telefonePJ2, emailPJ2, cnpjPJ2, atuacaoPJ2, funcaoPJ2,
+                                 atualizacaoPJ2);
+    ListaClientesJur.push_front(pj2);
+    cout << "Cliente Criado: Pessoa JurÍdica 02" << pj2->toString() << endl;
+    ContaCorrente *ccPessoaJ2 = new ContaCorrente(cnpjPJ2); //criando Conta Corrente para a Pessoa Jurídica 01
+    ListaDeContas.push_front(ccPessoaJ2); //adicionando a nova conta na lista de contas correntes
+    ccPessoaJ2->FazerLancamento(2, 500000); //creditando 1,000,000.00 reais na conta
+    cout << "Conta Corrente criada para Pessoa Jurídica 02:" << ccPessoaJ2->toString() << endl;
+
+
+    //listar clientes fisicos
+    cout << "Total de Clientes Físicos Cadastrados:" << endl;
+    cout << Cliente::getTotalClientesFisico() << endl;
+    //listar clientes juridicos
+    cout << "Total de Clientes Juridicos Cadastrados:" << endl;
+    cout << Juridico::getTotalClientesJuridico() << endl;
+    //listar contas correntes
+    cout << "Total de Contas Correntes:" << endl;
+    cout << ContaCorrente::getQuantidadeContas() << endl;
+    //listar contas poupança
+    cout << "Total de Contas Poupança:" << endl;
+    cout << ContaPoupanca::getQuantidadeContasP() << endl;
+    //exibir montante total do banco
+    cout << "Montante Total do Banco:" << endl;
+    cout << fixed << ContaCorrente::getMontanteTotal() + ContaPoupanca::getMontanteTotal() << endl;
+
+    //deletando as contas inicializadas
+    ListaDeContas.remove(ccPessoaF1);  // remove conta da lista
+    delete (ccPessoaF1);
+    ListaDeContas.remove(ccPessoaF2);
+    delete (ccPessoaF2);
+    ListaContasPoup.remove(cpPessoaF1);
+    delete (cpPessoaF1);
+    ListaContasPoup.remove(cpPessoaF2);
+    delete (cpPessoaF2);
+    ListaDeContas.remove(ccPessoaJ1);
+    delete (ccPessoaJ1);
+    ListaDeContas.remove(ccPessoaJ2);
+    delete (ccPessoaJ2);
+
+    ListaDeClientes.remove(pf1);
+    delete (pf1);
+    ListaDeClientes.remove(pf2);
+    delete (pf2);
+    ListaClientesJur.remove(pj1);
+    delete (pj1);
+    ListaClientesJur.remove(pj2);
+    delete (pj2);
+
+
+}
+
+void RodarTeste2() {
+    list<Cliente *> ListaDeClientes;            //lista de clientes físicos
+    list<Juridico *> ListaClientesJur;        //lista de clientes jur
+    list<ContaCorrente *> ListaDeContas;    //lista de contas correntes
+    list<ContaPoupanca *> ListaContasPoup; //lista de contas poupança
+    //Cenario de Teste C1
+
+    //Cenario de Teste C2
+    std::cout << " ----------------CENARIO DE TESTE 2-------------------- " << endl;
+
+    //Pessoa Física 01
+    string nomePF1 = "pessoa fisica 1", cpfPF1 = "1102", enderecoPF1 = "pf street, 200 ", telefonePF1 = "7891011", emailPF1 = "fulano2@detal.com";
+    Cliente *pf1 = new Cliente(nomePF1, cpfPF1, enderecoPF1, telefonePF1, emailPF1);
+    ListaDeClientes.push_front(pf1); //adicionando o novo cliente na lista de clientes
+    cout << "Cliente Criado: Pessoa Física 01 " << pf1->toString() << endl;
+    ContaCorrente *ccPessoaF1 = new ContaCorrente(cpfPF1); //criando Conta Corrente para a Pessoa Física 01
+    ListaDeContas.push_front(ccPessoaF1); //adicionando a nova conta na lista de contas correntes
+    ccPessoaF1->FazerLancamento(2, 100.00); //creditando 100 reais na conta
+    cout << "Conta Corrente criada para Pessoa Física 01: " << ccPessoaF1->toString() << endl;
+    //criar poupança para PF1
+    ContaPoupanca *cpPessoaF1 = new ContaPoupanca(cpfPF1);
+    ListaContasPoup.push_front(cpPessoaF1);
+    cpPessoaF1->FazerLancamento(2, 200); // CREDITA 200 REAIS NA CONTA POUPANÇA
+    cout << "Conta Poupança criada para Pessoa Física 01: " << cpPessoaF1->toString() << endl;
+    //lancamentos
+    ccPessoaF1->FazerLancamento(1, 100); //debito de 100,00 na conta corrente
+    cout << "Saldo atual Conta Corrente - Pessoa Fisica 01: " << ccPessoaF1->getSaldoAtual() << endl; //out saldo atual
+    ccPessoaF1->FazerLancamento(2, 50); //credita 50 na conta corrente
+    cout << "Saldo atual Conta Corrente - Pessoa Fisica 01: " << ccPessoaF1->getSaldoAtual() << endl; //out saldo atual
+    cpPessoaF1->FazerLancamento(2, 30); //credita 30 na conta corrente
+    cout << "Saldo atual Conta Poupanca - Pessoa Fisica 01 :" << cpPessoaF1->getSaldoAtual() << endl; //out saldo atual
+    cout << "" << endl;
+
+    //EXIBIR EXTRATO DE CONTA CORRENTE 1
+    //EXIBIR EXTRATO POUPANCA 1
+
+    //Pessoa Juridica 01 (vinculado à Pessoa Física 01)
+    string nomePJ1 = "pessoa juridica 01", telefonePJ1 = "13579", emailPJ1 = "empresa1@fulano.com", cnpjPJ1 = "1201", atuacaoPJ1 = "comercio", funcaoPJ1 = "detal", atualizacaoPJ1 = "10/01/2005";
+    Juridico *pj1 = new Juridico(nomePJ1, cpfPF1, enderecoPF1, telefonePJ1, emailPJ1, cnpjPJ1, atuacaoPJ1, funcaoPJ1,
+                                 atualizacaoPJ1);
+    ListaClientesJur.push_front(pj1);
+    cout << "Cliente Criado: Pessoa JurÍdica 01" << pj1->toString() << endl;
+    ContaCorrente *ccPessoaJ1 = new ContaCorrente(cnpjPJ1); //criando Conta Corrente para a Pessoa Jurídica 01
+    ListaDeContas.push_front(ccPessoaJ1); //adicionando a nova conta na lista de contas correntes
+    ccPessoaJ1->FazerLancamento(2, 1000000); //creditando 1,000,000.00 reais na conta
+    cout << "Conta Corrente criada para Pessoa Jurídica 01:" << ccPessoaJ1->toString() << endl;
+
+    //Pessoa Juridica 02 (vinculado à Pessoa Física 01)
+    string nomePJ2 = "pessoa juridica 02", telefonePJ2 = "813579", emailPJ2 = "empresa2@fulano.com", cnpjPJ2 = "12201", atuacaoPJ2 = "comercio 2", funcaoPJ2 = "detal 2", atualizacaoPJ2 = "10/01/2005";
+    Juridico *pj2 = new Juridico(nomePF1, cpfPF1, enderecoPF1, telefonePJ2, emailPJ2, cnpjPJ2, atuacaoPJ2, funcaoPJ2,
+                                 atualizacaoPJ2);
+    ListaClientesJur.push_front(pj2);
+    cout << "Cliente Criado: Pessoa JurÍdica 02" << pj2->toString() << endl;
+    ContaCorrente *ccPessoaJ2 = new ContaCorrente(cnpjPJ2); //criando Conta Corrente para a Pessoa Jurídica 02
+    ListaDeContas.push_front(ccPessoaJ2); //adicionando a nova conta na lista de contas correntes
+    ccPessoaJ2->FazerLancamento(2, 500000); //creditando 500,000.00 reais na conta
+    cout << "Conta Corrente criada para Pessoa Jurídica 01:" << ccPessoaJ2->toString() << endl;
+
+    ccPessoaJ1->FazerLancamento(1, 100000); //lancamento 100.000,00 em c3 de juridico
+    cout << "Saldo Atual Pessoa juridica 1:" << ccPessoaJ1->getSaldoAtual() << endl;
+    ccPessoaJ1->FazerLancamento(1, 200000); //lancamento 200.000,00 em c3 de juridico
+    cout << "Saldo Atual Pessoa juridica 1:" << ccPessoaJ1->getSaldoAtual() << endl;
+    ccPessoaJ2->FazerLancamento(1, 30000); //lancamento 30.000,00 em c4 de juridico
+    cout << "Saldo Atual Pessoa juridica 2:" << ccPessoaJ2->getSaldoAtual() << endl;
+
+    //EXIBIR EXTRATO DE C3 TODO O PERIODO
+    //EXIBIR EXTRATO DE C4 TODO O PERIODO
+
+    //exibir montante total do banco
+    cout << "Montante Total do Banco:" << endl;
+    cout << fixed << ContaCorrente::getMontanteTotal() << endl;
+
+    //deletando as contas inicializadas
+    ListaDeContas.remove(ccPessoaF1);  // remove conta da lista
+    delete (ccPessoaF1);
+    ListaContasPoup.remove(cpPessoaF1);
+    delete (cpPessoaF1);
+    ListaDeContas.remove(ccPessoaJ1);
+    delete (ccPessoaJ1);
+    ListaDeContas.remove(ccPessoaJ2);
+    delete (ccPessoaJ2);
+
+    ListaClientesJur.remove(pj1);
+    delete (pj1);
+    ListaClientesJur.remove(pj2);
+    delete (pj2);
+    ListaDeClientes.remove(pf1);
+    delete (pf1);
+
+
+}
+
+void RodarTeste3() {
+    list<Cliente *> ListaDeClientes;            //lista de clientes físicos
+    list<Juridico *> ListaClientesJur;        //lista de clientes jur
+    list<ContaCorrente *> ListaDeContas;    //lista de contas correntes
+    list<ContaPoupanca *> ListaContasPoup; //lista de contas poupança
+    cout << " ----------------CENARIO DE TESTE 3-------------------- " << endl;
+    //Pessoa Física 01
+    string nomePF1 = "pessoa fisica 1", cpfPF1 = "1101", enderecoPF1 = "pf street, 100 ", telefonePF1 = "123456789", emailPF1 = "fulano@detal.com";
+    Cliente *pf1 = new Cliente(nomePF1, cpfPF1, enderecoPF1, telefonePF1, emailPF1);
+    ListaDeClientes.push_front(pf1); //adicionando o novo cliente na lista de clientes
+    cout << "Cliente Criado: Pessoa Física 01" << pf1->toString() << endl;
+
+    //Pessoa Jurídica 01
+    string nomePJ1 = "Pessoa Jurídica 01", cpfPJ1 = "1111", enderecoPJ1 = "aaaa, 900", telefonePJ1 = "13589", emailPJ1 = "empresaA@fulano.com", cnpjPJ1 = "1222", atuacaoPJ1 = "comercio", funcaoPJ1 = "detal", atualizacaoPJ1 = "10/01/2005";
+    Juridico *pj1 = new Juridico(nomePJ1, cpfPJ1, enderecoPJ1, telefonePJ1, emailPJ1, cnpjPJ1, atuacaoPJ1, funcaoPJ1,
+                                 atualizacaoPJ1);
+    ListaClientesJur.push_front(pj1);
+    cout << "Cliente Criado: Pessoa JurÍdica 01" << pj1->toString() << endl;
+    //criando Conta Corrente para a Pessoa Jurídica 01
+    ContaCorrente *ccPessoaJ1 = new ContaCorrente(cnpjPJ1);
+    ListaDeContas.push_front(ccPessoaJ1); //adicionando a nova conta na lista de contas correntes
+    ccPessoaJ1->FazerLancamento(2, 1000000); //creditando 1,000,000.00 reais na conta
+    cout << "Conta Corrente criada para Pessoa Jurídica 01:" << ccPessoaJ1->toString() << endl;
+
+    //lançar débito de 100, 000.00 em 15 / 11 / 2019 em conta corrente de pj1
+    //lançar débito de 200, 000.00 em 16 / 11 / 2019 em  conta corrente de pj1
+    //lançar crédito de 400, 000.00 em 17 / 11 / 2019 em  conta corrente de pj1
+
+    //exibir extrato de c1 considerando todo o período
+
+    //exibir extrato de c1 de 15 / 11 / 2019 a 16 / 11 / 2019
+
+    //exibir extrato de c1 de 16 / 11 / 2019 a 17 / 11 / 2019
+
+
+    //deletando as contas inicializadas
+    ListaDeContas.remove(ccPessoaJ1);
+    delete (ccPessoaJ1);
+    ListaClientesJur.remove(pj1);
+    delete (pj1);
+    ListaDeClientes.remove(pf1);
+    delete (pf1);
+
+
+}
+
+void RodarTeste4() {
+    list<Cliente *> ListaDeClientes;            //lista de clientes físicos
+    list<Juridico *> ListaClientesJur;        //lista de clientes jur
+    list<ContaCorrente *> ListaDeContas;    //lista de contas correntes
+    list<ContaPoupanca *> ListaContasPoup; //lista de contas poupança
+    cout << " ----------------CENARIO DE TESTE 4-------------------- " << endl;
+
+
+    /* OBJETIVO: testar situações de restrição
+    - cadastramento de cliente Pessoa Física para proprietário não cadastrado
+    - criação de conta para cliente não cadastrado
+    - lançamento que geraria saldo negativo em Conta Poupança
+    - remoção de conta com lançamentos
+    - remoção de cliente com contas associadas */
+
+
+}

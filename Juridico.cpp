@@ -1,6 +1,6 @@
 #include "Juridico.h"
 #include <string>
-
+#include <ctime>
 #include <iostream>
 
 using namespace std;

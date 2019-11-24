@@ -4,17 +4,13 @@
 
 #include <list>
 #include <ctime>
+#include <string>
+#include <iostream>
 
 #include "Cliente.h"
+#include "Lancamento.h"
 using namespace std;
 
-struct LancamentoP{
-    string typeP;
-    float valorP = 0;
-    time_t DataLancamentoP = time (0);
-	float SaldoAnteriorP= 0; 
-
-};
 
 class ContaPoupanca{
 public:
@@ -23,15 +19,16 @@ public:
 	//destrutor
 	~ContaPoupanca();
 
-	list <struct LancamentoP> extratoP;
+	list <Lancamento*> lancamentos;
 
 	//retorna o numero da conta
 	int GetNumero();
 	bool debitoConta(float);
 	void creditoConta(float);
 	bool FazerLancamento(int, float);
+	void imprimeExtrato(time_t inicial, time_t final);
 	//retorna o extrato
-	list <struct LancamentoP> getExtrato();
+	list <Lancamento*> getLancamentos();
 	static int getQuantidadeContasP();
 	static double getMontanteTotal();
 	string toString() const;
