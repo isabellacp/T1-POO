@@ -8,6 +8,15 @@
 
 using namespace std;
 
+tm ConstrutorData(int dia, int mes , int ano) {
+
+    time_t now = time(0);
+    tm *data = localtime(&now);
+    data->tm_mday = dia;
+    data->tm_year = ano-1900;
+    data->tm_mon = mes-1;
+    return *data;
+}
 tm LerData() {
 	int dia, mes, ano, hora, minuto;
 

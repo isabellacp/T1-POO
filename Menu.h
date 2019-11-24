@@ -6,7 +6,7 @@
 #include "Cliente.h"
 #include "Juridico.h"
 #include "ContaPoupanca.h"
-
+tm ConstrutorData(int,int,int);
 tm LerData();
 int menuGeral();
 int menuContas();

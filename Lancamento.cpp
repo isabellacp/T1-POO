@@ -39,9 +39,9 @@ string Lancamento::toString() {
 	
 		ostringstream output;
 		output << "Tipo: " << type << " | ";
-		output << "Valor: " << valor << " | ";
+		output << "Valor: " << fixed << valor << " | ";
 			output << "Saldo Anterior: " << SaldoAnterior << " | ";
-			output << "Data: " << ctime(&DataLancamento) << endl;
+			output << "Data: " << ctime(&DataLancamento);
 	
 		return output.str();
 

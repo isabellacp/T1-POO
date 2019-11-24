@@ -108,11 +108,11 @@ void ContaCorrente::imprimeExtrato(tm inicial_struct, tm final_struct) {
 				SaldoInicial = lancamento->getSaldoAnterior();
 			}
 			if (lancamento->getType() == "debito") {
-				cout << dataLancamento << ":" << lancamento->getValor()<< endl;
+				cout << "Debito de " << lancamento->getValor()<< " em "<< ctime(&dataLancamento);
 				SaldoFinal = lancamento->getSaldoAnterior() - lancamento->getValor();
 			}
 			else if (lancamento->getType() == "credito") {
-				cout << dataLancamento<< ":" << lancamento->getValor()<< endl;
+                cout << "Credito de " << lancamento->getValor()<< " em "<< ctime(&dataLancamento);
 				SaldoFinal = lancamento->getSaldoAnterior()+ lancamento->getValor();
 			}
 		}
@@ -121,7 +121,9 @@ void ContaCorrente::imprimeExtrato(tm inicial_struct, tm final_struct) {
 		cout << "Não há lançamentos neste intervalo";
 	}
 	else {
-		cout << "Saldo Final: " << SaldoFinal;
+        cout << "Saldo Inicial: " << SaldoInicial <<endl;
+
+        cout << "Saldo Final: " << SaldoFinal <<endl;
 	}
 }
 
