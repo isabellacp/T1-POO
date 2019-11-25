@@ -34,6 +34,7 @@ int main() {
         //Menu Geral (escolha de funcionalidade)
         optGeral = menuGeral();
 
+
         switch (optGeral) {
             case 1: {
 
@@ -55,15 +56,18 @@ int main() {
                 break;
             }
             case 5: {
+
                 cout << "Total de Clientes Físicos Cadastrados:" << endl;
                 cout << Cliente::getTotalClientesFisico() << endl;
                 break;
             }
             case 6: {
+
                 cout << "Total de Clientes Juridicos Cadastrados:" << endl;
                 cout << Juridico::getTotalClientesJuridico() << endl;
             }
             case 7: {
+
                 cout << "Total de Contas Poupança:" << endl;
                 cout << ContaPoupanca::getQuantidadeContasP() << endl;
             }
