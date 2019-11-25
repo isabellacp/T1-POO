@@ -89,7 +89,7 @@ int main() {
                 break;
             }
             case 2: {
-                AlteraDadosClienteFis(ListaDeClientes, ListaDeContas);
+                AlteraDadosClienteFis(ListaDeClientes, ListaDeContas, ListaContasPoup);
                 break;
             }
             case 3: {

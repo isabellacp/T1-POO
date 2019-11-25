@@ -8,90 +8,93 @@
 
 using namespace std;
 
-tm ConstrutorData(int dia, int mes , int ano) {
+tm ConstrutorData(int dia, int mes, int ano) {
 
     time_t now = time(0);
     tm *data = localtime(&now);
     data->tm_mday = dia;
-    data->tm_year = ano-1900;
-    data->tm_mon = mes-1;
+    data->tm_year = ano - 1900;
+    data->tm_mon = mes - 1;
     return *data;
 }
+
 tm LerData() {
-	int dia, mes, ano, hora, minuto;
+    int dia, mes, ano, hora, minuto;
 
-	cout << "Insira o dia" << endl;
-	cin >> dia;
-	cout << "Insira o mes" << endl;
-	cin >> mes;
-	cout << "Insira o ano" << endl;
-	cin >> ano;
-	cout << "Insira a hora" << endl;
-	cin >> hora;
-	cout << "Insira o minuto" << endl;
-	cin >> minuto;
+    cout << "Insira o dia" << endl;
+    cin >> dia;
+    cout << "Insira o mes" << endl;
+    cin >> mes;
+    cout << "Insira o ano" << endl;
+    cin >> ano;
+    cout << "Insira a hora" << endl;
+    cin >> hora;
+    cout << "Insira o minuto" << endl;
+    cin >> minuto;
 
-	time_t now = time(0);
-	tm *data = localtime(&now);
-	data->tm_mday = dia;
-	data->tm_mon = mes - 1;
-	data->tm_year = ano - 1900;
-	data->tm_hour = hora;
-	data->tm_min = minuto;
-	return *data;
+    time_t now = time(0);
+    tm *data = localtime(&now);
+    data->tm_mday = dia;
+    data->tm_mon = mes - 1;
+    data->tm_year = ano - 1900;
+    data->tm_hour = hora;
+    data->tm_min = minuto;
+    return *data;
 
 }
 
 int menuGeral() {
-	std::locale::global(std::locale("en_US.utf8")); // acentos
-	int opt;
-	cout << "----:: Escolha a Funcionalidade desejada ::-------" << endl;
-	cout << "--------------------------------------------" << endl;
-	cout << "1- Gerenciamento de Clientes" << endl;
-	cout << "2- Gerenciamento de Contas" << endl;
-	cout << "3- Consulta de Total de Contas Correntes" << endl;
-	cout << "4- Consulta de Montante Total" << endl;
-	cout << "5- Consulta de Total de Clientes Físicos" << endl;
-	cout << "6- Consulta de Total de Clientes Jurídicos" << endl;
-	cout << "7- Consulta de Total de Contas Poupança" << endl;
-	cin >> opt;
+    std::locale::global(std::locale("en_US.utf8")); // acentos
+    int opt;
+    cout << "----:: Escolha a Funcionalidade desejada ::-------" << endl;
+    cout << "--------------------------------------------" << endl;
+    cout << "1- Gerenciamento de Clientes" << endl;
+    cout << "2- Gerenciamento de Contas" << endl;
+    cout << "3- Consulta de Total de Contas Correntes" << endl;
+    cout << "4- Consulta de Montante Total" << endl;
+    cout << "5- Consulta de Total de Clientes Físicos" << endl;
+    cout << "6- Consulta de Total de Clientes Jurídicos" << endl;
+    cout << "7- Consulta de Total de Contas Poupança" << endl;
+    cin >> opt;
 
-	return opt; 
+    return opt;
 }
+
 int menuContas() {
-	std::locale::global(std::locale("en_US.utf8")); // acentos
-	int opt;
-	cout << "----:: Escolha a Funcionalidade desejada ::-------" << endl;
-	cout << "--------------------------------------------" << endl;
-	cout << "1- Abrir Conta Corrente" << endl;
-	cout << "2- Alterar Dados de Conta Corrente" << endl;
-	cout << "3- Excluir Conta Corrente" << endl;
-	cout << "4- Lan�amento em Conta Corrente" << endl;
-	cout << "5- Extrato de Conta Corrente" << endl;
-	cout << "6- Exibir dados de Conta Corrente" << endl;
-	cout << "7- Abrir Conta Poupança" << endl;
-	cout << "8- Excluir Conta Poupança" << endl;
-	cout << "9- Lan�amento em Conta Poupança" << endl;
-	cout << "10- Extrato de Conta Poupança" << endl;
-	cin >> opt;
-	return opt; 
-}
-int menuClientes(){
-	std::locale::global(std::locale("en_US.utf8")); // acentos
-	int opt;
-	cout << "----:: Escolha a Funcionalidade desejada ::-------" << endl;
-	cout << "--------------------------------------------" << endl;
-	cout << "1- Cadastrar Cliente Fisico" << endl;
-	cout << "2- Alterar Dados do Cliente Fisico" << endl;
-	cout << "3- Excluir Cliente Fisico" << endl;
-	cout << "4- Cadastrar Cliente Juridico" << endl;
-	cout << "5- Alterar Dados do  Cliente Juridico" << endl;
-	cout << "6- Excluir Cliente Juridico" << endl;
-	cin >> opt;
-	return opt;
+    std::locale::global(std::locale("en_US.utf8")); // acentos
+    int opt;
+    cout << "----:: Escolha a Funcionalidade desejada ::-------" << endl;
+    cout << "--------------------------------------------" << endl;
+    cout << "1- Abrir Conta Corrente" << endl;
+    cout << "2- Alterar Dados de Conta Corrente" << endl;
+    cout << "3- Excluir Conta Corrente" << endl;
+    cout << "4- Lan�amento em Conta Corrente" << endl;
+    cout << "5- Extrato de Conta Corrente" << endl;
+    cout << "6- Exibir dados de Conta Corrente" << endl;
+    cout << "7- Abrir Conta Poupança" << endl;
+    cout << "8- Excluir Conta Poupança" << endl;
+    cout << "9- Lan�amento em Conta Poupança" << endl;
+    cout << "10- Extrato de Conta Poupança" << endl;
+    cin >> opt;
+    return opt;
 }
 
-void CadastrarClienteFis(list<Cliente*> ListaDeClientes) {
+int menuClientes() {
+    std::locale::global(std::locale("en_US.utf8")); // acentos
+    int opt;
+    cout << "----:: Escolha a Funcionalidade desejada ::-------" << endl;
+    cout << "--------------------------------------------" << endl;
+    cout << "1- Cadastrar Cliente Fisico" << endl;
+    cout << "2- Alterar Dados do Cliente Fisico" << endl;
+    cout << "3- Excluir Cliente Fisico" << endl;
+    cout << "4- Cadastrar Cliente Juridico" << endl;
+    cout << "5- Alterar Dados do  Cliente Juridico" << endl;
+    cout << "6- Excluir Cliente Juridico" << endl;
+    cin >> opt;
+    return opt;
+}
+
+void CadastrarClienteFis(list<Cliente *> ListaDeClientes) {
     string nome, cpf, endereco, email, telefone;
 
     cout << "Insira seu nome:" << endl;
@@ -104,28 +107,39 @@ void CadastrarClienteFis(list<Cliente*> ListaDeClientes) {
     getline(cin, telefone);
     cout << "Insira seu e-mail:" << endl;
     getline(cin, email);
-    Cliente* novoCliente = new Cliente(nome, cpf, endereco, telefone, email);
+    Cliente *novoCliente = new Cliente(nome, cpf, endereco, telefone, email);
     ListaDeClientes.push_front(novoCliente);
     cout << "Cliente Cadastrado com sucesso!" << endl;
     cout << "________________________________" << endl;
     cout << novoCliente->toString() << endl;
     cout << "________________________________" << endl;
 }
-void AlteraDadosClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>ListaDeContas) {
+
+void AlteraDadosClienteFis(list<Cliente *> ListaDeClientes, list<ContaCorrente *> ListaDeContas,
+                           list<ContaPoupanca *> ListaContasPoup) {
     bool achou = false;
     string cpf, nome, email, endereco, telefone;
     cout << "Insira seu CPF:" << endl;
     getline(cin, cpf);
     //busca cpf do cliente na lista de clientes
-    for (auto& cliente : ListaDeClientes) {
+    for (auto &cliente : ListaDeClientes) {
         if (cpf == cliente->getCpf()) {
             achou = true;
-            for (auto& contaCorrente : ListaDeContas) {
+            for (auto &contaCorrente : ListaDeContas) {
                 if (cpf == contaCorrente->getCpFcliente()) {
 
                     cout << "Esse cliente não pode ser alterado pois há contas vinculados a ele" << endl;
 
                     break;
+                } else {
+                    for (auto &contaPoup : ListaContasPoup) {
+                        if (cpf == contaPoup->getCpfCliente()) {
+
+                            cout << "Esse cliente não pode ser alterado pois há contas vinculados a ele" << endl;
+
+                            break;
+                        }
+                    }
                 }
 
                 cout << "Insira seu nome:" << endl;
@@ -150,7 +164,11 @@ void AlteraDadosClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>Li
     if (!achou)
         cout << "Cliente não encontrado" << endl;
 }
-void deletaClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>ListaDeContas, list<ContaPoupanca*>ListaContasPoup) {
+
+
+
+void deletaClienteFis(list<Cliente *> ListaDeClientes, list<ContaCorrente *> ListaDeContas,
+                      list<ContaPoupanca *> ListaContasPoup) {
     bool achou = false;
     bool temconta = false;
     string cpf;
@@ -173,7 +191,7 @@ void deletaClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>ListaDe
     }
 
     bool possuiContaCorrente = false;
-    for (auto& ContaCorrente : ListaDeContas) {
+    for (auto &ContaCorrente : ListaDeContas) {
         if (cpf == ContaCorrente->getCpFcliente()) {
             possuiContaCorrente = true;
             cout << "Esse cliente não pode ser deletado pois há contas vinculados a ele" << endl;
@@ -182,10 +200,11 @@ void deletaClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>ListaDe
     }
     if (!possuiContaCorrente) {
         bool possuiContaPoup = false;
-        for (auto &ContaPoupanca : ListaContasPoup ) {
+        for (auto &ContaPoupanca : ListaContasPoup) {
             if (cpf == ContaPoupanca->getCpfCliente()) {
                 possuiContaPoup = true;
-                cout << "Esse cliente não pode ser deletado pois há pelo menos 01 ContaPoupanca vinculada a ele" << endl;
+                cout << "Esse cliente não pode ser deletado pois há pelo menos 01 ContaPoupanca vinculada a ele"
+                     << endl;
                 break;
             }
         }
@@ -195,13 +214,15 @@ void deletaClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>ListaDe
         }
     }
 }
-void CadastrarClienteJur(list<Juridico*>ListaClientesJur, list<Cliente*>ListaDeClientes) {
+
+
+void CadastrarClienteJur(list<Juridico *> ListaClientesJur, list<Cliente *> ListaDeClientes) {
     bool achou = false;
     string cpfPJ;
     cout << "Insira o CPF do sócio marjoritario:" << endl;
     getline(cin, cpfPJ);
     //busca cpf do cliente na lista de clientes
-    for (auto& cliente : ListaDeClientes) {
+    for (auto &cliente : ListaDeClientes) {
         if (cpfPJ == cliente->getCpf()) {
             achou = true;
             string nomePJ, cpfPJ, enderecoPJ, telefonePJ, emailPJ, cnpjPJ, atuacaoPJ, funcaoPJ, atualizacaoPJ;
@@ -222,7 +243,8 @@ void CadastrarClienteJur(list<Juridico*>ListaClientesJur, list<Cliente*>ListaDeC
             cout << "Insira a data da ultima atualização do contrato" << endl;
             getline(cin, atualizacaoPJ);
 
-            Juridico* pj = new Juridico(nomePJ, cpfPJ, enderecoPJ, telefonePJ, emailPJ, cnpjPJ, atuacaoPJ, funcaoPJ, atualizacaoPJ);
+            Juridico *pj = new Juridico(nomePJ, cpfPJ, enderecoPJ, telefonePJ, emailPJ, cnpjPJ, atuacaoPJ, funcaoPJ,
+                                        atualizacaoPJ);
             ListaClientesJur.push_front(pj);
             cout << "Cliente Cadastrado com sucesso!" << endl;
             cout << "________________________________" << endl;
@@ -232,58 +254,85 @@ void CadastrarClienteJur(list<Juridico*>ListaClientesJur, list<Cliente*>ListaDeC
         }
     }
     if (!achou)
-        cout << "CADASTRO DE PESSOA JÚRIDICA NÃO AUTORIZADO! O sócio marjoritário não está cadastrado como cliente físico." << endl;
+        cout
+                << "CADASTRO DE PESSOA JÚRIDICA NÃO AUTORIZADO! O sócio marjoritário não está cadastrado como cliente físico."
+                << endl;
 
 }
-void AlteraDadosClienteJur(list<Juridico*>ListaClientesJur) {
+
+void AlteraDadosClienteJur(list<Juridico *> ListaClientesJur, list<ContaCorrente *> ListaDeContas) {
     bool achou = false;
-    string nomePJ, cpfPJ, enderecoPJ, telefonePJ, emailPJ, cnpjPJ, atuacaoPJ, funcaoPJ, atualizacaoPJ;
-    cout << "Insira o CNPJ:" << endl;
-    getline(cin, cnpjPJ);
-    //busca cpf do cliente na lista de clientes
-    for (auto& Juridico : ListaClientesJur) {
-        if (cnpjPJ == Juridico->getCnpj()) {
+    string cpf;
+    cout << "Insira o CPF associado ao cliente juridico que deseja alterar dados" << endl;
+    getline(cin, cpf);
+    auto ptrCliente = ListaClientesJur.begin(); // inicia no primeiro cliente
+    while (ptrCliente != ListaClientesJur.end()) { // enquanto nao acabar os clientes
+        if (cpf == (*ptrCliente)->getCpf()) {
             achou = true;
-            cout << "Insira o nome da Pessoa Juridica:" << endl;
-            getline(cin, nomePJ);
-            cout << "Insira o CPF do sócio marjoritario:" << endl;
-            getline(cin, cpfPJ);
-            cout << "Insira o endereço:" << endl;
-            getline(cin, enderecoPJ);
-            cout << "Insira o telefone:" << endl;
-            getline(cin, telefonePJ);
-            cout << "Insira o e-mail:" << endl;
-            getline(cin, emailPJ);
-            cout << "Insira o CNPJ:" << endl;
-            getline(cin, cnpjPJ);
-            cout << "Insira a atuação:" << endl;
-            getline(cin, atuacaoPJ);
-            cout << "Insira a funcao" << endl;
-            getline(cin, funcaoPJ);
-            cout << "Insira a data da ultima atualização do contrato" << endl;
-            getline(cin, atualizacaoPJ);
+            bool possuiContaCorrente = false;
+            for (auto &ContaCorrente : ListaDeContas) {
+                if (cpf == ContaCorrente->getCpFcliente()) {
+                    possuiContaCorrente = true;
+                    cout << "Esse cliente não pode ter seu CNPJ alterado pois há contas vinculados a ele" << endl;
+                    break;
+                }
+            }
+            if (!possuiContaCorrente) {
+                bool achouCliente = false;
+                string nomePJ, cpfPJ, enderecoPJ, telefonePJ, emailPJ, cnpjPJ, atuacaoPJ, funcaoPJ, atualizacaoPJ;
+                cout << "Insira o CNPJ  associado ao cliente juridico que deseja alterar dados:" << endl;
+                getline(cin, cnpjPJ);
+                //busca cpf do cliente na lista de clientes
+                for (auto &Juridico : ListaClientesJur) {
+                    if (cnpjPJ == Juridico->getCnpj()) {
+                        achou = true;
+                        cout << "Insira o nome da Pessoa Juridica:" << endl;
+                        getline(cin, nomePJ);
+                        cout << "Insira o CPF do sócio marjoritario:" << endl;
+                        getline(cin, cpfPJ);
+                        cout << "Insira o endereço:" << endl;
+                        getline(cin, enderecoPJ);
+                        cout << "Insira o telefone:" << endl;
+                        getline(cin, telefonePJ);
+                        cout << "Insira o e-mail:" << endl;
+                        getline(cin, emailPJ);
+                        cout << "Insira o CNPJ:" << endl;
+                        getline(cin, cnpjPJ);
+                        cout << "Insira a atuação:" << endl;
+                        getline(cin, atuacaoPJ);
+                        cout << "Insira a funcao" << endl;
+                        getline(cin, funcaoPJ);
+                        cout << "Insira a data da ultima atualização do contrato" << endl;
+                        getline(cin, atualizacaoPJ);
 
-            Juridico->setNome(nomePJ);
-            Juridico->setCpf(cpfPJ);
-            Juridico->setEndereco(enderecoPJ);
-            Juridico->setTelefone(telefonePJ);
-            Juridico->setEmail(emailPJ);
-            Juridico->setAtuacao(atuacaoPJ);
-            Juridico->setCnpj(cnpjPJ);
-            Juridico->setFuncao(funcaoPJ);
+                        Juridico->setNome(nomePJ);
+                        Juridico->setCpf(cpfPJ);
+                        Juridico->setEndereco(enderecoPJ);
+                        Juridico->setTelefone(telefonePJ);
+                        Juridico->setEmail(emailPJ);
+                        Juridico->setAtuacao(atuacaoPJ);
+                        Juridico->setCnpj(cnpjPJ);
+                        Juridico->setFuncao(funcaoPJ);
 
 
+                    }
+
+                }
+                if (!achouCliente)
+                    cout << "Cliente não encontrado" << endl;
+                break;
+
+            }
+            ptrCliente++; // avança para o primeiro cliente
         }
-
+        if (!achou) {
+            cout << "Cliente não encontrado" << endl;
+        }
     }
-    if (!achou)
-        cout << "Cliente não encontrado" << endl;
-
-
 }
-void deletaClienteJur(list<Juridico*>ListaClientesJur, list<ContaCorrente*>ListaDeContas) {
-    bool achou = false;
 
+void deletaClienteJur(list<Juridico *> ListaClientesJur, list<ContaCorrente *> ListaDeContas) {
+    bool achou = false;
     string cpf;
     cout << "Insira o CPF associado ao cliente juridico que deseja deletar:" << endl;
     getline(cin, cpf);
@@ -303,7 +352,7 @@ void deletaClienteJur(list<Juridico*>ListaClientesJur, list<ContaCorrente*>Lista
 
 
     bool possuiContaCorrente = false;
-    for (auto& ContaCorrente : ListaDeContas) {
+    for (auto &ContaCorrente : ListaDeContas) {
         if (cpf == ContaCorrente->getCpFcliente()) {
             possuiContaCorrente = true;
             cout << "Esse cliente não pode ser deletado pois há contas vinculados a ele" << endl;
@@ -312,21 +361,23 @@ void deletaClienteJur(list<Juridico*>ListaClientesJur, list<ContaCorrente*>Lista
     }
     if (!possuiContaCorrente) {
         ListaClientesJur.erase(ptrCliente); //remove cliente da lista
-        delete(*ptrCliente);
+        delete (*ptrCliente);
     }
 }
-void criaContaCorrente(list<ContaCorrente*> ListaDeContas, list<Cliente*>ListaDeClientes) {
+
+void criaContaCorrente(list<ContaCorrente *> ListaDeContas, list<Cliente *> ListaDeClientes) {
     bool achou = false;
     string cpf;
     cout << "Insira o CPF do cliente ja cadastrado no sistema:" << endl;
     getline(cin, cpf);
     //busca cpf do cliente na lista de clientes
-    for (auto& cliente : ListaDeClientes) {
+    for (auto &cliente : ListaDeClientes) {
         if (cpf == cliente->getCpf()) {
             achou = true;
-            ContaCorrente* nova_conta = new ContaCorrente(cpf);
+            ContaCorrente *nova_conta = new ContaCorrente(cpf);
             ListaDeContas.push_front(nova_conta);
-            cout << "Conta Aberta com Sucesso! O numero da sua conta corrente é:" << nova_conta->GetNumero() << endl;
+            cout << "Conta Aberta com Sucesso! O numero da sua conta corrente é:" << nova_conta->GetNumero()
+                 << endl;
 
         }
     }
@@ -334,9 +385,9 @@ void criaContaCorrente(list<ContaCorrente*> ListaDeContas, list<Cliente*>ListaDe
         cout << "ABERTURA DE CONTA NÃO AUTORIZADA! O cliente náo esta cadastrado no sistema." << endl;
 
 
-
 }
-void alteraContaCorrente(list<ContaCorrente*>ListaDeContas) {
+
+void alteraContaCorrente(list<ContaCorrente *> ListaDeContas) {
     bool achou = false;
     int numeroDaConta;
 
@@ -345,7 +396,7 @@ void alteraContaCorrente(list<ContaCorrente*>ListaDeContas) {
     if (cin.peek() == '\n') {
         cin.ignore();
     }
-    for (auto& ContaCorrente : ListaDeContas) {
+    for (auto &ContaCorrente : ListaDeContas) {
         if (numeroDaConta == ContaCorrente->GetNumero()) {
             achou = true;
             string cpf;
@@ -361,7 +412,8 @@ void alteraContaCorrente(list<ContaCorrente*>ListaDeContas) {
     if (!achou)
         cout << "Conta nao encontrada" << endl;
 }
-void deletaContaCorrente(list<ContaCorrente*>ListaDeContas) {
+
+void deletaContaCorrente(list<ContaCorrente *> ListaDeContas) {
     bool achou = false;
     int numeroDaConta;
     cout << "Insira o número da conta que deseja deletar" << endl;
@@ -378,7 +430,7 @@ void deletaContaCorrente(list<ContaCorrente*>ListaDeContas) {
 
 
             ListaDeContas.erase(ptrConta); // remove conta da lista
-            delete(*ptrConta);
+            delete (*ptrConta);
             break;
         }
         ptrConta++; // avanca para a proxima conta
@@ -386,7 +438,8 @@ void deletaContaCorrente(list<ContaCorrente*>ListaDeContas) {
     if (!achou)
         cout << "Conta nao encontrada " << endl;
 }
-void lancamentoContaCorrente(list<ContaCorrente*>ListaDeContas) {
+
+void lancamentoContaCorrente(list<ContaCorrente *> ListaDeContas) {
     bool achou = false;
     int numeroDaConta;
     int tipo_lancamento;
@@ -400,9 +453,9 @@ void lancamentoContaCorrente(list<ContaCorrente*>ListaDeContas) {
     cin >> tipo_lancamento;
     cout << "Digite o valor a ser lançado:" << endl;
     cin >> valor;
-	tm data = LerData();
+    tm data = LerData();
 
-    for (auto& ContaCorrente : ListaDeContas) {
+    for (auto &ContaCorrente : ListaDeContas) {
 
         if (numeroDaConta == ContaCorrente->GetNumero()) {
             achou = true;
@@ -416,38 +469,40 @@ void lancamentoContaCorrente(list<ContaCorrente*>ListaDeContas) {
         cout << "Conta nao encontrada" << endl;
 
 }
-void exibeExtratoContaCorrente(list<ContaCorrente*>ListaDeContas) {
-	int numeroDaConta;
-	bool achou = false;
-	cout << "Insira o número da conta que deseja ver o extrato" << endl;
-	cin >> numeroDaConta;
 
-	//loop na lista de contas
-	for (auto& contaCorrente : ListaDeContas) {
-		if (numeroDaConta == contaCorrente->GetNumero()) {
-			achou = true;
-			tm inicio, fim;
-			cout << "Insira o inicio do intervalo de duração do extrato:" << endl;
-			inicio = LerData();
-			cout << "Insira o final do intervalo de duração do extrato:" << endl;
-			fim = LerData();
+void exibeExtratoContaCorrente(list<ContaCorrente *> ListaDeContas) {
+    int numeroDaConta;
+    bool achou = false;
+    cout << "Insira o número da conta que deseja ver o extrato" << endl;
+    cin >> numeroDaConta;
 
-			contaCorrente->imprimeExtrato(inicio, fim);
+    //loop na lista de contas
+    for (auto &contaCorrente : ListaDeContas) {
+        if (numeroDaConta == contaCorrente->GetNumero()) {
+            achou = true;
+            tm inicio, fim;
+            cout << "Insira o inicio do intervalo de duração do extrato:" << endl;
+            inicio = LerData();
+            cout << "Insira o final do intervalo de duração do extrato:" << endl;
+            fim = LerData();
 
-		}
-	}
-	if (!achou)
-		cout << "Conta nao encontrada" << endl;
+            contaCorrente->imprimeExtrato(inicio, fim);
+
+        }
+    }
+    if (!achou)
+        cout << "Conta nao encontrada" << endl;
 
 }
-void exibeDadosContaCorrente(list<ContaCorrente*>ListaDeContas) {
+
+void exibeDadosContaCorrente(list<ContaCorrente *> ListaDeContas) {
     int numeroDaConta;
     bool achou = false;
     cout << "Insira o número da conta que deseja ver" << endl;
     cin >> numeroDaConta;
 
     //loop na lista de contas
-    for (auto& contaCorrente : ListaDeContas) {
+    for (auto &contaCorrente : ListaDeContas) {
         //encontra a conta desejada
         if (numeroDaConta == contaCorrente->GetNumero()) {
             achou = true;
@@ -457,15 +512,17 @@ void exibeDadosContaCorrente(list<ContaCorrente*>ListaDeContas) {
     if (!achou)
         cout << "Conta nao encontrada" << endl;
 }
-void criaContaPoup(list<ContaPoupanca*>ListaContasPoup) {
+
+void criaContaPoup(list<ContaPoupanca *> ListaContasPoup) {
     string cpf;
     cout << "Insira o cpf do cliente para criação da conta poupança:" << endl;
     getline(cin, cpf);
-    ContaPoupanca* nova_conta = new ContaPoupanca(cpf);
+    ContaPoupanca *nova_conta = new ContaPoupanca(cpf);
     ListaContasPoup.push_front(nova_conta);
     cout << "Conta Aberta com Sucesso! O numero da sua conta é:" << nova_conta->GetNumero() << endl;
 }
-void deletaContaPoup(list<ContaPoupanca*> ListaContasPoup) {
+
+void deletaContaPoup(list<ContaPoupanca *> ListaContasPoup) {
     bool achou = false;
     int numeroDaConta;
     cout << "Insira o número da conta poupanca que deseja deletar" << endl;
@@ -479,7 +536,7 @@ void deletaContaPoup(list<ContaPoupanca*> ListaContasPoup) {
                 cout << "Essa conta não pode ser deletada pois há lançamentos vinculados a ela" << endl;
             }
             ListaContasPoup.erase(ptrConta); // remove conta da lista
-            delete(*ptrConta);
+            delete (*ptrConta);
 
         }
         ptrConta++; // avanca para a proxima conta
@@ -487,7 +544,8 @@ void deletaContaPoup(list<ContaPoupanca*> ListaContasPoup) {
     if (!achou)
         cout << "Conta nao encontrada " << endl;
 }
-void lancamentoContaPoup(list<ContaPoupanca*> ListaContasPoup) {
+
+void lancamentoContaPoup(list<ContaPoupanca *> ListaContasPoup) {
     bool achou = false;
     int numeroDaConta;
     int tipo_lancamento;
@@ -502,7 +560,7 @@ void lancamentoContaPoup(list<ContaPoupanca*> ListaContasPoup) {
     cout << "Digite o valor a ser lançado:" << endl;
     cin >> valor;
 
-    for (auto& ContaPoupanca : ListaContasPoup) {
+    for (auto &ContaPoupanca : ListaContasPoup) {
 
         if (numeroDaConta == ContaPoupanca->GetNumero()) {
             achou = true;
@@ -515,28 +573,28 @@ void lancamentoContaPoup(list<ContaPoupanca*> ListaContasPoup) {
         cout << "Conta nao encontrada" << endl;
 
 }
-void exibeExtratoContaPoup(list<ContaPoupanca*> ListaContasPoup){
+
+void exibeExtratoContaPoup(list<ContaPoupanca *> ListaContasPoup) {
     int numeroDaConta;
     bool achou = false;
     cout << "Insira o número da conta que deseja ver o extrato" << endl;
     cin >> numeroDaConta;
 
     //loop na lista de contas
-    for (auto& contaPoupanca : ListaContasPoup) {
+    for (auto &contaPoupanca : ListaContasPoup) {
         if (numeroDaConta == contaPoupanca->GetNumero()) {
             achou = true;
             tm inicio, fim;
             cout << "Insira o inicio do intervalo de duração do extrato:" << endl;
-			inicio = LerData();
-			cout << "Insira o final do intervalo de duração do extrato:" << endl;
-			fim = LerData();
+            inicio = LerData();
+            cout << "Insira o final do intervalo de duração do extrato:" << endl;
+            fim = LerData();
 
-			contaPoupanca->imprimeExtrato(inicio, fim);
+            contaPoupanca->imprimeExtrato(inicio, fim);
 
         }
     }
     if (!achou)
         cout << "Conta nao encontrada" << endl;
-    
-}
 
+}

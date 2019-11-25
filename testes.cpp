@@ -248,10 +248,9 @@ void RodarTeste3() {
     string nomePF1 = "pessoa fisica 1", cpfPF1 = "1101", enderecoPF1 = "pf street, 100 ", telefonePF1 = "123456789", emailPF1 = "fulano@detal.com";
     Cliente *pf1 = new Cliente(nomePF1, cpfPF1, enderecoPF1, telefonePF1, emailPF1);
     ListaDeClientes.push_front(pf1); //adicionando o novo cliente na lista de clientes
-    //cout << "Cliente Criado: Pessoa Física 01" << pf1->toString() << endl;
-
+    cout << "Cliente Criado: Pessoa Física 01" << pf1->toString() << endl;
     //Pessoa Jurídica 01
-
+    cout << "    " << endl;
     string nomePJ1 = "Pessoa Jurídica 01", cpfPJ1 = "1111", enderecoPJ1 = "aaaa, 900", telefonePJ1 = "13589", emailPJ1 = "empresaA@fulano.com", cnpjPJ1 = "1222", atuacaoPJ1 = "comercio", funcaoPJ1 = "detal", atualizacaoPJ1 = "10/01/2005";
     Juridico *pj1 = new Juridico(nomePJ1, cpfPJ1, enderecoPJ1, telefonePJ1, emailPJ1, cnpjPJ1, atuacaoPJ1, funcaoPJ1,
                                  atualizacaoPJ1);
@@ -263,7 +262,7 @@ void RodarTeste3() {
     ccPessoaJ1->FazerLancamento(2, 1000000); //creditando 1,000,000.00 reais na conta
     cout << "Conta Corrente c1 criada para pj1:" << ccPessoaJ1->toString() << endl;
     cout << ccPessoaJ1->getLancamentos().front()->toString();
-
+    cout << "    " << endl;
     //lançar débito de 100, 000.00 em 15 / 11 / 2019 em conta corrente de pj1
     ccPessoaJ1->FazerLancamento(1, 100000, ConstrutorData(15, 11, 2019));
     cout << "Saldo atual Conta Corrente c1: " << ccPessoaJ1->getSaldoAtual() << endl;
@@ -275,9 +274,8 @@ void RodarTeste3() {
     //lançar crédito de 400, 000.00 em 17 / 11 / 2019 em  conta corrente de pj1
     ccPessoaJ1->FazerLancamento(2, 400000, ConstrutorData(17, 11, 2019));
     cout << "Saldo atual Conta Corrente c1: " << ccPessoaJ1->getSaldoAtual() << endl;
-
-
     cout << "    " << endl;
+
     //exibir extrato de c1 considerando todo o período
     cout << "EXTRATO INTEGRAL DE CONTA CORRENTE c1 " << endl;
     for (auto &lancamento : ccPessoaJ1->getLancamentos()) {
