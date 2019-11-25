@@ -308,6 +308,7 @@ void RodarTeste3() {
     delete (pf1);
 
 
+
 }
 
 void RodarTeste4() {
@@ -349,7 +350,7 @@ void RodarTeste4() {
     //lançamento que geraria saldo negativo em Conta Poupança
     cout << " SITUACAO 03: lançamento que geraria saldo negativo em Conta Poupança" << endl;
     cout << "Conta Poupanca criada para Pessoa Física 01:" << cpPessoaF1->toString() << endl;
-    cout << "---tentiva de débito de 300,00 reais---" << cpPessoaF1->toString() << endl;
+    cout << "---tentiva de débito de 300,00 reais---" <<  endl;
      bool status = cpPessoaF1->FazerLancamento(1, 300);
     if (!status) {
         cout << "Sem saldo suficiente para esta operação!" << endl;
@@ -381,6 +382,7 @@ void RodarTeste4() {
         cout << "Conta nao encontrada " << endl;
     }
 }
+    cout << "--FIM DA SITUAÇÃO 04 --" << endl;
     cout << "______________________________________________________________________________________________" << endl;
 
     // remoção de cliente com contas associadas
@@ -431,6 +433,7 @@ void RodarTeste4() {
 
 
     }
+    cout << "--FIM DA SITUAÇÃO 05 --" << endl;
     cout << "______________________________________________________________________________________________" << endl;
 
     ListaDeContas.remove(ccPessoaF1);
@@ -439,5 +442,6 @@ void RodarTeste4() {
     delete (cpPessoaF1);
     ListaDeClientes.remove(pf1);
     delete (pf1);
+
 
 }
