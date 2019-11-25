@@ -25,8 +25,10 @@ ContaCorrente::ContaCorrente(string cpf_cliente) {
 }
 
 ContaCorrente::~ContaCorrente() {
-	NumeroGlobal--;
+
+    if(NumeroGlobal > 0) NumeroGlobal--;
 	MontanteTotal -= getSaldoAtual();
+	setSaldoAtual(0);
 }
 
 

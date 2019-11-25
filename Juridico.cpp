@@ -22,7 +22,14 @@ Juridico :: Juridico (string nome, string cpf, string endereco, string telefone,
        Atualizacao = atualizacao;         
 }
 
+Juridico::~Juridico(){
 
+    if(TotalClientesJuridico > 0) TotalClientesJuridico--;
+
+}
+void Juridico::resetTotal() {
+    TotalClientesJuridico = 0;
+}
 
 //getters e setters
 const string &Juridico::getCnpj() const {

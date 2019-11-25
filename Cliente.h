@@ -16,6 +16,7 @@ public:
     Cliente(string nome, string cpf, string endereco, string telefone, string email); //Construtor
 
 	Cliente();
+    ~Cliente();
 
     //métodos
 
@@ -36,7 +37,7 @@ public:
     void setEmail(const string &email);
 
 	static int getTotalClientesFisico();
-
+    static void resetTotal();
     string toString();
 
 protected:

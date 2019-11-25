@@ -25,8 +25,11 @@ ContaPoupanca::ContaPoupanca(string cpf_cliente){
 
 //destrutor
 ContaPoupanca::~ContaPoupanca(){
-        NumeroGlobalP--;
-        MontanteTotalP -= getSaldoAtual();
+
+    if(NumeroGlobalP > 0) NumeroGlobalP--;
+    MontanteTotalP -= getSaldoAtual();
+    setSaldoAtual(0);
+
 }
     
 

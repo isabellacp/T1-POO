@@ -4,6 +4,8 @@
 
 #include "Cliente.h"
 #include<sstream>
+#include <iostream>
+
 int Cliente::TotalClientesFisico = 0;
 
 //construtor
@@ -17,6 +19,10 @@ Cliente::Cliente(string nome, string cpf, string endereco, string telefone, stri
     Email = email;
 }
 Cliente::Cliente() {}
+
+Cliente::~Cliente(){
+    if(TotalClientesFisico>0) TotalClientesFisico--;
+}
 
 
 
@@ -67,6 +73,10 @@ string Cliente::toString() {
 }
 int Cliente::getTotalClientesFisico() {
 	return TotalClientesFisico;
+}
+
+void Cliente::resetTotal() {
+    TotalClientesFisico = 0;
 }
 
 

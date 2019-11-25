@@ -13,6 +13,7 @@ class Juridico : public Cliente {
 public:
     Juridico (string nome, string cpf, string endereco, string telefone, string 
     email, string cnpj, string atuacao, string funcao, string atualizacao); //construtor
+    ~Juridico();
     //getters e setters
     const string &getCnpj() const;
     void setCnpj (const string);
@@ -24,6 +25,8 @@ public:
     void setAtualizacao (string);
     static int getTotalClientesJuridico();
 	string toString() const;
+    static void resetTotal();
+
 private: 
     static int TotalClientesJuridico; 
     int NumeroClienteJuridico; 
@@ -31,7 +34,7 @@ private:
     string Atuacao;
     string Funcao;
     string Atualizacao;
-            
+
 };
 
 #endif /* JURIDICO_H */

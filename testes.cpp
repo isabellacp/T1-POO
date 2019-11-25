@@ -102,27 +102,20 @@ void RodarTeste1() {
     cout << fixed << ContaCorrente::getMontanteTotal() + ContaPoupanca::getMontanteTotal() << endl;
 
     //deletando as contas inicializadas
-    ListaDeContas.remove(ccPessoaF1);  // remove conta da lista
     delete (ccPessoaF1);
-    ListaDeContas.remove(ccPessoaF2);
     delete (ccPessoaF2);
-    ListaContasPoup.remove(cpPessoaF1);
     delete (cpPessoaF1);
-    ListaContasPoup.remove(cpPessoaF2);
     delete (cpPessoaF2);
-    ListaDeContas.remove(ccPessoaJ1);
     delete (ccPessoaJ1);
-    ListaDeContas.remove(ccPessoaJ2);
     delete (ccPessoaJ2);
 
-    ListaDeClientes.remove(pf1);
     delete (pf1);
-    ListaDeClientes.remove(pf2);
     delete (pf2);
-    ListaClientesJur.remove(pj1);
     delete (pj1);
-    ListaClientesJur.remove(pj2);
     delete (pj2);
+    Juridico::resetTotal();
+    Cliente::resetTotal();
+
 
 
 }
@@ -170,14 +163,14 @@ void RodarTeste2() {
     for (auto &lancamento : ccPessoaF1->getLancamentos()) {
         cout << lancamento->toString() << endl;
     }
-    cout <<"Saldo Final:"<< ccPessoaF1->getSaldoAtual()  <<endl;
+    cout << "Saldo Final:" << ccPessoaF1->getSaldoAtual() << endl;
 
     //EXIBIR EXTRATO POUPANCA 1
     cout << "EXTRATO DE CONTA POUPANCA p1" << endl;
     for (auto &lancamentoPoup : cpPessoaF1->getLancamentos()) {
         cout << lancamentoPoup->toString() << endl;
     }
-    cout <<"Saldo Final:"<< cpPessoaF1->getSaldoAtual()  <<endl;
+    cout << "Saldo Final:" << cpPessoaF1->getSaldoAtual() << endl;
 
     //Pessoa Juridica 01
     string nomePJ1 = "pessoa juridica 01", telefonePJ1 = "13579", emailPJ1 = "empresa1@fulano.com", cnpjPJ1 = "1201", atuacaoPJ1 = "comercio", funcaoPJ1 = "detal", atualizacaoPJ1 = "10/01/2005";
@@ -213,14 +206,14 @@ void RodarTeste2() {
     for (auto &lancamento : ccPessoaJ1->getLancamentos()) {
         cout << lancamento->toString() << endl;
     }
-    cout <<"Saldo Final:"<< ccPessoaJ1->getSaldoAtual()  <<endl;
+    cout << "Saldo Final:" << ccPessoaJ1->getSaldoAtual() << endl;
 
     //EXIBIR EXTRATO DE C4
     cout << "EXTRATO DE CONTA CORRENTE c4 " << endl;
     for (auto &lancamento : ccPessoaJ2->getLancamentos()) {
         cout << lancamento->toString() << endl;
     }
-    cout <<"Saldo Final:"<< ccPessoaJ2->getSaldoAtual() <<endl;
+    cout << "Saldo Final:" << ccPessoaJ2->getSaldoAtual() << endl;
 
     //exibir montante total do banco
     cout << "Montante Total do Banco:" << endl;
@@ -228,21 +221,18 @@ void RodarTeste2() {
 
 
     //deletando as contas inicializadas
-    ListaDeContas.remove(ccPessoaF1);  // remove conta da lista
     delete (ccPessoaF1);
-    ListaContasPoup.remove(cpPessoaF1);
     delete (cpPessoaF1);
-    ListaDeContas.remove(ccPessoaJ1);
     delete (ccPessoaJ1);
-    ListaDeContas.remove(ccPessoaJ2);
     delete (ccPessoaJ2);
 
-    ListaClientesJur.remove(pj1);
     delete (pj1);
-    ListaClientesJur.remove(pj2);
     delete (pj2);
-    ListaDeClientes.remove(pf1);
     delete (pf1);
+    Juridico::resetTotal();
+    Cliente::resetTotal();
+
+
 }
 
 void RodarTeste3() {
@@ -300,13 +290,12 @@ void RodarTeste3() {
     ccPessoaJ1->imprimeExtrato(ConstrutorData(16, 11, 2019), ConstrutorData(17, 11, 2019));
 
     //deletando as contas inicializadas
-    ListaDeContas.remove(ccPessoaJ1);
     delete (ccPessoaJ1);
-    ListaClientesJur.remove(pj1);
     delete (pj1);
-    ListaDeClientes.remove(pf1);
     delete (pf1);
 
+    Juridico::resetTotal();
+    Cliente::resetTotal();
 
 
 }
@@ -343,15 +332,15 @@ void RodarTeste4() {
 
     //criação de conta para cliente não cadastrado
     cout << " SITUACAO 02:criação de conta para cliente não cadastrado" << endl;
-    criaContaCorrente(ListaDeContas,ListaDeClientes);
+    criaContaCorrente(ListaDeContas, ListaDeClientes);
     cout << "--FIM DA SITUAÇÃO 02 --" << endl;
     cout << "______________________________________________________________________________________________" << endl;
 
     //lançamento que geraria saldo negativo em Conta Poupança
     cout << " SITUACAO 03: lançamento que geraria saldo negativo em Conta Poupança" << endl;
     cout << "Conta Poupanca criada para Pessoa Física 01:" << cpPessoaF1->toString() << endl;
-    cout << "---tentiva de débito de 300,00 reais---" <<  endl;
-     bool status = cpPessoaF1->FazerLancamento(1, 300);
+    cout << "---tentiva de débito de 300,00 reais---" << endl;
+    bool status = cpPessoaF1->FazerLancamento(1, 300);
     if (!status) {
         cout << "Sem saldo suficiente para esta operação!" << endl;
     }
@@ -362,26 +351,25 @@ void RodarTeste4() {
     cout << " SITUACAO 04: remoção de conta com lançamentos" << endl;
     cout << "Conta Corrente criada para Pessoa Física 01:" << ccPessoaF1->toString() << endl;
     {
-    int numeroDaConta = ccPessoaF1->GetNumero();
-    bool achou = false;
-    auto ptrConta = ListaDeContas.begin(); // ponteiro para primeira conta da lista
-    while (ptrConta != ListaDeContas.end()) { // enquanto nao acabarem as contas
-        if (numeroDaConta == (*ptrConta)->GetNumero()) {
-            achou = true;
-            if ((*ptrConta)->getLancamentos().size() != 0) {
-                cout << "Essa conta não pode ser deletada pois há lançamentos vinculados a ela" << endl;
+        int numeroDaConta = ccPessoaF1->GetNumero();
+        bool achou = false;
+        auto ptrConta = ListaDeContas.begin(); // ponteiro para primeira conta da lista
+        while (ptrConta != ListaDeContas.end()) { // enquanto nao acabarem as contas
+            if (numeroDaConta == (*ptrConta)->GetNumero()) {
+                achou = true;
+                if ((*ptrConta)->getLancamentos().size() != 0) {
+                    cout << "Essa conta não pode ser deletada pois há lançamentos vinculados a ela" << endl;
+                    break;
+                }
+                ListaDeContas.erase(ptrConta); // remove conta da lista
                 break;
             }
-            ListaDeContas.erase(ptrConta); // remove conta da lista
-            delete (*ptrConta);
-            break;
+            ptrConta++; // avanca para a proxima conta
         }
-        ptrConta++; // avanca para a proxima conta
+        if (!achou) {
+            cout << "Conta nao encontrada " << endl;
+        }
     }
-    if (!achou) {
-        cout << "Conta nao encontrada " << endl;
-    }
-}
     cout << "--FIM DA SITUAÇÃO 04 --" << endl;
     cout << "______________________________________________________________________________________________" << endl;
 
@@ -412,22 +400,23 @@ void RodarTeste4() {
         for (auto &ContaCorrente : ListaDeContas) {
             if (cpf == ContaCorrente->getCpFcliente()) {
                 possuiContaCorrente = true;
-                cout << "Esse cliente não pode ser deletado pois há pelo menos 01 ContaCorrente vinculada a ele" << endl;
+                cout << "Esse cliente não pode ser deletado pois há pelo menos 01 ContaCorrente vinculada a ele"
+                     << endl;
                 break;
             }
         }
         if (!possuiContaCorrente) {
             bool possuiContaPoup = false;
-            for (auto &ContaPoupanca : ListaContasPoup ) {
+            for (auto &ContaPoupanca : ListaContasPoup) {
                 if (cpf == ContaPoupanca->getCpfCliente()) {
                     possuiContaPoup = true;
-                    cout << "Esse cliente não pode ser deletado pois há pelo menos 01 ContaPoupanca vinculada a ele" << endl;
+                    cout << "Esse cliente não pode ser deletado pois há pelo menos 01 ContaPoupanca vinculada a ele"
+                         << endl;
                     break;
                 }
             }
             if (!possuiContaPoup) {
                 ListaDeClientes.erase(ptrCliente); //remove cliente da lista
-                delete (*ptrCliente);
             }
         }
 
@@ -436,12 +425,12 @@ void RodarTeste4() {
     cout << "--FIM DA SITUAÇÃO 05 --" << endl;
     cout << "______________________________________________________________________________________________" << endl;
 
-    ListaDeContas.remove(ccPessoaF1);
     delete (ccPessoaF1);
-    ListaContasPoup.remove(cpPessoaF1);
     delete (cpPessoaF1);
-    ListaDeClientes.remove(pf1);
     delete (pf1);
+    Juridico::resetTotal();
+    Cliente::resetTotal();
+
 
 
 }

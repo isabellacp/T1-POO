@@ -82,45 +82,43 @@ int main() {
         if (cin.peek() == '\n') {
             cin.ignore();
         }
-        if (optClientes == 0) {
+
+
+        if(optClientes!=0) {
+            switch (optClientes) {
+                case 1: {
+                    CadastrarClienteFis(ListaDeClientes);
+                    break;
+                }
+                case 2: {
+                    AlteraDadosClienteFis(ListaDeClientes, ListaDeContas, ListaContasPoup);
+                    break;
+                }
+                case 3: {
+                    deletaClienteFis(ListaDeClientes, ListaDeContas, ListaContasPoup);
+                    break;
+                }
+                case 4: {
+                    CadastrarClienteJur(ListaClientesJur, ListaDeClientes);
+                    break;
+                }
+                case 5: {
+                    AlteraDadosClienteJur(ListaClientesJur, ListaDeContas);
+                    break;
+                }
+                case 6: {
+                    deletaClienteJur(ListaClientesJur, ListaDeContas);
+                    break;
+                }
+            }
+            optClientes = 0;
             continue;
-        } 
-
-        //gerenciamento de clientes
-        switch (optClientes) {
-            case 1: {
-                CadastrarClienteFis(ListaDeClientes);
-                break;
-            }
-            case 2: {
-                AlteraDadosClienteFis(ListaDeClientes, ListaDeContas, ListaContasPoup);
-                break;
-            }
-            case 3: {
-                deletaClienteFis(ListaDeClientes, ListaDeContas, ListaContasPoup);
-                break;
-            }
-            case 4: {
-                CadastrarClienteJur(ListaClientesJur, ListaDeClientes);
-                break;
-            }
-            case 5: {
-                AlteraDadosClienteJur(ListaClientesJur,ListaDeContas);
-                break;
-            }
-            case 6: {
-                deletaClienteJur(ListaClientesJur, ListaDeContas);
-                break;
-            }
         }
-        optClientes = 0;
-
         if (cin.peek() == '\n') {
             cin.ignore();
         }
-        if (optContas == 0) {
-            continue;
-        }
+        if (optContas != 0) {
+
         //gerenciamento de contas
         switch (optContas) {
             case 1: {
@@ -167,6 +165,8 @@ int main() {
         }
 
         optContas = 0;
+            continue;
+        }
     }
 	return 0;
 }
