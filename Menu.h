@@ -13,7 +13,7 @@ int menuContas();
 int menuClientes();
 void CadastrarClienteFis(list<Cliente*> ListaDeClientes);
 void AlteraDadosClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>ListaDeContas);
-void deletaClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>ListaDeContas);
+void deletaClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>ListaDeContas,list<ContaPoupanca*>ListaContasPoup);
 void CadastrarClienteJur(list<Juridico*>ListaClientesJur,list<Cliente*>ListaDeClientes);
 void AlteraDadosClienteJur(list<Juridico*>ListaClientesJur);
 void deletaClienteJur(list<Juridico*>ListaClientesJur, list<ContaCorrente*>ListaDeContas);

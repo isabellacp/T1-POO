@@ -24,8 +24,8 @@ int main() {
     RodarTeste2();
     RodarTeste3();
     RodarTeste4();
-
-    cout << " ----------------MENU DE FUNCIONALIDADES-------------------- " << endl;
+    cout << "  "<< endl;
+    cout << "----------------MENU DE FUNCIONALIDADES-------------------- " << endl;
 	while (!sair) {
         cin.clear();
         int optGeral = 0, optClientes = 0, optContas = 0;
@@ -93,7 +93,7 @@ int main() {
                 break;
             }
             case 3: {
-                deletaClienteFis(ListaDeClientes, ListaDeContas);
+                deletaClienteFis(ListaDeClientes, ListaDeContas, ListaContasPoup);
                 break;
             }
             case 4: {
@@ -111,6 +111,9 @@ int main() {
         }
         optClientes = 0;
 
+        if (cin.peek() == '\n') {
+            cin.ignore();
+        }
         if (optContas == 0) {
             continue;
         }
@@ -153,13 +156,13 @@ int main() {
                 break;
             }
             case 10: {
-
+                exibeExtratoContaPoup(ListaContasPoup);
 
             }
-                optContas = 0;
-
 
         }
+
+        optContas = 0;
     }
 	return 0;
 }

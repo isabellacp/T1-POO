@@ -38,6 +38,9 @@ int ContaPoupanca::GetNumero() {
 
 //debita o valor da conta
 bool ContaPoupanca::debitoConta(double valor) {
+    if ( getSaldoAtual() < valor) {
+        return false;
+    }
 	Lancamento* lancamento = new Lancamento("debito", valor, SaldoAtualP);
 
 	lancamentos.push_back(lancamento);

@@ -150,7 +150,7 @@ void AlteraDadosClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>Li
     if (!achou)
         cout << "Cliente não encontrado" << endl;
 }
-void deletaClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>ListaDeContas) {
+void deletaClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>ListaDeContas, list<ContaPoupanca*>ListaContasPoup) {
     bool achou = false;
     bool temconta = false;
     string cpf;
@@ -181,8 +181,18 @@ void deletaClienteFis(list<Cliente*>ListaDeClientes, list<ContaCorrente*>ListaDe
         }
     }
     if (!possuiContaCorrente) {
-        ListaDeClientes.erase(ptrCliente); //remove cliente da lista
-        delete(*ptrCliente);
+        bool possuiContaPoup = false;
+        for (auto &ContaPoupanca : ListaContasPoup ) {
+            if (cpf == ContaPoupanca->getCpfCliente()) {
+                possuiContaPoup = true;
+                cout << "Esse cliente não pode ser deletado pois há pelo menos 01 ContaPoupanca vinculada a ele" << endl;
+                break;
+            }
+        }
+        if (!possuiContaPoup) {
+            ListaDeClientes.erase(ptrCliente); //remove cliente da lista
+            delete (*ptrCliente);
+        }
     }
 }
 void CadastrarClienteJur(list<Juridico*>ListaClientesJur, list<Cliente*>ListaDeClientes) {

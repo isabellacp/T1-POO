@@ -310,43 +310,46 @@ void RodarTeste4() {
     string nomePF1 = "pessoa fisica 1", cpfPF1 = "1101", enderecoPF1 = "pf street, 100 ", telefonePF1 = "123456789", emailPF1 = "fulano@detal.com";
     Cliente *pf1 = new Cliente(nomePF1, cpfPF1, enderecoPF1, telefonePF1, emailPF1);
     ListaDeClientes.push_front(pf1); //adicionando o novo cliente na lista de clientes
-    cout << "Cliente Criado: Pessoa Física 01" << pf1->toString() << endl;
+
     //criando Conta Corrente para a Pessoa Física 01
     ContaCorrente *ccPessoaF1 = new ContaCorrente(cpfPF1);
     ListaDeContas.push_front(ccPessoaF1);
     ccPessoaF1->FazerLancamento(2, 100.00); //creditando 100 reais na conta
-    cout << "Conta Corrente criada para Pessoa Física 01:" << ccPessoaF1->toString() << endl;
     //criando poupança para PF1
     ContaPoupanca *cpPessoaF1 = new ContaPoupanca(cpfPF1);
     ListaContasPoup.push_front(cpPessoaF1);
     cpPessoaF1->FazerLancamento(2, 200); // CREDITA 200 REAIS NA CONTA POUPANÇA
 
-    cout << "Conta Poupança criada para Pessoa Física 01:" << cpPessoaF1->toString() << endl;
     cout << "  " << endl;
 
     cout << " Testar situações de restrição " << endl;
-    cout << " SITUACAO 01" << endl;
+    cout << "______________________________________________________________________________________________" << endl;
     //cadastramento de cliente Pessoa Física (Jurídica?)para proprietário não cadastrado
-    cout << "cadastramento de cliente Pessoa Física (Jurídica?)para proprietário não cadastrado" << endl;
+    cout << " SITUACAO 01: cadastramento de cliente Pessoa Física (Jurídica?)para proprietário não cadastrado" << endl;
     CadastrarClienteJur(ListaClientesJur, ListaDeClientes);
-    cout << "  " << endl;
+    cout << "--FIM DA SITUAÇÃO 01 --" << endl;
+    cout << "______________________________________________________________________________________________" << endl;
 
     //criação de conta para cliente não cadastrado
-    cout << " SITUACAO 02" << endl;
-    cout << "criação de conta para cliente não cadastrado" << endl;
+    cout << " SITUACAO 02:criação de conta para cliente não cadastrado" << endl;
     criaContaCorrente(ListaDeContas,ListaDeClientes);
-    cout << "  " << endl;
-
+    cout << "--FIM DA SITUAÇÃO 02 --" << endl;
+    cout << "______________________________________________________________________________________________" << endl;
 
     //lançamento que geraria saldo negativo em Conta Poupança
-    cout << " SITUACAO 03" << endl;
-    cout << "lançamento que geraria saldo negativo em Conta Poupança" << endl;
-    cpPessoaF1->FazerLancamento(2, 300);
-    cout << "  " << endl;
+    cout << " SITUACAO 03: lançamento que geraria saldo negativo em Conta Poupança" << endl;
+    cout << "Conta Poupanca criada para Pessoa Física 01:" << cpPessoaF1->toString() << endl;
+    cout << "---tentiva de débito de 300,00 reais---" << cpPessoaF1->toString() << endl;
+     bool status = cpPessoaF1->FazerLancamento(1, 300);
+    if (!status) {
+        cout << "Sem saldo suficiente para esta operação!" << endl;
+    }
+    cout << "--FIM DA SITUAÇÃO 03 --" << endl;
+    cout << "______________________________________________________________________________________________" << endl;
 
     //remoção de conta com lançamentos
-    cout << " SITUACAO 04" << endl;
-    cout << "remoção de conta com lançamentos" << endl;
+    cout << " SITUACAO 04: remoção de conta com lançamentos" << endl;
+    cout << "Conta Corrente criada para Pessoa Física 01:" << ccPessoaF1->toString() << endl;
     {
     int numeroDaConta = ccPessoaF1->GetNumero();
     bool achou = false;
@@ -368,11 +371,11 @@ void RodarTeste4() {
         cout << "Conta nao encontrada " << endl;
     }
 }
-    cout << "  " << endl;
+    cout << "______________________________________________________________________________________________" << endl;
 
     // remoção de cliente com contas associadas
-    cout << " SITUACAO 05" << endl;
-    cout << "remoção de cliente com contas associadas " << endl;
+    cout << " SITUAÇÃO 05: remoção de cliente com contas associadas " << endl;
+    cout << "Cliente Criado: Pessoa Física 01" << pf1->toString() << endl;
     {
         bool achou = false;
         bool temconta = false;
@@ -397,15 +400,34 @@ void RodarTeste4() {
         for (auto &ContaCorrente : ListaDeContas) {
             if (cpf == ContaCorrente->getCpFcliente()) {
                 possuiContaCorrente = true;
-                cout << "Esse cliente não pode ser deletado pois há contas vinculados a ele" << endl;
+                cout << "Esse cliente não pode ser deletado pois há pelo menos 01 ContaCorrente vinculada a ele" << endl;
                 break;
             }
         }
         if (!possuiContaCorrente) {
-            ListaDeClientes.erase(ptrCliente); //remove cliente da lista
-            delete (*ptrCliente);
+            bool possuiContaPoup = false;
+            for (auto &ContaPoupanca : ListaContasPoup ) {
+                if (cpf == ContaPoupanca->getCpfCliente()) {
+                    possuiContaPoup = true;
+                    cout << "Esse cliente não pode ser deletado pois há pelo menos 01 ContaPoupanca vinculada a ele" << endl;
+                    break;
+                }
+            }
+            if (!possuiContaPoup) {
+                ListaDeClientes.erase(ptrCliente); //remove cliente da lista
+                delete (*ptrCliente);
+            }
         }
 
+
     }
-    cout << "  " << endl;
+    cout << "______________________________________________________________________________________________" << endl;
+
+    ListaDeContas.remove(ccPessoaF1);
+    delete (ccPessoaF1);
+    ListaContasPoup.remove(cpPessoaF1);
+    delete (cpPessoaF1);
+    ListaDeClientes.remove(pf1);
+    delete (pf1);
+
 }
