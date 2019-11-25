@@ -101,7 +101,7 @@ int main() {
                 break;
             }
             case 5: {
-                AlteraDadosClienteJur(ListaClientesJur);
+                AlteraDadosClienteJur(ListaClientesJur,ListaDeContas);
                 break;
             }
             case 6: {

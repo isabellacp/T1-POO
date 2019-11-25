@@ -131,6 +131,7 @@ list<Lancamento*> ContaCorrente::getLancamentos() {
 	return lista_lancamentos;
 }
 
+
 int ContaCorrente::GetNumero() {
 	return Numero;
 }

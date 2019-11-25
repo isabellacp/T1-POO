@@ -24,11 +24,13 @@ void RodarTeste1() {
     ContaCorrente *ccPessoaF1 = new ContaCorrente(cpfPF1); //criando Conta Corrente para a Pessoa Física 01
     ListaDeContas.push_front(ccPessoaF1); //adicionando a nova conta na lista de contas correntes
     ccPessoaF1->FazerLancamento(2, 100.00); //creditando 100 reais na conta
+
     cout << "Conta Corrente criada para Pessoa Física 01:" << ccPessoaF1->toString() << endl;
     //criar poupança para PF1
     ContaPoupanca *cpPessoaF1 = new ContaPoupanca(cpfPF1);
     ListaContasPoup.push_front(cpPessoaF1);
     cpPessoaF1->FazerLancamento(2, 200); // CREDITA 200 REAIS NA CONTA POUPANÇA
+
     cout << "Conta Poupança criada para Pessoa Física 01:" << cpPessoaF1->toString() << endl;
 
     //Pessoa Física 02
@@ -141,12 +143,14 @@ void RodarTeste2() {
     cout << "Cliente Físico pf1 Criado: " << pf1->toString() << endl;
     ContaCorrente *ccPessoaF1 = new ContaCorrente(cpfPF1); //criando Conta Corrente para a Pessoa Física 01
     ListaDeContas.push_front(ccPessoaF1); //adicionando a nova conta na lista de contas correntes
+
     ccPessoaF1->FazerLancamento(2, 100.00); //creditando 100 reais na conta
     cout << "Conta Corrente c1 criada para pf1:  " << ccPessoaF1->toString() << endl;
     //criar poupança para PF1
     ContaPoupanca *cpPessoaF1 = new ContaPoupanca(cpfPF1);
     ListaContasPoup.push_front(cpPessoaF1);
     cpPessoaF1->FazerLancamento(2, 200); // CREDITA 200 REAIS NA CONTA POUPANÇA
+    cpPessoaF1->setSaldoAtual(200);
     cout << "Conta Poupança p1 criada para pf1: " << cpPessoaF1->toString() << endl;
     //lancamentos
     cout << "-________________" << endl;
@@ -156,8 +160,8 @@ void RodarTeste2() {
     cout << "Saldo atual Conta Corrente c1: " << ccPessoaF1->getSaldoAtual() << endl; //out saldo atual
     ccPessoaF1->FazerLancamento(2, 50); //credita 50 na conta corrente
     cout << "Saldo atual Conta Corrente c1: " << ccPessoaF1->getSaldoAtual() << endl; //out saldo atual
-    cpPessoaF1->FazerLancamento(2, 30); //credita 30 na conta corrente
-    cout << "Saldo atual Conta Poupanca p1:" << cpPessoaF1->getSaldoAtual() << endl; //out saldo atual
+    cpPessoaF1->FazerLancamento(2, 30); //credita 30 na conta poupanca
+    cout << "Saldo atual Conta Poupança p1:" << cpPessoaF1->getSaldoAtual() << endl; //out saldo atual
     cout << "" << endl;
 
 
@@ -166,12 +170,14 @@ void RodarTeste2() {
     for (auto &lancamento : ccPessoaF1->getLancamentos()) {
         cout << lancamento->toString() << endl;
     }
+    cout <<"Saldo Final:"<< ccPessoaF1->getSaldoAtual()  <<endl;
 
     //EXIBIR EXTRATO POUPANCA 1
     cout << "EXTRATO DE CONTA POUPANCA p1" << endl;
     for (auto &lancamentoPoup : cpPessoaF1->getLancamentos()) {
         cout << lancamentoPoup->toString() << endl;
     }
+    cout <<"Saldo Final:"<< cpPessoaF1->getSaldoAtual()  <<endl;
 
     //Pessoa Juridica 01
     string nomePJ1 = "pessoa juridica 01", telefonePJ1 = "13579", emailPJ1 = "empresa1@fulano.com", cnpjPJ1 = "1201", atuacaoPJ1 = "comercio", funcaoPJ1 = "detal", atualizacaoPJ1 = "10/01/2005";
@@ -207,16 +213,19 @@ void RodarTeste2() {
     for (auto &lancamento : ccPessoaJ1->getLancamentos()) {
         cout << lancamento->toString() << endl;
     }
+    cout <<"Saldo Final:"<< ccPessoaJ1->getSaldoAtual()  <<endl;
 
     //EXIBIR EXTRATO DE C4
     cout << "EXTRATO DE CONTA CORRENTE c4 " << endl;
     for (auto &lancamento : ccPessoaJ2->getLancamentos()) {
         cout << lancamento->toString() << endl;
     }
+    cout <<"Saldo Final:"<< ccPessoaJ2->getSaldoAtual() <<endl;
 
     //exibir montante total do banco
     cout << "Montante Total do Banco:" << endl;
     cout << fixed << ContaCorrente::getMontanteTotal() + ContaPoupanca::getMontanteTotal() << endl;
+
 
     //deletando as contas inicializadas
     ListaDeContas.remove(ccPessoaF1);  // remove conta da lista
@@ -234,8 +243,6 @@ void RodarTeste2() {
     delete (pj2);
     ListaDeClientes.remove(pf1);
     delete (pf1);
-
-
 }
 
 void RodarTeste3() {
@@ -278,13 +285,18 @@ void RodarTeste3() {
 
     //exibir extrato de c1 considerando todo o período
     cout << "EXTRATO INTEGRAL DE CONTA CORRENTE c1 " << endl;
+
     for (auto &lancamento : ccPessoaJ1->getLancamentos()) {
         cout << lancamento->toString() << endl;
     }
+    cout << "Saldo Inicial:1000000.00 " << endl;
+    cout << "Saldo Final:" << ccPessoaJ1->getSaldoAtual() << endl;
     //exibir extrato de c1 de 15 / 11 / 2019 a 16 / 11 / 2019
+    cout << " EXTRATO DE CONTA CORRENTE c1 --- INICIO: 15 / 11 / 2019 ||| FIM: 16 / 11 / 2019" << endl;
     ccPessoaJ1->imprimeExtrato(ConstrutorData(15, 11, 2019), ConstrutorData(16, 11, 2019));
-
+    cout << "______________________________________________________________________________" << endl;
     //exibir extrato de c1 de 16 / 11 / 2019 a 17 / 11 / 2019
+    cout << " EXTRATO DE CONTA CORRENTE c1 --- INICIO: 16 / 11 / 2019 ||| FIM: 17 / 11 / 2019" << endl;
     ccPessoaJ1->imprimeExtrato(ConstrutorData(16, 11, 2019), ConstrutorData(17, 11, 2019));
 
     //deletando as contas inicializadas
